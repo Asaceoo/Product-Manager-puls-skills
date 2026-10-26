@@ -5,8 +5,8 @@
 
 | 文档 | 版本 |
 |---|---|
-| 技术手册 | <!--VER:tech_manual-->1.0.5<!--/VER--> |
-| 技能包 | <!--VER:package-->1.0.5<!--/VER--> |
+| 技术手册 | <!--VER:tech_manual-->1.0.6<!--/VER--> |
+| 技能包 | <!--VER:package-->1.0.6<!--/VER--> |
 
 ---
 
@@ -167,7 +167,7 @@ estimated_time: "60-120 min"   # 可选
 ### 3.4 文档版本标记
 
 ```markdown
-<!--VER:package-->1.0.5<!--/VER-->
+<!--VER:package-->1.0.6<!--/VER-->
 ```
 
 单行、无空格、可被任何 Markdown 渲染器忽略（渲染结果只剩 `1.0.0`）。`version.py` 用正则 `<!--VER:(?P<key>[a-z_]+)-->.*?<!--/VER-->` 精确替换内层内容。
@@ -637,6 +637,17 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 | G5·R2 | dry-run 改为预演不落盘 | 修复 | 版本号预演打印、不落盘；selftest 加"零副作用"回归项（31/31） |
 | G5·R3 | B20/B21 探测+入规则 | 0 命中 | 尾部声明与正文引用完全一致；无准空模板。0 命中也是防线 |
 
+第六代（动态走查：以 Agent 身份实际执行技能启动路径）：
+
+| 走查对象 | 类型 | 走查内容 | 结论 |
+|---|---|---|---|
+| `swot-analysis` | workflow | Input 收敛（3 问预算）→ Application 4 步 → "Emit the schema below" 的 schema 落点 → Final Step 4 选项 → template 指路 | **闭环**，无执行障碍 |
+| `stakeholder-mapping` | component | template.md 108 行，双网格与正文声明一一对应，含 Provenance | **闭环** |
+
+走查同时确认了一个"不加规则"的决策：**"何时不用"的表达形式多样**（标题 `## When NOT to Use`、加粗 `**When NOT to use:**`、行内），标题正则会误报大量用加粗形式的技能（如 swot-analysis 的 Key Concepts 内条目）。此前探测到的"47 个缺何时不用"中有相当部分属于此类——静态正则不适合查这一项，交给 LLM 走查。
+
+**第六代结论：静态可查的问题已收敛完毕。** 三代探测零命中的规则（B20/B21）保留为防线；剩余质量（方法论正确性、流程可执行性、语义重叠）需要 LLM 逐技能走查，已由本节走查 2 个样本建立方法，其余 75 个建议按批次走查。
+
 **两个被真机抓出的自身缺陷**：
 
 1. **R1 的误报**：`[Your name or team]` 被判为未填充占位。若不看真实输出，这条规则会误删 12 处合法模板槽位，直接损坏技能内容。修复方式是重写判定模式，不是提高阈值。
@@ -793,5 +804,5 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 ---
 
 <div align="center">
-<sub>本手册随技能包发布，版本 <!--VER:tech_manual-->1.0.5<!--/VER--> · 技能包 <!--VER:package-->1.0.5<!--/VER--></sub>
+<sub>本手册随技能包发布，版本 <!--VER:tech_manual-->1.0.6<!--/VER--> · 技能包 <!--VER:package-->1.0.6<!--/VER--></sub>
 </div>

@@ -5,8 +5,8 @@
 
 | 文档 | 版本 |
 |---|---|
-| 用户手册 | <!--VER:user_manual-->1.0.5<!--/VER--> |
-| 技能包 | <!--VER:package-->1.0.5<!--/VER--> |
+| 用户手册 | <!--VER:user_manual-->1.0.6<!--/VER--> |
+| 技能包 | <!--VER:package-->1.0.6<!--/VER--> |
 
 ---
 
@@ -746,5 +746,5 @@ python tools/selftest.py -v       # 逐项打印 30 项
 任何一环失败都不会产出包。
 
 <div align="center">
-<sub>本手册随技能包发布，版本 <!--VER:user_manual-->1.0.5<!--/VER--> · 技能包 <!--VER:package-->1.0.5<!--/VER--></sub>
+<sub>本手册随技能包发布，版本 <!--VER:user_manual-->1.0.6<!--/VER--> · 技能包 <!--VER:package-->1.0.6<!--/VER--></sub>
 </div>

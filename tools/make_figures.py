@@ -19,6 +19,8 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Tuple
 
+import argparse
+
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -377,6 +379,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[attr-defined]
 
+    parser = argparse.ArgumentParser(description="生成 README 配图（PIL 绘制，无 matplotlib 依赖）")
+    parser.add_argument("--only", default=None,
+                        help="只生成指定图：hero / architecture / workflow / themes / convergence / decision-tree")
+    args = parser.parse_args(argv)
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     version_file = ROOT / "VERSION"
@@ -390,16 +397,25 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     if not themes:
         print("[WARN] MANIFEST.json 无主题数据，先运行 tools/manifest.py generate")
 
-    make_hero(version, skill_count)
-    make_architecture(version, skill_count, themes, types)
-    make_workflow()
-    make_themes(themes)
-    make_convergence()
-    make_decision_tree()
+    jobs = {
+        "hero": lambda: make_hero(version, skill_count),
+        "architecture": lambda: make_architecture(version, skill_count, themes, types),
+        "workflow": make_workflow,
+        "themes": lambda: make_themes(themes),
+        "convergence": make_convergence,
+        "decision-tree": make_decision_tree,
+        "perspectives": make_perspectives,
+    }
+    selected = [args.only] if args.only else list(jobs)
+    unknown = [s for s in selected if s not in jobs]
+    if unknown:
+        print(f"[ERROR] 未知图名：{', '.join(unknown)}（可选 {', '.join(jobs)}）", file=sys.stderr)
+        return 2
+    for name in selected:
+        jobs[name]()
 
-    for name in ("hero.png", "architecture.png", "workflow.png", "themes.png",
-                 "convergence.png", "decision-tree.png"):
-        path = OUT_DIR / name
+    for name in selected:
+        path = OUT_DIR / f"{name}.png"
         print(f"[OK] {path.relative_to(ROOT).as_posix()}  {path.stat().st_size / 1024:.0f} KB")
     return 0
 
@@ -533,6 +549,66 @@ def make_decision_tree() -> None:
               font=font(19), fill=INK_SOFT)
 
     img.save(OUT_DIR / "decision-tree.png", optimize=True)
+
+# --------------------------------------------------------------------------- #
+# perspectives — 四视角审查全景
+# --------------------------------------------------------------------------- #
+def make_perspectives() -> None:
+    """四象限：每个视角看什么、几条规则、抓过什么真问题。"""
+    W, H = 1600, 860
+    img, draw = canvas(W, H, WHITE)
+    draw.text((80, 50), "四个视角各看什么", font=font(40), fill=INK)
+    draw.text((80, 106), "同一个仓库，四种问法。规则会持续加严——每换一个视角，都能挖出前三个视角看不到的问题",
+              font=font(21), fill=INK_SOFT)
+
+    quads = [
+        {
+            "tag": "A", "title": "工具实现者", "count": "8 条",
+            "ask": "这堆脚本能不能跑、能不能重复跑？",
+            "caught": "抓过：语法错误、BOM、危险删除、缺 __main__ 守卫",
+            "color": BLUE, "x": 80, "y": 180,
+        },
+        {
+            "tag": "B", "title": "审查者", "count": "19 条",
+            "ask": "内容合规吗？署名还在吗？链接是活的吗？",
+            "caught": "抓过：40 处死脚本引用、3 处断链、13 处占位残留",
+            "color": GREEN, "x": 820, "y": 180,
+        },
+        {
+            "tag": "C", "title": "AI 使用方", "count": "8 条",
+            "ask": "Agent 拿到 77 个技能，能选对、能跑通吗？",
+            "caught": "抓过：描述缺触发语、缺 argument-hint、名称歧义",
+            "color": PURPLE, "x": 80, "y": 500,
+        },
+        {
+            "tag": "D", "title": "文档一致性", "count": "4 条",
+            "ask": "文档说的和磁盘上的是同一回事吗？",
+            "caught": "抓过：README 声称的数量与 MANIFEST 脱节",
+            "color": ORANGE, "x": 820, "y": 500,
+        },
+    ]
+
+    for q in quads:
+        x, y = q["x"], q["y"]
+        rounded(draw, (x, y, x + 700, y + 280), 18, CARD, LINE)
+        rounded(draw, (x, y, x + 10, y + 280), 5, q["color"])
+        draw.text((x + 36, y + 24), q["tag"], font=font(44), fill=q["color"])
+        draw.text((x + 96, y + 34), q["title"], font=font(30), fill=INK)
+        rounded(draw, (x + 590, y + 34, x + 664, y + 72), 19, WHITE, q["color"])
+        tw = text_width(draw, q["count"], font(19))
+        draw.text((x + 627 - tw // 2, y + 42), q["count"], font=font(19), fill=INK)
+        draw.text((x + 36, y + 108), q["ask"], font=font(22), fill=INK)
+        draw.multiline_text((x + 36, y + 160), q["caught"], font=font(19), fill=INK_SOFT, spacing=10)
+        draw.text((x + 36, y + 236), "规则明细见技术手册", font=font(17), fill="#9AA4B2")
+
+    rounded(draw, (80, H - 118, W - 80, H - 40), 14, "#FFF7ED")
+    draw.text((108, H - 100), "39 条审查规则 + 9 条清单约束",
+              font=font(22), fill="#9A3412")
+    draw.text((430, H - 96), "审查看内容质量（写得对不对），校验看交付一致性（清单和磁盘是不是同一份东西）",
+              font=font(19), fill=INK_SOFT)
+
+    img.save(OUT_DIR / "perspectives.png", optimize=True)
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

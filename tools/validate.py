@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -171,12 +172,82 @@ def check_skills_layout() -> List[Result]:
     return out
 
 
+def _scan_frontmatter_stats() -> tuple[dict, dict]:
+    """直接从 skills/*/SKILL.md 现场统计 type 与 theme，作为派生数据的比对基准。"""
+    types: dict = {}
+    themes: dict = {}
+    for skill_md in sorted((ROOT / "skills").glob("*/SKILL.md")):
+        text = skill_md.read_text(encoding="utf-8", errors="replace")
+        block = text.split("---", 2)[1] if text.startswith("---") else ""
+        values = {}
+        for line in block.splitlines():
+            if ":" in line and not line.startswith((" ", "\t")):
+                key, _, value = line.partition(":")
+                values[key.strip()] = value.strip().strip("\"'")
+        for key, bucket in (("type", types), ("theme", themes)):
+            value = values.get(key) or "(none)"
+            bucket[value] = bucket.get(value, 0) + 1
+    return types, themes
+
+
+def check_derived_data() -> List[Result]:
+    """L8/L9：派生数据（catalog 索引、MANIFEST 统计）必须与磁盘一致。
+
+    这类文件是"生成物"，人不会去改它们，所以过期时没有任何症状——
+    直到有人照着索引去找一个已被删除的技能。
+    """
+    out: List[Result] = []
+
+    # L8 catalog 索引
+    index = ROOT / "catalog" / "skills-index.yaml"
+    if index.exists():
+        text = index.read_text(encoding="utf-8", errors="replace")
+        recorded = set(re.findall(r"^-\s*name:\s*([a-z0-9][a-z0-9-]*)", text, re.MULTILINE))
+        on_disk = {p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md")}
+        if not recorded:
+            out.append(Result("WARN", "L8", "catalog/skills-index.yaml 无法解析出技能名，格式可能已变"))
+        else:
+            stale = sorted(recorded - on_disk)
+            absent = sorted(on_disk - recorded)
+            if stale or absent:
+                msg = []
+                if stale:
+                    msg.append(f"索引有磁盘无 {len(stale)}：{', '.join(stale[:5])}")
+                if absent:
+                    msg.append(f"磁盘有索引无 {len(absent)}：{', '.join(absent[:5])}")
+                out.append(Result("FAIL", "L8", "catalog 索引过期 —— " + "；".join(msg)))
+            else:
+                out.append(Result("PASS", "L8", f"catalog 索引与磁盘一致（{len(recorded)} 个）"))
+    else:
+        out.append(Result("WARN", "L8", "catalog/skills-index.yaml 不存在，跳过"))
+
+    # L9 MANIFEST 统计
+    data = manifest_mod.load()
+    if data:
+        real_types, real_themes = _scan_frontmatter_stats()
+        problems = []
+        if dict(data.get("types") or {}) != real_types:
+            problems.append(f"types 记录 {data.get('types')}，实际 {real_types}")
+        if dict(data.get("themes") or {}) != real_themes:
+            problems.append(f"themes 记录与实际的键或计数不同（实际 {len(real_themes)} 类）")
+        total = sum(real_types.values())
+        if int(data.get("total_files", -1)) <= 0:
+            problems.append("total_files 未记录")
+        if problems:
+            out.append(Result("FAIL", "L9", "MANIFEST 统计与磁盘不符 —— " + "；".join(problems)))
+        else:
+            out.append(Result("PASS", "L9", f"MANIFEST 统计与磁盘一致（{total} 个技能 / "
+                                            f"{len(real_themes)} 个主题 / {len(real_types)} 种类型）"))
+    return out
+
+
 def run_all() -> List[Result]:
     results: List[Result] = []
     results += check_required_paths()
     results += check_manifest()
     results += check_versions()
     results += check_skills_layout()
+    results += check_derived_data()
     return results
 
 

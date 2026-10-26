@@ -77,6 +77,27 @@ SCRIPT_REF_RE = re.compile(
 #: 正文里被点名的技能目录内文件（``template.md`` / ``examples/x.md``）
 LOCAL_FILE_REF_RE = re.compile(r"`(template\.md|examples/[A-Za-z0-9._-]+\.md)`")
 
+#: D 视角检查的文档（相对路径）
+DOC_TARGETS: Tuple[str, ...] = (
+    "README.md",
+    "AGENTS.md",
+    "NOTICE",
+    "docs/USER-MANUAL.md",
+    "docs/TECH-MANUAL.md",
+)
+
+#: 反引号里出现但不是技能名的常见标识符（字段名、主题名、文件名）
+DOC_TOKEN_NOISE = {
+    "skill-md", "argument-hint", "frontmatter", "anti-patterns", "common-pitfalls",
+    "manifest-json", "versions-json", "readme-md", "agents-md", "tech-manual",
+    "user-manual", "changelog-md", "notice-md", "license-md", "template-md",
+    "pm-artifacts", "market-intelligence", "finance-metrics", "discovery-research",
+    "eol-transition", "career-leadership", "workshops-facilitation",
+    "validation-experiments", "strategy-positioning", "stakeholder-comms",
+    "ai-agents", "product-lifecycle", "meta-authoring", "use-when",
+    "non-commercial", "skill-creator", "dry-run", "no-bump", "allow-p2",
+}
+
 SECRET_PATTERNS: Tuple[Tuple[str, str], ...] = (
     ("AWS AccessKey", r"AKIA[0-9A-Z]{16}"),
     ("GitHub Token", r"gh[pousr]_[A-Za-z0-9]{36,}"),
@@ -532,6 +553,112 @@ def _drop_empty_dean_sections(text: str) -> str:
     return "\n".join(out)
 
 
+
+
+# --------------------------------------------------------------------------- #
+# D. 文档一致性视角（跨文件）
+# --------------------------------------------------------------------------- #
+def _levenshtein(a: str, b: str) -> int:
+    """两个字符串的编辑距离（短字符串足够用，无需第三方库）。"""
+    if a == b:
+        return 0
+    if len(a) < len(b):
+        a, b = b, a
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb)))
+        prev = cur
+    return prev[-1]
+
+
+def _doc_token_misrefs(doc: str, text: str, skill_names: Sequence[str]) -> List[Finding]:
+    """反引号里形如技能名、但只差一两个字符的标识符——大概率是拼错。"""
+    out: List[Finding] = []
+    known = set(skill_names)
+    seen = set()
+    for m in re.finditer(r"`([a-z][a-z0-9]*(?:-[a-z0-9]+){1,5})`", text):
+        token = m.group(1)
+        if token in known or token in DOC_TOKEN_NOISE or token in seen:
+            continue
+        # 只报"近似于某个真实技能名"的：距离 <= 2 且长度相近
+        near = [
+            n for n in skill_names
+            if abs(len(n) - len(token)) <= 2 and _levenshtein(token, n) <= 2
+        ]
+        if not near:
+            continue
+        seen.add(token)
+        line = text[: m.start()].count("\n") + 1
+        out.append(
+            Finding("D1", "P1", "D", doc,
+                    f"`{token}` 不存在，最接近的是 {', '.join(sorted(near)[:3])}", line)
+        )
+    return out
+
+
+def check_docs(ctx: AuditContext) -> List[Finding]:
+    """跨文件一致性：文档里的技能名、图片、相对链接必须能落到真实文件。"""
+    findings: List[Finding] = []
+
+    for rel in DOC_TARGETS:
+        path = ctx.root / rel
+        if not path.exists():
+            findings.append(Finding("D2", "P1", "D", rel, "文档清单中声明但文件不存在"))
+            continue
+        text = read_text(path)
+
+        # D1 技能名拼写
+        findings.extend(_doc_token_misrefs(rel, text, ctx.skill_names))
+
+        # D2 图片路径
+        for m in re.finditer(r'(?:src="|!\[[^\]]*\]\()([^")\s]+)', text):
+            ref = m.group(1)
+            if ref.startswith(("http://", "https://")):
+                continue
+            if not ref.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".svg")):
+                continue
+            target = (path.parent / ref).resolve()
+            if not target.exists():
+                line = text[: m.start()].count("\n") + 1
+                findings.append(Finding("D2", "P1", "D", rel, f"图片不存在：{ref}", line))
+
+        # D3 相对 Markdown 链接
+        for m in re.finditer(r"\]\(([^)#\s][^)\s]*\.md)(?:#[^)]*)?\)", text):
+            ref = m.group(1)
+            if ref.startswith(("http://", "https://", "mailto:")):
+                continue
+            target = (path.parent / ref).resolve()
+            if not target.exists():
+                line = text[: m.start()].count("\n") + 1
+                findings.append(Finding("D3", "P1", "D", rel, f"文档链接失效：{ref}", line))
+
+    # D4 文档引用的技能总数与 MANIFEST 一致（防止文档停在旧规模）
+    readme = ctx.root / "README.md"
+    if readme.exists():
+        manifest = ctx.root / "MANIFEST.json"
+        if manifest.exists():
+            try:
+                count = int(json.loads(read_text(manifest)).get("skill_count", -1))
+            except (json.JSONDecodeError, TypeError, ValueError):
+                count = -1
+            if count > 0:
+                readme_text = read_text(readme)
+                # 只认"声称总数"的两种语境：徽章 skills-N- 与首屏标语「N 个产品经理技能」。
+                # 不能匹配宽泛的「N 个技能」——「45 个技能含 Provenance」也会命中。
+                claimed = re.findall(r"skills-(\d+)-", readme_text)
+                claimed += re.findall(r"(\d+)\s*个产品经理技能", readme_text)
+                wrong = sorted({c for c in claimed if c != str(count)})
+                if wrong:
+                    findings.append(
+                        Finding("D4", "P1", "D", "README.md",
+                                f"README 声称技能数为 {', '.join(wrong)}，MANIFEST 实际 {count}")
+                    )
+
+    return findings
+
+
 # --------------------------------------------------------------------------- #
 # 汇总与输出
 # --------------------------------------------------------------------------- #
@@ -543,6 +670,8 @@ def run_audit(ctx: AuditContext, perspectives: Sequence[str]) -> List[Finding]:
         findings.extend(check_reviewer(ctx))
     if "C" in perspectives:
         findings.extend(check_consumer(ctx))
+    if "D" in perspectives:
+        findings.extend(check_docs(ctx))
     findings.sort(key=lambda f: (SEVERITY_ORDER[f.severity], f.perspective, f.path, f.line or 0))
     return findings
 
@@ -566,16 +695,16 @@ def main(argv: Optional[List[str]] = None) -> int:
         sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[attr-defined]
 
     parser = argparse.ArgumentParser(description="三视角对抗性审查")
-    parser.add_argument("--perspective", default="ABC", help="组合：A/B/C 任意拼接")
+    parser.add_argument("--perspective", default="ABCD", help="组合：A/B/C/D 任意拼接")
     parser.add_argument("--json", dest="json_out", default=None, help="JSON 报告输出路径")
     parser.add_argument("--fix", action="store_true", help="自动修复可修项")
     parser.add_argument("--strict", action="store_true", help="P2 也计入失败")
     parser.add_argument("--max-print", type=int, default=25, help="每个视角最多打印条数")
     args = parser.parse_args(argv)
 
-    perspectives = [p for p in "ABC" if p in args.perspective.upper()]
+    perspectives = [p for p in "ABCD" if p in args.perspective.upper()]
     if not perspectives:
-        print("[ERROR] --perspective 需包含 A/B/C", file=sys.stderr)
+        print("[ERROR] --perspective 需包含 A/B/C/D", file=sys.stderr)
         return 2
 
     ctx = AuditContext(ROOT)
@@ -598,7 +727,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             findings = run_audit(ctx, perspectives)
 
     stats = summarize(findings)
-    names = {"A": "工具实现者", "B": "审查者", "C": "AI 使用方"}
+    names = {"A": "工具实现者", "B": "审查者", "C": "AI 使用方", "D": "文档一致性"}
     print()
     print(f"技能数：{len(ctx.skill_names)}    视角：{'/'.join(names[p] for p in perspectives)}")
     print(f"结果：P0={stats['P0']}  P1={stats['P1']}  P2={stats['P2']}")

@@ -357,6 +357,8 @@ python tools/install.py install --target D:/my/skills --force
 
 <img src="docs/images/convergence.png" alt="审查收敛曲线" width="100%">
 
+<img src="docs/images/perspectives.png" alt="四视角审查全景" width="100%">
+
 这套技能库不是"一堆 Markdown 扔上去"。六个脚本构成闭环，每次发布都要过全部门禁：
 
 | 脚本 | 职责 | 关键约束 |
@@ -425,10 +427,10 @@ Product-Manager-puls-skills/
 
 | 文档 | 版本 |
 |---|---|
-| 包版本 | <!--VER:package-->1.0.1<!--/VER--> |
-| README | <!--VER:readme-->1.0.1<!--/VER--> |
-| [用户手册](docs/USER-MANUAL.md) | <!--VER:user_manual-->1.0.1<!--/VER--> |
-| [技术手册](docs/TECH-MANUAL.md) | <!--VER:tech_manual-->1.0.1<!--/VER--> |
+| 包版本 | <!--VER:package-->1.0.3<!--/VER--> |
+| README | <!--VER:readme-->1.0.3<!--/VER--> |
+| [用户手册](docs/USER-MANUAL.md) | <!--VER:user_manual-->1.0.3<!--/VER--> |
+| [技术手册](docs/TECH-MANUAL.md) | <!--VER:tech_manual-->1.0.3<!--/VER--> |
 
 <sub>内容改编自 <a href="https://github.com/deanpeters/Product-Manager-Skills">Dean Peters / Product-Manager-Skills</a>，以 CC BY-NC-SA 4.0 分发。</sub>
 

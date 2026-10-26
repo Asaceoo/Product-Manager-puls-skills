@@ -39,6 +39,9 @@ jobs:
       - name: 版本一致性
         run: python tools/version.py check
 
+      - name: 功能自检（30 项）
+        run: python tools/selftest.py
+
       - name: 打包流水线演练（不产包）
         run: python tools/build.py --no-bump --dry-run --allow-p2
 

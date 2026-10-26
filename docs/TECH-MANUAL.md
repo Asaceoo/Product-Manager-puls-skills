@@ -5,8 +5,8 @@
 
 | 文档 | 版本 |
 |---|---|
-| 技术手册 | <!--VER:tech_manual-->1.0.4<!--/VER--> |
-| 技能包 | <!--VER:package-->1.0.4<!--/VER--> |
+| 技术手册 | <!--VER:tech_manual-->1.0.5<!--/VER--> |
+| 技能包 | <!--VER:package-->1.0.5<!--/VER--> |
 
 ---
 
@@ -167,7 +167,7 @@ estimated_time: "60-120 min"   # 可选
 ### 3.4 文档版本标记
 
 ```markdown
-<!--VER:package-->1.0.4<!--/VER-->
+<!--VER:package-->1.0.5<!--/VER-->
 ```
 
 单行、无空格、可被任何 Markdown 渲染器忽略（渲染结果只剩 `1.0.0`）。`version.py` 用正则 `<!--VER:(?P<key>[a-z_]+)-->.*?<!--/VER-->` 精确替换内层内容。
@@ -342,6 +342,8 @@ zip 内顶层目录为 `Product-Manager-puls-skills-v{version}/`，解压不散�
 | B17 | P1 | 有 `examples/` 则正文必须引用 | 否则 Agent 不知道示例存在 |
 | B18 | P1 | `` `template.md` `` / `` `examples/x.md` `` 必须存在 | 引用了不存在的本地文件 |
 | B19 | P0 | 正文要求执行的 `scripts/…` 必须可解析 | 路径失效等于给用户一条必失败的命令 |
+| B20 | P2 | 尾部声明（Dependencies/Used by）与正文实际引用一致 | 防声明过时误导后续维护 |
+| B21 | P1 | `template.md` 非"准空"（实质行 ≥ 5） | 存在但空壳比不存在更误导 |
 
 ### B7 的判定边界
 
@@ -627,6 +629,14 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 | G4·R2 | `--fix` 替换 | P0 反弹 **4** | 初版正则漏排除 `python3 ` 前缀，命令行被错误改写，B19 报出 |
 | G4·R3 | 修正则 + 回滚命令行 | **全零** | 双布局实测：安装后与仓库内各 671 处相对引用 0 失效 |
 
+第五代（副作用契约 + 声明一致性）：
+
+| 轮次 | 动作 | 结果 | 发现 |
+|---|---|---|---|
+| G5·R1 | 真机验证 `build --dry-run` | **副作用** | dry-run 声称"只跑门禁"，却把版本号从 1.0.4 改成 1.0.5——副作用契约违背 |
+| G5·R2 | dry-run 改为预演不落盘 | 修复 | 版本号预演打印、不落盘；selftest 加"零副作用"回归项（31/31） |
+| G5·R3 | B20/B21 探测+入规则 | 0 命中 | 尾部声明与正文引用完全一致；无准空模板。0 命中也是防线 |
+
 **两个被真机抓出的自身缺陷**：
 
 1. **R1 的误报**：`[Your name or team]` 被判为未填充占位。若不看真实输出，这条规则会误删 12 处合法模板槽位，直接损坏技能内容。修复方式是重写判定模式，不是提高阈值。
@@ -783,5 +793,5 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 ---
 
 <div align="center">
-<sub>本手册随技能包发布，版本 <!--VER:tech_manual-->1.0.4<!--/VER--> · 技能包 <!--VER:package-->1.0.4<!--/VER--></sub>
+<sub>本手册随技能包发布，版本 <!--VER:tech_manual-->1.0.5<!--/VER--> · 技能包 <!--VER:package-->1.0.5<!--/VER--></sub>
 </div>

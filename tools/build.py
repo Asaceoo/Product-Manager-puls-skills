@@ -192,12 +192,17 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     step = 0
 
-    # 1. 版本
+    # 1. 版本（dry-run 下只预演不落盘——dry-run 的语义是零副作用）
     step += 1
     print(f"[{step}/6] 版本号")
     if args.no_bump:
         docs = version_mod.read_versions(ROOT)
         print(f"      跳过递增，沿用 v{docs['package']}")
+    elif args.dry_run:
+        docs = version_mod.read_versions(ROOT)
+        docs = {k: version_mod.bump_semver(v, args.part) if k in version_mod.VERSION_KEYS else v
+                for k, v in docs.items()}
+        print(f"      (dry-run) 将递增到 v{docs['package']}，未落盘")
     else:
         docs = version_mod.bump(ROOT, part=args.part)
         print(f"      包 v{docs['package']}  手册 v{docs['user_manual']}  技术手册 v{docs['tech_manual']}")

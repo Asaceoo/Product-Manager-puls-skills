@@ -134,6 +134,14 @@ def check_healthy() -> List[Case]:
         Case("版本四环一致", version.returncode == 0, version.stdout.strip()[:60] or "无输出", "healthy")
     )
 
+    # build --dry-run 的语义是零副作用：跑完后版本四环必须仍然一致
+    dry = run([sys.executable, str(TOOLS / "build.py"), "--dry-run", "--allow-p2"])
+    check_after = run([sys.executable, str(TOOLS / "version.py"), "check"])
+    out.append(
+        Case("build --dry-run 零副作用", dry.returncode == 0 and check_after.returncode == 0,
+             "版本未被改动" if check_after.returncode == 0 else "dry-run 改动了版本号", "healthy")
+    )
+
     if SCRIPTS.is_dir():
         skillctl = SCRIPTS / "skillctl.py"
         for sub in SKILLCTL_SUBS:

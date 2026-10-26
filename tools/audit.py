@@ -393,6 +393,35 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
                     Finding("B19", "P0", "B", rel, f"引用的脚本不存在：{script}", line)
                 )
 
+        # B20 尾部声明（Dependencies/Used by）与正文实际引用一致
+        declared = set()
+        for dm in (re.search(r"\*\*Dependencies://*//*(.+)", body),
+                   re.search(r"\*\*Used by://*//*(.+)", body)):
+            if dm:
+                declared |= set(re.findall(r"skills/([a-z0-9-]+)/SKILL\.md", dm.group(1)))
+        body_refs = set(re.findall(r"skills/([a-z0-9-]+)/SKILL\.md", body)) | \
+                    set(re.findall(r"\.\./([a-z0-9-]+)/", body))
+        body_refs.discard(name)
+        ghost = declared - body_refs
+        if ghost:
+            findings.append(
+                Finding("B20", "P2", "B", rel,
+                        f"尾部声明了 {sorted(ghost)}，但正文没有对应引用（声明可能过时）")
+            )
+
+        # B21 template.md 准空（存在但实质内容 < 5 行）
+        tmpl = path / "template.md"
+        if tmpl.exists():
+            substantive = [
+                l for l in read_text(tmpl).splitlines()
+                if l.strip() and not l.strip().startswith("#")
+            ]
+            if len(substantive) < 5:
+                findings.append(
+                    Finding("B21", "P1", "B", tmpl.relative_to(ctx.root).as_posix(),
+                            f"template 仅 {len(substantive)} 行实质内容，接近空壳")
+                )
+
     # B14 许可证与署名
     for required in ("LICENSE", "NOTICE"):
         if not (ctx.root / required).exists():

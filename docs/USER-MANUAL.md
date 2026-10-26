@@ -5,8 +5,8 @@
 
 | 文档 | 版本 |
 |---|---|
-| 用户手册 | <!--VER:user_manual-->1.0.4<!--/VER--> |
-| 技能包 | <!--VER:package-->1.0.4<!--/VER--> |
+| 用户手册 | <!--VER:user_manual-->1.0.5<!--/VER--> |
+| 技能包 | <!--VER:package-->1.0.5<!--/VER--> |
 
 ---
 
@@ -734,7 +734,7 @@ python tools/selftest.py          # 静默模式，只报失败的
 python tools/selftest.py -v       # 逐项打印 30 项
 ```
 
-覆盖四层：接口可用（13 个 CLI 的 --help）、异常路径（非法输入必须报错且无 traceback）、幂等性（重复生成清单内容一致）、正常态（审查/校验/版本全通过）。改了任何工具脚本之后跑一遍，比逐个手测快。
+覆盖五层：接口可用（13 个 CLI 的 --help）、build --dry-run 零副作用、异常路径（非法输入必须报错且无 traceback）、幂等性（重复生成清单内容一致）、正常态（审查/校验/版本全通过）。改了任何工具脚本之后跑一遍，比逐个手测快。
 
 ### 11.6 打包与发布
 
@@ -746,5 +746,5 @@ python tools/selftest.py -v       # 逐项打印 30 项
 任何一环失败都不会产出包。
 
 <div align="center">
-<sub>本手册随技能包发布，版本 <!--VER:user_manual-->1.0.4<!--/VER--> · 技能包 <!--VER:package-->1.0.4<!--/VER--></sub>
+<sub>本手册随技能包发布，版本 <!--VER:user_manual-->1.0.5<!--/VER--> · 技能包 <!--VER:package-->1.0.5<!--/VER--></sub>
 </div>

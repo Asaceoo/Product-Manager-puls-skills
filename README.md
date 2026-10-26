@@ -108,6 +108,77 @@ python tools/install.py install --target D:/my/skills --force
 | 产品生命周期 | 2 | 判断处于哪个阶段、选延续还是替换 |
 | 元技能 | 2 | 造新技能、把原始内容转成合规技能 |
 
+## 我该用哪个技能
+
+<img src="docs/images/decision-tree.png" alt="技能选择决策树" width="100%">
+
+先按"我要产出什么"定位分支，再在分支里选。名字相近的几组见[用户手册 5.2 节](docs/USER-MANUAL.md#52-容易搞混的几组)。
+
+## 20 个真实场景
+
+每个场景给的是**技能链**——单独一个技能常常不够，真实工作都要串两三步。
+
+| # | 情境 | 技能链 | 你会拿到 |
+|---:|---|---|---|
+| 1 | 运营群里甩来一句"做个积分系统，下周给方案" | `incoming-request-advisor` → `problem-framing-canvas` → `prioritization-advisor` | 一页纸：字面要求、真实意图、三个候选方案、该不该现在做的判断 |
+| 2 | 要写 PRD，材料散在 8 份访谈、一份 OKR、37 条工单里 | `prd-development` | 十章 PRD + "送评审前必须补的三件事" |
+| 3 | 竞品突然降价 30%，还加了两项服务 | `pricing-packaging-tracker` → `battle-card-builder` → `finance-based-pricing-advisor` | 可 diff 的定价时序 + 销售对战卡 + 跟进降价的影响区间 |
+| 4 | 老款产品线销量从月 800 掉到 40，还有 6 家老客户在订 | `eol-readiness-advisor` → `eol-process` | go/no-go 结论 + 六个月退市计划（每项有责任人） |
+| 5 | 新功能要投 3 个人 2 个月，老板问值不值 | `feature-investment-advisor` → `finance-metrics-quickref` | 收入影响 / 成本结构 / ROI 三件套，附敏感性区间 |
+| 6 | 下周三带 8 个人开定位工作坊，只有 2 小时 | `positioning-workshop` → `workshop-facilitation` | 分钟级流程脚本：每步提问、产出物、跑偏处理 |
+| 7 | 经销商反复说"你们的东西太贵"，但说不出贵在哪 | `voice-of-customer-miner` → `jobs-to-be-done` | 从真实原话提炼的未满足需求，而非"客户嫌贵"这种结论 |
+| 8 | 老板要"看看 AI 能给我们干什么"，预算未知 | `ai-shaped-readiness-advisor` → `pol-probe-advisor` | 就绪度诊断 + 一个两周内、五千块能跑完的验证探针 |
+| 9 | 下周面试产品经理，卡在产品感题上 | `product-sense-interview-answer` → `epic-hypothesis` | 结构化口述框架（澄清→分层→痛点→方案→取舍→指标） |
+| 10 | 刚升总监，团队从 3 人变 12 人，前 90 天不知道抓什么 | `altitude-horizon-framework` → `executive-onboarding-playbook` | 30-60-90 天诊断路径 + 该放弃哪些 PM 视角的具体清单 |
+| 11 | 要进新城市市场，但不确定先打哪个细分 | `market-landscape-scan` → `tam-sam-som-calculator` → `ansoff-matrix` | 市场分层 + 规模测算（含假设标注）+ 带风险排序的进入选项 |
+| 12 | 客服工单里全是"不会用"，但产品经理认为是培训问题 | `discovery-process` → `problem-statement` → `lean-ux-canvas` | 把"不会用"拆成具体的卡点假设，配一个可测的最小实验 |
+| 13 | 定价要从一次性买断改年费，怕老客户流失 | `finance-based-pricing-advisor` → `eol-stakeholder-sequence` | ARPU / 流失 / NRR / 回本期四维影响 + 该先跟谁谈 |
+| 14 | 销售要一张"客户问我们和 A 公司比怎么样"的对战卡 | `battle-card-builder` | 一页卡，每条主张标证据等级，含"打不过的地方怎么说" |
+| 15 | 做完 12 场用户访谈，素材堆在那不知道下一步 | `discovery-process` → `opportunity-solution-tree` | 机会→方案→实验的树状结构，每个机会挂证据引用 |
+| 16 | 一个 Epic 太大，研发说"拆不动" | `epic-hypothesis` → `epic-breakdown-advisor` → `user-story-splitting` | 可验证假设 + 按九种模式拆出的两周内交付的故事 |
+| 17 | 季度末要向上汇报产品健康度，只有一堆散数据 | `business-health-diagnostic` → `saas-revenue-growth-metrics` → `saas-economics-efficiency-metrics` | 四维体检（增长/留存/效率/资本）+ 三个必须回答的问题 |
+| 18 | 要评估一个收购标的，手上只有公开信息 | `company-intel` → `company-research` → `swot-analysis` | 带出处的公司简报 + SWOT + S-O/W-T 交叉策略 |
+| 19 | 供应商合同快到期，这条产品线还要不要续 | `lifecycle-play-advisor` → `product-lifecycle-plays` | 阶段诊断 + extend/replace/retire 三选一的理由与代价 |
+| 20 | 想把 5 年质量管理经验做成一个可复用技能 | `pm-skill-creator` → `skill-authoring-workflow` → `scripts/test-a-skill.sh` | 合规的技能骨架（含触发语、输入定义、阶段流程），过审查 |
+
+## 25 个可复制的用法
+
+直接抄这些话去问，不用记技能名。右边是它会命中什么、给你什么。
+
+| # | 你可以直接这样说 | 命中 | 你会得到 |
+|---:|---|---|---|
+| 1 | 「帮我把这个模糊需求问清楚：运营要个积分系统」 | `incoming-request-advisor` | 字面要求 vs 真实意图的拆解 |
+| 2 | 「给自助开通工作区写一份 PRD，我有调研笔记和 OKR」 | `prd-development` | 十章 PRD，已给材料自动入章 |
+| 3 | 「这个功能值不值得投 3 个人 2 个月」 | `feature-investment-advisor` | ROI 评估，含最坏情况 |
+| 4 | 「帮我排一下这 7 个需求的优先级，团队 5 人，本季度有两个必做项」 | `prioritization-advisor` | 框架选型理由 + 排序 |
+| 5 | 「写一条用户故事：新用户用 Google 登录，目标是免注册进应用」 | `user-story` | Mike Cohn 格式 + Gherkin 验收标准 |
+| 6 | 「这条故事太大了，帮我拆成两周内能交付的」 | `user-story-splitting` | 按拆分模式切好的故事 |
+| 7 | 「把这堆故事铺成一张发布切片地图」 | `user-story-mapping` | 活动→步骤→任务→切片的四层地图 |
+| 8 | 「带团队画这张故事地图，6 个人，90 分钟」 | `user-story-mapping-workshop` | 分钟级引导脚本 |
+| 9 | 「SWOT 我们最大的竞品，战略会要用」 | `swot-analysis` | 带出处的 SWOT + S-O/W-T 交叉 |
+| 10 | 「读一下这个行业的五力结构，重点看新进入者」 | `porters-five-forces` | 每力附信号，不是教科书复述 |
+| 11 | 「六类宏观因素扫一遍，我要判断明年要不要扩产」 | `pestel-analysis` | PESTEL + 对决策的影响判断 |
+| 12 | 「帮我算 TAM/SAM/SOM，人口 540 万，ARPU 1000，SAM 30%，SOM 10%」 | `tam-sam-som-calculator` | 三步测算 + 假设清单（可直接跑 `scripts/market-sizing.py` 复核） |
+| 13 | 「这三家竞品的定价建个能按季度 diff 的快照」 | `pricing-packaging-tracker` | 定价时间序列 |
+| 14 | 「销售要 A 公司的对战卡，客户老说我们贵」 | `battle-card-builder` | 一页卡，含"打不过怎么说" |
+| 15 | 「我们跟进降 20% 会怎样？ARPU 4800，年流失 18%，毛利 32%」 | `finance-based-pricing-advisor` | 五维影响区间 |
+| 16 | 「给 SaaS 业务做个体检，我从增长、留存、效率、资本四块给数」 | `business-health-diagnostic` | 四维诊断 + 三个待答问题 |
+| 17 | 「设计下周的 6 场用户访谈，对象是中小门窗经销商」 | `discovery-interview-prep` | 提纲 + 不该问的问题清单 |
+| 18 | 「我怀疑问题不是功能少，是入口找不到，帮我框定」 | `problem-framing-canvas` | MITRE 画布，"以为的问题"vs"证据支持的问题" |
+| 19 | 「把 12 场访谈整理成机会树」 | `opportunity-solution-tree` | 结果→机会→方案→实验 |
+| 20 | 「我假设经销商愿意为月报付 200 元，两周五千块怎么验证」 | `pol-probe-advisor` | 探针方案：成本、周期、判定标准、失败后怎么办 |
+| 21 | 「老产品线要不要退？月 800 掉到 40，还有 6 家老客户，2 家有年约」 | `eol-readiness-advisor` | go/no-go + 合同义务与迁移成本 |
+| 22 | 「写退市公告，分三档：内部、大客户、公开」 | `eol-message` | 三档文案 |
+| 23 | 「列一下这件事的干系人，然后排优先级」 | `stakeholder-identification` → `stakeholder-mapping` | 全集清单 + 双网格优先级 |
+| 24 | 「练一道产品感题：设计给老人用的智能门锁 App，我背景是门业管培生」 | `product-sense-interview-answer` | 结构化口述稿，每步要真实经历支撑 |
+| 25 | 「我想做一个"门业安装质量检查"技能，帮我结构化」 | `pm-skill-creator` | 合规骨架 + 过审查的命令 |
+
+> 第 12 条的数值口径可以直接复核：
+> ```bash
+> python skills/tam-sam-som-calculator/scripts/market-sizing.py \
+>   --population 5400000 --arpu 1000 --sam-share 30% --som-share 10%
+> ```
+
 ## 技能速查
 
 <details>
@@ -280,29 +351,11 @@ python tools/install.py install --target D:/my/skills --force
 
 同理 `pol-probe` 是**单个探针的定义模板**，`pol-probe-advisor` 是**帮你选哪种探针**。
 
-## 三个真实场景
-
-**① 手上的需求很模糊**
-
-> 「运营说要做个积分系统，让我下周给方案。」
-
-先 `incoming-request-advisor` 拆解字面要求与真实意图，再 `problem-framing-canvas` 框定问题，最后 `prioritization-advisor` 判断该不该现在做。产出不是"好的我来做"，而是一页带证据的取舍建议。
-
-**② 要写 PRD 但材料散在四处**
-
-> 「把这周的调研笔记、OKR、客服工单整理成一份 PRD。」
-
-`prd-development` 会分八个阶段推进，已给的材料自动进对应章节；没材料的地方标 `假设` 或 `待验证`，不会编数字。最后套 `template.md` 出文档。
-
-**③ 竞品突然降价**
-
-> 「A 公司降价 30%，我该怎么应对？」
-
-`pricing-packaging-tracker` 先建可 diff 的定价时间序列，`battle-card-builder` 出销售对战卡，`finance-based-pricing-advisor` 算跟进降价的 ARPU 与流失影响。三步都有证据来源要求。
-
-更多用法见 [用户手册](docs/USER-MANUAL.md)。
-
 ## 工程链路
+
+第一代 26 条规则收敛到 0 之后，第二代把规则加严——P0 从 0 反弹到 40。
+
+<img src="docs/images/convergence.png" alt="审查收敛曲线" width="100%">
 
 这套技能库不是"一堆 Markdown 扔上去"。六个脚本构成闭环，每次发布都要过全部门禁：
 
@@ -372,10 +425,10 @@ Product-Manager-puls-skills/
 
 | 文档 | 版本 |
 |---|---|
-| 包版本 | <!--VER:package-->1.0.0<!--/VER--> |
-| README | <!--VER:readme-->1.0.0<!--/VER--> |
-| [用户手册](docs/USER-MANUAL.md) | <!--VER:user_manual-->1.0.0<!--/VER--> |
-| [技术手册](docs/TECH-MANUAL.md) | <!--VER:tech_manual-->1.0.0<!--/VER--> |
+| 包版本 | <!--VER:package-->1.0.1<!--/VER--> |
+| README | <!--VER:readme-->1.0.1<!--/VER--> |
+| [用户手册](docs/USER-MANUAL.md) | <!--VER:user_manual-->1.0.1<!--/VER--> |
+| [技术手册](docs/TECH-MANUAL.md) | <!--VER:tech_manual-->1.0.1<!--/VER--> |
 
 <sub>内容改编自 <a href="https://github.com/deanpeters/Product-Manager-Skills">Dean Peters / Product-Manager-Skills</a>，以 CC BY-NC-SA 4.0 分发。</sub>
 

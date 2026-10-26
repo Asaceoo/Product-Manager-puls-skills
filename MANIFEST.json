@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-26T16:46:24+08:00",
-  "package_version": "1.0.0",
+  "generated_at": "2026-10-26T17:02:27+08:00",
+  "package_version": "1.0.1",
   "skill_count": 77,
   "total_files": 241,
-  "total_bytes": 2086425,
+  "total_bytes": 2086717,
   "themes": {
     "market-intelligence": 18,
     "pm-artifacts": 8,
@@ -392,8 +392,8 @@
       "theme": "strategy-positioning",
       "description": "Identify which organic growth path to pursue — new segments, geographies, channels, or products. Use when diagnosing where a growth constraint lives and which McKinsey growth level to act on next.",
       "files": 3,
-      "bytes": 41009,
-      "sha256": "80ba0e053cc5b0ffa1d1498ca5120db19545e6749ac30a794e8897818f6fa577"
+      "bytes": 41053,
+      "sha256": "1c282b634e3f20d2aa5425ace1d849223cf5957e5abcdadb748d9ec1fd059a03"
     },
     {
       "name": "pestel-analysis",
@@ -599,8 +599,8 @@
       "theme": "meta-authoring",
       "description": "Turn raw PM content into a compliant, publish-ready skill. Use when creating or updating a repo skill without breaking standards.",
       "files": 3,
-      "bytes": 17340,
-      "sha256": "763d190ba0c3f96b542b389cdacd0810521d5b2f914a9e9f87adc94b1f868bcb"
+      "bytes": 17384,
+      "sha256": "ce81e4868268e9f40046817bd929b245e47d091ea3ff00b331c2aefa125bb980"
     },
     {
       "name": "stakeholder-engagement-advisor",
@@ -617,8 +617,8 @@
       "theme": "stakeholder-comms",
       "description": "Map every stakeholder before engaging anyone. Use when launching an initiative, scoping discovery, or building an engagement plan from scratch.",
       "files": 4,
-      "bytes": 25090,
-      "sha256": "3cde1f9c4294da97aad69e5c8042673504d1b587c1c1e25c444397e8393ce88a"
+      "bytes": 25168,
+      "sha256": "8945b219226f7f1437bfa785aa8dcabff4c9928b9259a1d246ee7df79891b4e2"
     },
     {
       "name": "stakeholder-mapping",
@@ -626,8 +626,8 @@
       "theme": "stakeholder-comms",
       "description": "Prioritize stakeholders using two complementary grids. Use when setting engagement strategy and surfacing whose voice needs elevating after stakeholder identification.",
       "files": 4,
-      "bytes": 27567,
-      "sha256": "b9b9c1e636902bc612870df49ffc91d8b4c23a31853043f4b36b4135bc6ff084"
+      "bytes": 27645,
+      "sha256": "824c8020cb432cdc489c03f41dc608f6ec3f24ef5b3fd2e24ae1eb4f0caacfc3"
     },
     {
       "name": "storyboard",
@@ -653,8 +653,8 @@
       "theme": "market-intelligence",
       "description": "Calculate TAM, SAM, and SOM with explicit assumptions, methods, and caveats. Use when sizing a market for a product idea, business case, or executive review.",
       "files": 4,
-      "bytes": 27975,
-      "sha256": "72cf96908e9b947851695fda6641010486ef00bde1e38aa2b331c79670dd039c"
+      "bytes": 28005,
+      "sha256": "120b9c1eec70a65390c9e193b356f1796dda3930552e7958ce8db05408d47f24"
     },
     {
       "name": "user-story",
@@ -662,8 +662,8 @@
       "theme": "pm-artifacts",
       "description": "Create user stories with Mike Cohn format and Gherkin acceptance criteria. Use when turning user needs into development-ready work with clear outcomes and testable conditions.",
       "files": 5,
-      "bytes": 23293,
-      "sha256": "adcf813aea13efbda1c581ffacdfcfabb3063cef192475c8300f024a455ef4c0"
+      "bytes": 23311,
+      "sha256": "90eff169052090553be7a5b39681d1a02ef458fc4e3bf36bd58a564390fbbefe"
     },
     {
       "name": "user-story-mapping",

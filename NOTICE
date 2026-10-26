@@ -34,8 +34,13 @@
 | 3 | 移除创作期残留元信息 `**Suggested filename:**`、`**Suggested placement:**` | 27 个文件 | 声明的落位（`/skills/workflows/`）与本仓库扁平布局（`skills/<name>/`）冲突，会误导安装路径 |
 | 4 | 为 4 个技能补充 `argument-hint` 字段 | 4 处 | 缺失该字段时斜杠调用无参数提示，Agent 需额外推断入参 |
 | 5 | 新增 `tools/`（版本、校验、审查、打包、安装）、`MANIFEST.json`、`docs/`、`README.md` | — | 上游无工程化交付链路 |
+| 6 | 补齐 `scripts/` 下 11 个运维入口（`find-a-skill.sh`、`add-a-skill.sh` 等） | 11 个 | 上游两个元技能会指导用户执行这些命令，但脚本未随技能一同分发，照做必然失败 |
+| 7 | 修正 2 处技能内脚本调用路径（`tam-sam-som-calculator`、`user-story`） | 2 处 | 正文写 `scripts/x.py`（仓库根），脚本实际位于 `skills/<name>/scripts/`，与同文件 References 段自相矛盾 |
+| 8 | 为 4 个技能补充 `examples/` 目录引用 | 4 处 | `examples/*.md` 存在但正文从未指路，Agent 不会主动读取 |
 
-**未修改**：全部技能的方法论正文、模板（`template.md`）、示例（`examples/`）、框架引用与文献出处。原作者署名与其 `Provenance` 段落全部保留（45 个技能文件含 `Provenance` / `Adapted from`）。
+**未修改**：全部技能的方法论正文、模板（`template.md`）、示例内容（`examples/`）、框架引用与文献出处。原作者署名与其 `Provenance` 段落全部保留（45 个技能文件含 `Provenance` / `Adapted from`）。
+
+第 6–8 项均为"让文档里的命令能真实运行"的工程性补齐，未改动任何方法论主张。
 
 ## 4. 免责
 

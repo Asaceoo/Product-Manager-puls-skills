@@ -5,8 +5,8 @@
 
 | 文档 | 版本 |
 |---|---|
-| 技术手册 | <!--VER:tech_manual-->1.0.0<!--/VER--> |
-| 技能包 | <!--VER:package-->1.0.0<!--/VER--> |
+| 技术手册 | <!--VER:tech_manual-->1.0.1<!--/VER--> |
+| 技能包 | <!--VER:package-->1.0.1<!--/VER--> |
 
 ---
 
@@ -63,6 +63,9 @@ Product-Manager-puls-skills/
 │   ├── USER-MANUAL.md        用户手册
 │   ├── TECH-MANUAL.md        本文件
 │   └── images/*.png          README 配图（由 tools/make_figures.py 生成）
+├── scripts/                  面向使用者的运维入口（11 个，薄壳转发到 skillctl.py）
+│   ├── skillctl.py           实现：find/metadata/triggers/add/build/test/zip/...
+│   └── *.sh / *.py           入口，签名与上游一致
 ├── tools/
 │   ├── version.py            版本号读写与注入
 │   ├── manifest.py           清单生成
@@ -80,7 +83,9 @@ Product-Manager-puls-skills/
 └── LICENSE                   CC BY-NC-SA 4.0
 ```
 
-**依赖方向**：`build.py` → `version.py` / `manifest.py` / `audit.py` / `validate.py`；`validate.py` → `version.py` / `manifest.py`。全部单向，无循环。所有脚本仅用标准库。
+**依赖方向**：`build.py` → `version.py` / `manifest.py` / `audit.py` / `validate.py`；`validate.py` → `version.py` / `manifest.py`；`scripts/*` → `scripts/skillctl.py` → `tools/*`。全部单向，无循环。所有脚本仅用标准库。
+
+**`tools/` 与 `scripts/` 的分工**：`tools/` 是**交付链路**（版本、清单、审查、校验、打包、安装），维护者运行；`scripts/` 是**面向使用者的运维入口**，元技能（`pm-skill-creator`、`skill-authoring-workflow`）会指导用户执行它们。两者的 Python 文件都受 A 视角审查。
 
 ---
 
@@ -162,7 +167,7 @@ estimated_time: "60-120 min"   # 可选
 ### 3.4 文档版本标记
 
 ```markdown
-<!--VER:package-->1.0.0<!--/VER-->
+<!--VER:package-->1.0.1<!--/VER-->
 ```
 
 单行、无空格、可被任何 Markdown 渲染器忽略（渲染结果只剩 `1.0.0`）。`version.py` 用正则 `<!--VER:(?P<key>[a-z_]+)-->.*?<!--/VER-->` 精确替换内层内容。
@@ -334,6 +339,9 @@ zip 内顶层目录为 `Product-Manager-puls-skills-v{version}/`，解压不散�
 | B14 | P0 | `LICENSE` 与 `NOTICE` 存在 | 分发合规底线 |
 | B15 | P1 | ≥10 个技能保留来源声明 | 含 `Provenance` 或 `Adapted from` |
 | B16 | P1 | 无 `Suggested filename/placement` | 与扁平布局冲突，可自动修复 |
+| B17 | P1 | 有 `examples/` 则正文必须引用 | 否则 Agent 不知道示例存在 |
+| B18 | P1 | `` `template.md` `` / `` `examples/x.md` `` 必须存在 | 引用了不存在的本地文件 |
+| B19 | P0 | 正文要求执行的 `scripts/…` 必须可解析 | 路径失效等于给用户一条必失败的命令 |
 
 ### B7 的判定边界
 
@@ -522,10 +530,10 @@ python tools/build.py --part minor
 ```python
 def check_reviewer(ctx: AuditContext) -> List[Finding]:
     ...
-    # B17 你的规则
+    # B20 你的规则（编号接在现有最大号之后，勿复用）
     for m in re.finditer(r"你的模式", body):
         findings.append(
-            Finding("B17", "P1", "B", rel, "问题描述", line, fixable=False)
+            Finding("B20", "P1", "B", rel, "问题描述", line, fixable=False)
         )
 ```
 
@@ -546,7 +554,7 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 
 以下均为实际执行结果，非推演。
 
-### 12.1 审查收敛过程
+### 12.1 两代审查的收敛过程
 
 | 轮次 | 动作 | P0 | P1 | P2 | 关键发现 |
 |---|---|---:|---:|---:|---|
@@ -557,7 +565,15 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 | R3a | 修 `_drop_empty_dean_sections` 边界（`---` 视为章节结束） | — | — | — | 边界修正 |
 | R4 | `--fix` 重跑（含新增 B16） | 1 | 0 | 8 | 27 文件 / 54 行清理完成；`--fix` 二次执行零改动（幂等通过） |
 | R5 | 补 4 个 `argument-hint` | 1 | 0 | 4 | C7 清零 |
-| R6 | 补 `NOTICE` | **0** | **0** | 4 | 收敛完成 |
+| R6 | 补 `NOTICE` | **0** | **0** | 4 | 第一代收敛完成 |
+
+第二代（规则加严后重跑同一批内容）：
+
+| 轮次 | 动作 | P0 | P1 | P2 | 关键发现 |
+|---|---|---:|---:|---:|---|
+| G2·R1 | 新增 B17/B18/B19，A 视角扩展到 `scripts/` | **40** | 4 | 4 | 40 处 P0 全部指向不存在的脚本：11 个运维入口从未随技能分发 |
+| G2·R2 | 补齐 `scripts/` 11 个入口 + 修 2 处技能内脚本路径 | **0** | 4 | 4 | 40 处 P0 一次性清零 |
+| G2·R3 | 补 4 处 `examples/` 引用 | **0** | **0** | 4 | 第二代收敛 |
 
 **两个被真机抓出的自身缺陷**：
 
@@ -635,9 +651,40 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 
 **这一组的意义**：证明发布包是自包含的——解压后不依赖仓库、不依赖网络，工具链在包内可独立跑通校验与安装。
 
-> 首轮打包时 `AGENTS.md` 未进包（`INCLUDE` 列表遗漏），是靠"源文件数从 266 变成 266"这个异常发现的：删掉 4 KB 的 `START_HERE.md`、重写 9 KB 的 `AGENTS.md` 后总数没变，说明这两个文件都不在打包范围内。
+> **交付物白名单会漏项，而且会漏两次。**
+>
+> - 第一次：`AGENTS.md` 未进包，靠"删掉 4 KB 的 `START_HERE.md`、重写 9 KB 的 `AGENTS.md` 后源文件数仍为 266"这个数字异常发现。
+> - 第二次：`scripts/` 整个目录未进包，靠"包内 `audit.py` 突然报 36 个 P0"发现——包内没有脚本，而 77 个技能正文都在引用它们。
+>
+> 两次都是**白名单**（`INCLUDE` 元组）维护不全。修复方式不是再补一项，而是加**打包后自检**：`build_package()` 写完 zip 立即读回，比对 `MUST_INCLUDE`，缺任何一项就删除 zip 并抛错。同时 `validate.py` 的 `L1` 必需文件清单也加入 `scripts/skillctl.py`，形成双保险。
+>
+> 这类缺陷的共性是：**构建脚本"成功"了，但产物不完整**。只验证退出码不看产物内容，就会一路放过。
 
-### 12.7 跨机一致性验证
+### 12.7 scripts 入口验证（11 项）
+
+第二代审查发现 11 个运维入口从未随技能分发，补齐后逐项真机执行：
+
+| 入口 | 命令 | 实测 |
+|---|---|---|
+| `find-a-skill.sh` | `--keyword pricing` | 命中 36 个技能，按正文命中次数排序 |
+| `check-skill-metadata.py` | `skills/swot-analysis/SKILL.md` | `PASS`，退出码 0 |
+| `check-skill-triggers.py` | 同上 `--show-cases` | 6 项全 PASS + 列出 2 条真实场景语句 |
+| `test-a-skill.sh` | `--skill swot-analysis` | metadata + triggers 串联，退出码 0 |
+| `zip-a-skill.sh` | `--skill swot-analysis` | 产出 `swot-analysis-v1.0.0.zip` 11.0 KB |
+| `validate-skills.sh` | — | 7 通过 / 0 失败 |
+| `check-dist-freshness.py` | — | `dist 与源码同步（v1.0.0）` |
+| `generate-catalog.py` | — | 生成 `catalog/skills-by-theme.md`，77 技能 |
+| `add-a-skill.sh` | `<notes.md> --name zz-test-add` | 生成骨架 + 打印三步后续（验证后删除） |
+| `build-a-skill.sh` | `--name zz-test-build` | 同上（验证后删除） |
+| `build-dist.sh` | — | 转发 `tools/build.py`，完整流水线 |
+
+**过程中修掉的自身缺陷**：
+
+1. `--show-cases` 报"未找到场景"但检查项 PASS —— 解析取自正文，而 `scenarios` 写在 frontmatter 里。前后矛盾的输出比没有输出更糟。
+2. 4 个 `.py` 薄壳缺 `__main__` 守卫，被 A 视角抓出（P2）—— 薄壳本意是入口，但被 import 会立即执行。
+3. Git Bash 的 `printf` 把格式串里的 `\n` 写成 `/n`，导致 4 个薄壳语法错误（A1 报 P0）。改用 Python 生成文件后正常。**教训：跨 shell 生成代码时不要用 `printf` 拼反斜杠转义。**
+
+### 12.8 跨机一致性验证
 
 `MANIFEST.json` 的摘要基于文件字节，一旦换行被转换（LF→CRLF），所有技能摘要都会失配。因此在真机上做了一次完整克隆验证：
 
@@ -684,5 +731,5 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 ---
 
 <div align="center">
-<sub>本手册随技能包发布，版本 <!--VER:tech_manual-->1.0.0<!--/VER--> · 技能包 <!--VER:package-->1.0.0<!--/VER--></sub>
+<sub>本手册随技能包发布，版本 <!--VER:tech_manual-->1.0.1<!--/VER--> · 技能包 <!--VER:package-->1.0.1<!--/VER--></sub>
 </div>

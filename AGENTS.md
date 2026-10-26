@@ -25,7 +25,10 @@
 | `skills/<name>/template.md` | 填充模板 | 人工编辑 |
 | `skills/<name>/examples/` | 示例产出 | 人工编辑 |
 | `catalog/skills-index.yaml` | 上游索引 | 一般不动 |
-| `tools/*.py` | 工程链路 | 人工编辑，仅标准库 |
+| `tools/*.py` | 交付链路（版本/清单/审查/校验/打包/安装） | 人工编辑，仅标准库 |
+| `scripts/skillctl.py` | 面向使用者的运维实现 | 人工编辑，仅标准库 |
+| `scripts/*.sh|*.py` | 11 个入口薄壳，只做参数转发 | 保持签名与上游一致 |
+| `.github/workflows/ci.yml` | 三道门禁 + 跨平台一致性 | 人工编辑 |
 | `MANIFEST.json` | 自动生成 | **禁止手改**，跑 `manifest.py generate` |
 | `versions.json` | 版本单一事实源 | **禁止手改**，跑 `version.py bump` |
 | `VERSION` | 自动同步 | **禁止手改** |
@@ -64,6 +67,8 @@ theme: <13 个已知主题之一>
 | 删除 `Common Pitfalls` / `Anti-Patterns` 章节 | 违反 ABC 原则 |
 | 在 `tools/` 里引入第三方依赖 | 构建期必须能离线运行，且只用标准库 |
 | 在配图里用 emoji | 中文字体不含 emoji 字形，会渲染成方块 |
+| 删掉 `scripts/` 里的入口 | 元技能文档会指导用户执行它们，删了等于文档失效 |
+| 用 `printf` 生成含反斜杠的代码 | Git Bash 会把 `\n` 写成 `/n`，产生语法错误（已踩过） |
 | 把版本号硬编码进配图 | 配图必须与版本解耦，否则每次发版都要重画 |
 
 ## 发布流程

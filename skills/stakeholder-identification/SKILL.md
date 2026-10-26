@@ -123,6 +123,8 @@ For each priority stakeholder, capture: name, category, R/P/D tag, and a one-lin
 
 ## Examples
 
+Full worked examples: `examples/sample-industrial.md`, `examples/sample.md`.
+
 **Situation:** A product team is scoping a new intake workflow that replaces manual email-based requests with a self-service portal. Initial stakeholder list: VP of Operations, Engineering Lead, PMO Director, enterprise customers.
 
 **Underdeveloped (common default):**

@@ -124,6 +124,8 @@ For each stakeholder in "manage closely" and each Q1 stakeholder, create an enga
 
 ## Examples
 
+Full worked examples: `examples/sample-industrial.md`, `examples/sample.md`.
+
 **Situation:** A platform team is migrating internal API infrastructure. Stakeholder list: VP of Engineering (sponsor), three engineering leads (direct users), Legal (compliance review), the customer support team (their tooling depends on the APIs), and enterprise customers who won't see the change directly but whose uptime depends on it.
 
 **Power × Interest grid placements:**

@@ -1,0 +1,19 @@
+# 统一换行：所有文本文件在仓库内与检出后均为 LF。
+# 这是 MANIFEST.json 中目录摘要（sha256）能跨平台一致的前提——
+# 若 Windows 检出为 CRLF，validate.py 的 L4 会全量失败。
+* text=auto eol=lf
+
+# 二进制文件不做换行转换、不做文本 diff
+*.png binary
+*.jpg binary
+*.gif binary
+*.zip binary
+*.mp3 binary
+*.mp4 binary
+*.ttf binary
+*.ttc binary
+
+# Windows 脚本保留 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf

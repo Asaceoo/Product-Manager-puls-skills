@@ -68,6 +68,14 @@ EMPTY_DEAN_SECTION_RE = re.compile(r"^###\s+Dean'?s Work\s*$", re.MULTILINE)
 
 CROSS_REF_RE = re.compile(r"skills/([a-z0-9][a-z0-9-]*)/SKILL\.md")
 RELATIVE_REF_RE = re.compile(r"\]\(\.\./([a-z0-9][a-z0-9-]*)/([^)]+)\)")
+#: 正文里被要求执行的脚本路径。允许三种形态：
+#: ``scripts/x.py``（仓库根）、``./scripts/x.sh``、``skills/<name>/scripts/y.py``（技能自带）。
+#: 必须从匹配起点就吃掉可选前缀，否则 ``skills/a/scripts/b.py`` 会被截成 ``scripts/b.py`` 而误报。
+SCRIPT_REF_RE = re.compile(
+    r"(?:(?:python3?|bash)\s+|\./)?((?:skills/[a-z0-9][a-z0-9-]*/)?scripts/[A-Za-z0-9._-]+\.(?:py|sh))"
+)
+#: 正文里被点名的技能目录内文件（``template.md`` / ``examples/x.md``）
+LOCAL_FILE_REF_RE = re.compile(r"`(template\.md|examples/[A-Za-z0-9._-]+\.md)`")
 
 SECRET_PATTERNS: Tuple[Tuple[str, str], ...] = (
     ("AWS AccessKey", r"AKIA[0-9A-Z]{16}"),
@@ -161,9 +169,12 @@ def body_of(text: str) -> str:
 # --------------------------------------------------------------------------- #
 def check_builder(ctx: AuditContext) -> List[Finding]:
     findings: List[Finding] = []
-    tools_dir = ctx.root / "tools"
+    # tools/ 是交付链路，scripts/ 面向用户执行；两者都必须能跑、能重复跑
+    py_files = sorted((ctx.root / "tools").glob("*.py"))
+    if (ctx.root / "scripts").is_dir():
+        py_files += sorted((ctx.root / "scripts").glob("*.py"))
 
-    for py in sorted(tools_dir.glob("*.py")):
+    for py in py_files:
         rel = py.relative_to(ctx.root).as_posix()
         text = read_text(py)
 
@@ -329,6 +340,30 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
             findings.append(
                 Finding("B16", "P1", "B", rel, f"创作期残留元信息：{m.group(0)[:60]}", line, fixable=True)
             )
+
+        # B17 有 examples/ 目录，但正文从未告诉 Agent 它们存在
+        examples_dir = path / "examples"
+        if examples_dir.is_dir() and any(examples_dir.iterdir()) and "examples/" not in text:
+            findings.append(
+                Finding("B17", "P1", "B", rel, "examples/ 目录存在但正文未引用，Agent 无法利用已有示例")
+            )
+
+        # B18 引用了技能目录内不存在的本地文件
+        for m in LOCAL_FILE_REF_RE.finditer(body):
+            if not (path / m.group(1)).exists():
+                line = text[: m.start()].count("\n") + 1
+                findings.append(
+                    Finding("B18", "P1", "B", rel, f"引用不存在的本地文件：{m.group(1)}", line)
+                )
+
+        # B19 要求执行 scripts/ 下的脚本，但该路径解析不到真实文件
+        for m in SCRIPT_REF_RE.finditer(body):
+            script = m.group(1)
+            if not (ctx.root / script).exists():
+                line = text[: m.start()].count("\n") + 1
+                findings.append(
+                    Finding("B19", "P0", "B", rel, f"引用的脚本不存在：{script}", line)
+                )
 
     # B14 许可证与署名
     for required in ("LICENSE", "NOTICE"):

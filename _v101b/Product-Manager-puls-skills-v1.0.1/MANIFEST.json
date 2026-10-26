@@ -1,0 +1,723 @@
+{
+  "schema": 1,
+  "generated_at": "2026-10-26T17:01:18+08:00",
+  "package_version": "1.0.1",
+  "skill_count": 77,
+  "total_files": 241,
+  "total_bytes": 2086717,
+  "themes": {
+    "market-intelligence": 18,
+    "pm-artifacts": 8,
+    "discovery-research": 7,
+    "finance-metrics": 7,
+    "eol-transition": 6,
+    "career-leadership": 5,
+    "strategy-positioning": 5,
+    "validation-experiments": 5,
+    "workshops-facilitation": 5,
+    "stakeholder-comms": 4,
+    "ai-agents": 3,
+    "meta-authoring": 2,
+    "product-lifecycle": 2
+  },
+  "types": {
+    "interactive": 29,
+    "component": 28,
+    "workflow": 20
+  },
+  "skills": [
+    {
+      "name": "acquisition-channel-advisor",
+      "type": "interactive",
+      "theme": "finance-metrics",
+      "description": "Evaluate acquisition channels using unit economics, customer quality, and scalability. Use when deciding whether to scale, test, or kill a growth channel.",
+      "files": 2,
+      "bytes": 36212,
+      "sha256": "9c4ea30ba70660c412a63e4efbe8c7ef4d03e5703b131326a922b67f47cd9491"
+    },
+    {
+      "name": "agent-orchestration-advisor",
+      "type": "interactive",
+      "theme": "ai-agents",
+      "description": "Design multi-agent AI workflows with clear boundaries, handoffs, and monitoring. Use when a complex PM task should run as parallel specialized agents instead of one linear process.",
+      "files": 1,
+      "bytes": 34567,
+      "sha256": "169c0464d9f32fb4a63e90a25fef0f90f48cd0f2075db3358236571cbd217bd7"
+    },
+    {
+      "name": "ai-shaped-readiness-advisor",
+      "type": "interactive",
+      "theme": "ai-agents",
+      "description": "Assess whether your product work is AI-first or AI-shaped. Use when evaluating AI maturity and choosing the next team capability to build.",
+      "files": 1,
+      "bytes": 43516,
+      "sha256": "bdff7fb998bf9e6b1417df457bceab69c28e12ef5c483572485b2e830762f322"
+    },
+    {
+      "name": "altitude-horizon-framework",
+      "type": "component",
+      "theme": "career-leadership",
+      "description": "Understand the PM-to-Director transition through altitude and horizon thinking. Use when diagnosing scope, time-horizon, or leadership-level gaps.",
+      "files": 4,
+      "bytes": 27355,
+      "sha256": "bd8eb76b866dbf4afb1b4ea496eb6a0df357c4b85fc5617dee2127bb3e7f4507"
+    },
+    {
+      "name": "ansoff-matrix",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Map evidence-backed growth options across the Ansoff Matrix with risk-rated sequencing. Use when the question is where the next tranche of growth comes from, and at what risk.",
+      "files": 4,
+      "bytes": 25860,
+      "sha256": "20e0385e8ca361e1cc360c1057db272bbaf797c5ee2dab78baff707bf553831a"
+    },
+    {
+      "name": "autonomous-investigation",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "The protocol behind every investigation skill. Use when AI research must proceed without you: search-plan gate, Fact/Inference/Assumption labels, confidence stacking, diffable outputs.",
+      "files": 4,
+      "bytes": 25392,
+      "sha256": "7472c2399a81a507991b4e9f7e47b0b9bbe1a0c6f3924eba882a06713e9bad7f"
+    },
+    {
+      "name": "battle-card-builder",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Research and draft a competitive battle card from public evidence — every claim labeled and sourced. Use when a rep needs a field-action card, not a research report.",
+      "files": 4,
+      "bytes": 25285,
+      "sha256": "0acf53d9fb6bd847291d8c8cdcd72ed20aa95cfe5d2b3943565a025aa22e870c"
+    },
+    {
+      "name": "business-health-diagnostic",
+      "type": "interactive",
+      "theme": "finance-metrics",
+      "description": "Diagnose SaaS business health across growth, retention, efficiency, and capital. Use when preparing a business review or prioritizing urgent fixes.",
+      "files": 1,
+      "bytes": 23249,
+      "sha256": "89ae6b51740b09aa6e429e09b647827f2be320bf26ac514936987705b24ce9d7"
+    },
+    {
+      "name": "company-intel",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Research a company, industry, or competitor set using web search and seven analytical lenses. Use when you need structured intel that feeds downstream PM skills.",
+      "files": 4,
+      "bytes": 47669,
+      "sha256": "6f5b7ab7d3b1b8a8edb9fbcc518eeb3605709cd534577e71bf03902260e703a8"
+    },
+    {
+      "name": "company-research",
+      "type": "component",
+      "theme": "market-intelligence",
+      "description": "Create a company research brief with executive quotes, product strategy, and org context. Use when preparing for interviews, competitive analysis, partnerships, or market-entry work.",
+      "files": 4,
+      "bytes": 30254,
+      "sha256": "b1371d2bbabc62c49e59df154c66c786d1dee775ff384f2356af3859c313610c"
+    },
+    {
+      "name": "competitive-analysis-process",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Orchestrate a complete competitive analysis across six steps, from landscape to strategic direction. Use when you need the full picture, not a single scan or card.",
+      "files": 4,
+      "bytes": 28474,
+      "sha256": "664a292525981ff2c1fba9031c947ece0ed74da248ec793c42027978f3411c2c"
+    },
+    {
+      "name": "competitive-intel-watch",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Scheduled delta monitoring against a prior competitive snapshot. Use when tracking competitors on a cadence: material shifts only, cited evidence, battle-card update flags, runs unattended.",
+      "files": 4,
+      "bytes": 22867,
+      "sha256": "a39d934034e2ba329a23a26f3e8d7e28b08655d87733c5f5d49b7b7b5a35d779"
+    },
+    {
+      "name": "competitive-research-snapshot",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Research a competitive landscape with cited snapshots, a comparison matrix, and so-what implications. Use when a product decision needs competitive grounding, not a market report.",
+      "files": 4,
+      "bytes": 27294,
+      "sha256": "590104636fc7778178e85aad81c1c9435532cd34e12753da076e1e00a8b6d8fc"
+    },
+    {
+      "name": "context-engineering-advisor",
+      "type": "interactive",
+      "theme": "ai-agents",
+      "description": "Diagnose context stuffing vs. context engineering. Use when an AI workflow feels bloated, brittle, or hard to steer reliably.",
+      "files": 1,
+      "bytes": 32560,
+      "sha256": "fca9d345e922866745d91af6cc4fcbdbc535978236c647ad7402a074012a7a65"
+    },
+    {
+      "name": "customer-journey-map",
+      "type": "component",
+      "theme": "workshops-facilitation",
+      "description": "Create a customer journey map across stages, touchpoints, actions, emotions, and metrics. Use when diagnosing a broken experience or aligning a team on the full customer flow.",
+      "files": 4,
+      "bytes": 22468,
+      "sha256": "f79c838cbb2aa71aadc8fd962f64a392df6534ad91d72533c7c40fb3d5c21a11"
+    },
+    {
+      "name": "customer-journey-mapping-workshop",
+      "type": "interactive",
+      "theme": "workshops-facilitation",
+      "description": "Run a customer journey mapping workshop with adaptive questions and outputs. Use when you need to map stages, actions, emotions, pain points, and opportunities for a persona and scenario.",
+      "files": 1,
+      "bytes": 18637,
+      "sha256": "fc33f95a96db3d9ee2ddce8386101889c87233d3ce0d24ac76f16174eb8eaaf6"
+    },
+    {
+      "name": "derisk-measurement-advisor",
+      "type": "interactive",
+      "theme": "validation-experiments",
+      "description": "Identify what to measure, test, or track to de-risk a product or AI idea. Use when stress-testing an idea across internal (DUFV) and external (PESTEL) dimensions.",
+      "files": 1,
+      "bytes": 23651,
+      "sha256": "d3b11e2b1bc78fd5291ab0a94aa2bcad1e421ba4c0dbdddb2e3715e45f0640ef"
+    },
+    {
+      "name": "director-readiness-advisor",
+      "type": "interactive",
+      "theme": "career-leadership",
+      "description": "Guide the PM-to-Director transition across preparing, interviewing, landing, and recalibrating. Use when leadership scope is changing and you need practical coaching.",
+      "files": 2,
+      "bytes": 21985,
+      "sha256": "82284a5c00686e1dc2f947f2f0f7fe68aafe1acded529d1b77480fdd4f487b6d"
+    },
+    {
+      "name": "discovery-interview-prep",
+      "type": "interactive",
+      "theme": "discovery-research",
+      "description": "Plan customer discovery interviews with the right goal, segment, constraints, and method. Use when preparing interviews for problem validation, churn research, or new product ideas.",
+      "files": 1,
+      "bytes": 19021,
+      "sha256": "d75e8b035a29db740596024a893a25a7e1dc10c4d1038162aa9ac8b27d71cc79"
+    },
+    {
+      "name": "discovery-process",
+      "type": "workflow",
+      "theme": "discovery-research",
+      "description": "Run a full discovery cycle from problem hypothesis to validated solution. Use when a team needs a structured path through framing, interviews, synthesis, and experiments.",
+      "files": 4,
+      "bytes": 28773,
+      "sha256": "17a6ff0b240cf93705acd60096422574be8128ed6068f15687ade03498370925"
+    },
+    {
+      "name": "eol-checklist",
+      "type": "component",
+      "theme": "eol-transition",
+      "description": "Build a phase-gated EOL checklist sized to the sunset, with a named owner on every item. Use when the decision to retire is made and you need the operational plan.",
+      "files": 4,
+      "bytes": 32124,
+      "sha256": "4e66406c0670b0a8ee559e8296a84efe42053d3716e9aee03f8cccbcf3a22a2d"
+    },
+    {
+      "name": "eol-internal-enablement",
+      "type": "component",
+      "theme": "eol-transition",
+      "description": "Build the support FAQ, sales talking points, and objection handling teams need before an EOL announcement. Use when customer-facing teams must be ready before customers hear.",
+      "files": 4,
+      "bytes": 35579,
+      "sha256": "bf8484902ad5e311807a515f073c725e8e8b6034734bafd43cfdb3792b24b516"
+    },
+    {
+      "name": "eol-message",
+      "type": "component",
+      "theme": "eol-transition",
+      "description": "Write a right-sized EOL announcement — brief notice through full phased comms — with rationale, customer impact, and next steps. Use when retiring a product, feature, or plan.",
+      "files": 4,
+      "bytes": 37950,
+      "sha256": "1920f6d65f567fe6be5d8723f679f091cf2fc3dc343a6d0957a95d3236ab079c"
+    },
+    {
+      "name": "eol-process",
+      "type": "workflow",
+      "theme": "eol-transition",
+      "description": "Run a product sunset end to end — decide, align, plan, prepare, announce, close. Use when you need the whole EOL process, not just one artifact.",
+      "files": 4,
+      "bytes": 43153,
+      "sha256": "a34a1c6ab65971fa98bf5b6d4a195c2713df12eaefbed2c77da397bebebfe428"
+    },
+    {
+      "name": "eol-readiness-advisor",
+      "type": "interactive",
+      "theme": "eol-transition",
+      "description": "Run a go/no-go assessment for retiring a product or feature, then right-size the effort. Use when someone says \\\"we should probably kill this\\\" and nobody has made the call.",
+      "files": 1,
+      "bytes": 21704,
+      "sha256": "8534ba6661e50dd8d918bd632bec28164fa932946435c7def32bed6bbb6c5c07"
+    },
+    {
+      "name": "eol-stakeholder-sequence",
+      "type": "component",
+      "theme": "eol-transition",
+      "description": "Plan who to talk to about a sunset, in what order, and what each conversation must cover. Use when an EOL decision is made and you want the landmines found before the announcement.",
+      "files": 4,
+      "bytes": 33400,
+      "sha256": "4dbe816086ec47f3df119426bd50c5940172cd65bf1fc87432fe29cacb49cedf"
+    },
+    {
+      "name": "epic-breakdown-advisor",
+      "type": "interactive",
+      "theme": "pm-artifacts",
+      "description": "Break down epics into user stories with Humanizing Work split patterns. Use when a backlog item is too large to estimate, sequence, or deliver safely.",
+      "files": 1,
+      "bytes": 24201,
+      "sha256": "cb46e78d8e03fe69e61871d5c2b5c691fe99da8960f85fb276ade538362e1e68"
+    },
+    {
+      "name": "epic-hypothesis",
+      "type": "component",
+      "theme": "pm-artifacts",
+      "description": "Frame an epic as a testable hypothesis with target user, expected outcome, and validation method. Use when defining a major initiative before roadmap, discovery, or delivery planning.",
+      "files": 4,
+      "bytes": 22978,
+      "sha256": "4c257f62f5169e1cb0cf592cc5fe043435826f23837c8c55cec4fa6baa57a2bf"
+    },
+    {
+      "name": "executive-onboarding-playbook",
+      "type": "workflow",
+      "theme": "career-leadership",
+      "description": "Plan a VP or CPO 30-60-90 day diagnostic onboarding path. Use when entering a new executive product role and avoiding premature change.",
+      "files": 4,
+      "bytes": 35335,
+      "sha256": "4b122d140f1d7a0d21db7362f38fcc7dcd144b45700ade1eda3889268549dbf6"
+    },
+    {
+      "name": "feature-investment-advisor",
+      "type": "interactive",
+      "theme": "finance-metrics",
+      "description": "Evaluate feature investments using revenue impact, cost structure, ROI, and strategy. Use when deciding whether a feature deserves investment.",
+      "files": 2,
+      "bytes": 35767,
+      "sha256": "977eba301f6a3c31c4c20ff72f48bfc4c2131621e125290d6d32c08c02099bf4"
+    },
+    {
+      "name": "finance-based-pricing-advisor",
+      "type": "interactive",
+      "theme": "finance-metrics",
+      "description": "Evaluate pricing changes using ARPU, conversion, churn risk, NRR, and payback. Use when deciding whether a pricing move should ship.",
+      "files": 1,
+      "bytes": 23836,
+      "sha256": "fa32fb0a5a1a5040398f2e457b82dbf79c43594935d821c5873ba0f6c3118f7c"
+    },
+    {
+      "name": "finance-metrics-quickref",
+      "type": "component",
+      "theme": "finance-metrics",
+      "description": "Look up SaaS finance metrics, formulas, and benchmarks fast. Use when you need a quick metric definition, formula, or benchmark during analysis.",
+      "files": 2,
+      "bytes": 20509,
+      "sha256": "1856ed444fd32a6e9c60601d7bdf4baef8251e780ccd53314cbdf545f0906a5f"
+    },
+    {
+      "name": "incoming-request-advisor",
+      "type": "interactive",
+      "theme": "stakeholder-comms",
+      "description": "Decode an incoming message into a structured breakdown separating the literal ask from the job-to-be-done. Use when a loaded Slack ping, email, mandate, or escalation needs a reply.",
+      "files": 3,
+      "bytes": 19369,
+      "sha256": "75cc5d29497dfa6da9bf288c2f6b1ba28ce68767304c8c2b68eca2a10605e3fb"
+    },
+    {
+      "name": "intel-discipline-advisor",
+      "type": "interactive",
+      "theme": "market-intelligence",
+      "description": "Triage a competitive or market question into the right intelligence disciplines, cadence, and executing skill. Use when you know something needs researching but not which channel to run.",
+      "files": 4,
+      "bytes": 24434,
+      "sha256": "dd2891421bd06dfb2848b6ce0c8e73ef547a7938fbc7498c67167be2571b0435"
+    },
+    {
+      "name": "intelligence-collection-disciplines",
+      "type": "component",
+      "theme": "market-intelligence",
+      "description": "Run competitive research like an intelligence agency: eight collection disciplines (OSINT to MASINT), signal-to-inference chains, and fusion. Use when one-source research isn't enough.",
+      "files": 4,
+      "bytes": 39396,
+      "sha256": "104db4f8a4a931cce2585f1153e3ebda1ba1a50a0525ca62968a3d28a5dd7a86"
+    },
+    {
+      "name": "jobs-to-be-done",
+      "type": "component",
+      "theme": "discovery-research",
+      "description": "Uncover customer jobs, pains, and gains in a structured JTBD format. Use when clarifying unmet needs, repositioning a product, or improving discovery and messaging.",
+      "files": 4,
+      "bytes": 21948,
+      "sha256": "ab81d39650a987e3b1f198c1766130c47b8912276cfd0a57cdc0eee3034454e5"
+    },
+    {
+      "name": "lean-ux-canvas",
+      "type": "interactive",
+      "theme": "validation-experiments",
+      "description": "Guide teams through Lean UX Canvas v2. Use when framing a business problem, surfacing assumptions, and defining what to learn next.",
+      "files": 3,
+      "bytes": 30771,
+      "sha256": "dde2d32fde0dad69688924759eac84d1477b6adba3afda61509611d3709efb6b"
+    },
+    {
+      "name": "lifecycle-play-advisor",
+      "type": "interactive",
+      "theme": "product-lifecycle",
+      "description": "Diagnose where a product sits in its lifecycle and which play fits — extend, replace, or retire. Use when a product is fading and you need the call, not just the worry.",
+      "files": 1,
+      "bytes": 17554,
+      "sha256": "20b8e2a6597c1307f6ab360304dca8c5ec0d43a8f1bb506cdfeaf08de48b166b"
+    },
+    {
+      "name": "market-landscape-scan",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Map a market's segments, players, substitutes, and whitespace with cited evidence. Use when entering or re-evaluating a market before sizing, positioning, or picking competitors to study.",
+      "files": 4,
+      "bytes": 28836,
+      "sha256": "52af6607d25871eb7388995ef72321b3069d04efa1f7b04f1c3db83d54cfab68"
+    },
+    {
+      "name": "opportunity-solution-tree",
+      "type": "interactive",
+      "theme": "discovery-research",
+      "description": "Build an Opportunity Solution Tree from outcomes to opportunities, solutions, and tests. Use when a stakeholder request needs problem framing before you decide what to build.",
+      "files": 3,
+      "bytes": 22918,
+      "sha256": "7c2bc02635e8722ffd2a7455af652842020e829b19dda14edeff6c04cda63779"
+    },
+    {
+      "name": "organic-growth-advisor",
+      "type": "interactive",
+      "theme": "strategy-positioning",
+      "description": "Identify which organic growth path to pursue — new segments, geographies, channels, or products. Use when diagnosing where a growth constraint lives and which McKinsey growth level to act on next.",
+      "files": 3,
+      "bytes": 41053,
+      "sha256": "1c282b634e3f20d2aa5425ace1d849223cf5957e5abcdadb748d9ec1fd059a03"
+    },
+    {
+      "name": "pestel-analysis",
+      "type": "component",
+      "theme": "market-intelligence",
+      "description": "Analyze political, economic, social, technological, environmental, and legal forces. Use when external market shifts could materially affect a product, roadmap, or strategy.",
+      "files": 4,
+      "bytes": 26993,
+      "sha256": "f32bf19f57b918f676e07f64ae24c6e8be25458c98a12484f7b231c42c873a42"
+    },
+    {
+      "name": "pestel-delta-monitor",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Quarterly re-scan of a prior PESTEL analysis. Use when checking which macro factors moved, which assumptions broke, and what's new — turning PESTEL from a workshop artifact into a radar.",
+      "files": 4,
+      "bytes": 23224,
+      "sha256": "a78471c78c6bb4f40d0345e0112fd7fdd9ab8ab60f24e41693aaf03c37ea46bf"
+    },
+    {
+      "name": "pm-skill-creator",
+      "type": "interactive",
+      "theme": "meta-authoring",
+      "description": "Design a new PM skill through guided conversation. Use when you have raw content or an idea and want to shape it into a compliant skill.",
+      "files": 1,
+      "bytes": 16987,
+      "sha256": "9ed5042b263e2c5032842400eb4a93d905f8dab7d99a17eca84225a954bac5ab"
+    },
+    {
+      "name": "pol-probe",
+      "type": "component",
+      "theme": "validation-experiments",
+      "description": "Define a Proof of Life probe to test a risky hypothesis cheaply. Use when you need harsh truth before building real product.",
+      "files": 4,
+      "bytes": 21685,
+      "sha256": "b0ea3c4b8391f71ef2b90c2bc39cf4213dc95e6ecd4494e6f001cbb65bfb17dc"
+    },
+    {
+      "name": "pol-probe-advisor",
+      "type": "interactive",
+      "theme": "validation-experiments",
+      "description": "Select the right Proof of Life (PoL) probe based on hypothesis, risk, and resources. Use this to match the validation method to the real learning goal, not tooling comfort.",
+      "files": 1,
+      "bytes": 21211,
+      "sha256": "b2cc3fc70561fc30306a0035bb5e5dccc72f9ebc8d8b75648df250e7abb8354b"
+    },
+    {
+      "name": "porters-five-forces",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Read an industry's structure through Porter's Five Forces with documented signals per rating, ending at the profit pool. Use when weighing market entry or when margins erode and nobody can say why.",
+      "files": 4,
+      "bytes": 26376,
+      "sha256": "7f650685dd2b46d056a517eaddd0d231d71b268cdb9ef72dcbf8708f34e02e8c"
+    },
+    {
+      "name": "positioning-statement",
+      "type": "component",
+      "theme": "strategy-positioning",
+      "description": "Create a Geoffrey Moore-style positioning statement. Use when clarifying who you serve, what problem you solve, your category, and why you're different from alternatives.",
+      "files": 4,
+      "bytes": 16890,
+      "sha256": "06b75b650bde5147127057f0594603c50949c2008ae60a5c35fe0cda9823b5c5"
+    },
+    {
+      "name": "positioning-workshop",
+      "type": "interactive",
+      "theme": "workshops-facilitation",
+      "description": "Run a positioning workshop that surfaces target customer, unmet need, category, benefits, and differentiation. Use when your product messaging feels fuzzy, generic, or misaligned.",
+      "files": 1,
+      "bytes": 18289,
+      "sha256": "32e5093944ab5bbf10d14e2aa09cf39296eb3a3b6c3a05a074de0a69210e4de8"
+    },
+    {
+      "name": "prd-development",
+      "type": "workflow",
+      "theme": "pm-artifacts",
+      "description": "Build a structured PRD that connects problem, users, solution, and success criteria. Use when turning discovery notes into an engineering-ready document for a major initiative.",
+      "files": 4,
+      "bytes": 76481,
+      "sha256": "2f332d7c08da54b01584aa6dff7a632c2d30cd545b0e8de731f06ac1f525341f"
+    },
+    {
+      "name": "press-release",
+      "type": "component",
+      "theme": "pm-artifacts",
+      "description": "Write an Amazon-style press release that defines customer value before building. Use when aligning stakeholders on a new product, feature, or strategic bet.",
+      "files": 4,
+      "bytes": 23184,
+      "sha256": "426e55a14784fc17b3475c803129fb4015916d1ab1e483549fe416706ea7615f"
+    },
+    {
+      "name": "pricing-packaging-tracker",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Track competitor pricing and packaging as a diffable time series. Use when monitoring tiers, gates, limits, and price moves on a monthly or quarterly cadence.",
+      "files": 4,
+      "bytes": 22396,
+      "sha256": "68f1b90b269cf18743c68fef113449f81ed860f06c60e4e0dd60c02162ced350"
+    },
+    {
+      "name": "prioritization-advisor",
+      "type": "interactive",
+      "theme": "strategy-positioning",
+      "description": "Choose a prioritization framework based on stage, team context, and stakeholder needs. Use when deciding between RICE, ICE, value/effort, or another scoring approach.",
+      "files": 1,
+      "bytes": 16900,
+      "sha256": "9b90179e63c622a7c338b7a0775b470e00b660dc84efe3b25fcc48ffed307a0f"
+    },
+    {
+      "name": "problem-framing-canvas",
+      "type": "interactive",
+      "theme": "discovery-research",
+      "description": "Guide teams through MITRE's Problem Framing Canvas. Use when you need a clearer problem statement before jumping to solutions.",
+      "files": 3,
+      "bytes": 22164,
+      "sha256": "d3eb93e8c026f07fb17e1e92f635a9833e2e140a38de3299bc6f525cf4df7a9b"
+    },
+    {
+      "name": "problem-statement",
+      "type": "component",
+      "theme": "discovery-research",
+      "description": "Write a user-centered problem statement with who is blocked, what they are trying to do, why it matters, and how it feels. Use when framing discovery, prioritization, or a PRD.",
+      "files": 4,
+      "bytes": 19412,
+      "sha256": "5daa67a1ab5d381ca47d82504b53ab36bfe9453eec77797567c32782dbe6a402"
+    },
+    {
+      "name": "product-lifecycle-plays",
+      "type": "component",
+      "theme": "product-lifecycle",
+      "description": "Map a product's lifecycle stage and choose between extension, replacement, and retirement plays. Use when a product is maturing or declining and the next move isn't obvious.",
+      "files": 4,
+      "bytes": 37223,
+      "sha256": "3f48db3fc30a1bc8083648bf9edf2c2316aef2bac0b4b982761f1d136342b27f"
+    },
+    {
+      "name": "product-sense-interview-answer",
+      "type": "component",
+      "theme": "career-leadership",
+      "description": "Structure a spoken PM product-sense answer with assumptions, segmentation, pain-point prioritization, and MVP tradeoffs. Use when practicing design, improve, or build-next interview questions.",
+      "files": 4,
+      "bytes": 24474,
+      "sha256": "4636f168e47fff591f76723714930ae8bf1e0506eff6354fc352cfd5a24148df"
+    },
+    {
+      "name": "product-strategy-session",
+      "type": "workflow",
+      "theme": "strategy-positioning",
+      "description": "Run an end-to-end product strategy session across positioning, discovery, and roadmap planning. Use when a team needs validated direction before committing to execution.",
+      "files": 4,
+      "bytes": 25931,
+      "sha256": "1398deea3e7def9371a64dbc798437bf84ef7f85eea1a95e97d505034a6a8f5c"
+    },
+    {
+      "name": "proto-persona",
+      "type": "component",
+      "theme": "discovery-research",
+      "description": "Create a proto-persona from current research, market signals, and team knowledge. Use when you need a working customer profile before deeper validation.",
+      "files": 4,
+      "bytes": 22526,
+      "sha256": "2b27b2160ff26c83baf3f847eae95e259507250a9790f4f5c65c52b7339d33c7"
+    },
+    {
+      "name": "recommendation-canvas",
+      "type": "component",
+      "theme": "validation-experiments",
+      "description": "Evaluate an AI product idea across outcomes, hypotheses, risks, and positioning. Use when deciding whether an AI solution deserves investment or recommendation.",
+      "files": 4,
+      "bytes": 25878,
+      "sha256": "4e0b79b5ee73585ef6934089117a6939f04626ed9e8b428db6cddea5c936a894"
+    },
+    {
+      "name": "roadmap-planning",
+      "type": "workflow",
+      "theme": "strategy-positioning",
+      "description": "Plan a strategic roadmap across prioritization, epic definition, stakeholder alignment, and sequencing. Use when turning strategy into a release plan that teams can execute.",
+      "files": 4,
+      "bytes": 27708,
+      "sha256": "e1ede410a51e3a6da7729c0674f85114903d34f0520afda650192f70cb574e05"
+    },
+    {
+      "name": "saas-economics-efficiency-metrics",
+      "type": "component",
+      "theme": "finance-metrics",
+      "description": "Evaluate SaaS unit economics and capital efficiency. Use when deciding whether the business can scale efficiently or needs correction.",
+      "files": 4,
+      "bytes": 49151,
+      "sha256": "6ab1d782a77241381b40f5b64e6f82d0b9d64afcc570cd12ff70f8a7165c49d9"
+    },
+    {
+      "name": "saas-revenue-growth-metrics",
+      "type": "component",
+      "theme": "finance-metrics",
+      "description": "Calculate SaaS revenue, retention, and growth metrics. Use when diagnosing momentum, churn, expansion, or product-market-fit signals.",
+      "files": 4,
+      "bytes": 37345,
+      "sha256": "3615302e648b89442d49e35128d989ff69340a58d1fe5a43e31cd6cd750632c1"
+    },
+    {
+      "name": "skill-authoring-workflow",
+      "type": "workflow",
+      "theme": "meta-authoring",
+      "description": "Turn raw PM content into a compliant, publish-ready skill. Use when creating or updating a repo skill without breaking standards.",
+      "files": 3,
+      "bytes": 17384,
+      "sha256": "ce81e4868268e9f40046817bd929b245e47d091ea3ff00b331c2aefa125bb980"
+    },
+    {
+      "name": "stakeholder-engagement-advisor",
+      "type": "interactive",
+      "theme": "stakeholder-comms",
+      "description": "Plan engagement for a specific stakeholder. Use when preparing an outreach, navigating resistance, or aligning a critical relationship before a key milestone.",
+      "files": 1,
+      "bytes": 17541,
+      "sha256": "c24a61f133e07b9bd730aced3644a62c29e4b948e151fcd98cf95289ff3f8113"
+    },
+    {
+      "name": "stakeholder-identification",
+      "type": "component",
+      "theme": "stakeholder-comms",
+      "description": "Map every stakeholder before engaging anyone. Use when launching an initiative, scoping discovery, or building an engagement plan from scratch.",
+      "files": 4,
+      "bytes": 25168,
+      "sha256": "8945b219226f7f1437bfa785aa8dcabff4c9928b9259a1d246ee7df79891b4e2"
+    },
+    {
+      "name": "stakeholder-mapping",
+      "type": "component",
+      "theme": "stakeholder-comms",
+      "description": "Prioritize stakeholders using two complementary grids. Use when setting engagement strategy and surfacing whose voice needs elevating after stakeholder identification.",
+      "files": 4,
+      "bytes": 27645,
+      "sha256": "824c8020cb432cdc489c03f41dc608f6ec3f24ef5b3fd2e24ae1eb4f0caacfc3"
+    },
+    {
+      "name": "storyboard",
+      "type": "component",
+      "theme": "pm-artifacts",
+      "description": "Create a six-frame storyboard that shows a user's journey from problem to solution. Use when you need a fast narrative for alignment, concept reviews, or demos.",
+      "files": 4,
+      "bytes": 21362,
+      "sha256": "0f13417d54010415c60473d360f2e421bd696be36e5de28add1ad4dc42249581"
+    },
+    {
+      "name": "swot-analysis",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Build an evidence-cited SWOT of one company — yours or a competitor's — from public sources, ending with the S-O/W-T crossings. Use for strategy reviews, board prep, or competitor depth.",
+      "files": 4,
+      "bytes": 24468,
+      "sha256": "a7b92ee789ff806dff604d9c3b781563a1befa08e3f0da756ba5991dc47ce5b2"
+    },
+    {
+      "name": "tam-sam-som-calculator",
+      "type": "interactive",
+      "theme": "market-intelligence",
+      "description": "Calculate TAM, SAM, and SOM with explicit assumptions, methods, and caveats. Use when sizing a market for a product idea, business case, or executive review.",
+      "files": 4,
+      "bytes": 28005,
+      "sha256": "120b9c1eec70a65390c9e193b356f1796dda3930552e7958ce8db05408d47f24"
+    },
+    {
+      "name": "user-story",
+      "type": "component",
+      "theme": "pm-artifacts",
+      "description": "Create user stories with Mike Cohn format and Gherkin acceptance criteria. Use when turning user needs into development-ready work with clear outcomes and testable conditions.",
+      "files": 5,
+      "bytes": 23311,
+      "sha256": "90eff169052090553be7a5b39681d1a02ef458fc4e3bf36bd58a564390fbbefe"
+    },
+    {
+      "name": "user-story-mapping",
+      "type": "component",
+      "theme": "pm-artifacts",
+      "description": "Create a user story map that lays out activities, steps, tasks, and release slices. Use when planning a workflow, backlog, or MVP around the user journey.",
+      "files": 4,
+      "bytes": 18024,
+      "sha256": "fea5a00e9d1e6e56306a8b23a689c5002fff2237304a9a7f24db04d40defcc52"
+    },
+    {
+      "name": "user-story-mapping-workshop",
+      "type": "interactive",
+      "theme": "workshops-facilitation",
+      "description": "Run a user story mapping workshop with adaptive questions and a structured map output. Use when you need backbone activities, tasks, and release slices for a workflow.",
+      "files": 2,
+      "bytes": 18374,
+      "sha256": "e38557487dbe7f84a3b10fd2ac5c4f14ab4e3c65c1d5bba15e2e1a9b9ec4c8fb"
+    },
+    {
+      "name": "user-story-splitting",
+      "type": "component",
+      "theme": "pm-artifacts",
+      "description": "Break a large story or epic into smaller deliverable stories using proven split patterns. Use when backlog items are too big for estimation, sequencing, or independent release.",
+      "files": 4,
+      "bytes": 21885,
+      "sha256": "c223289d11e29dac37bd972940a55a775fab15d092ff212fd2f63deee49fc28f"
+    },
+    {
+      "name": "voice-of-customer-miner",
+      "type": "workflow",
+      "theme": "market-intelligence",
+      "description": "Mine public reviews, app stores, and forums for unmet needs, competitor weaknesses, and switching triggers — with quoted evidence. Use when you want customer voice without waiting on interviews.",
+      "files": 4,
+      "bytes": 24408,
+      "sha256": "6774faed0c2967a4ed21da6eac9234a20d54f988e43c4cfd1e0b0f82119d19e4"
+    },
+    {
+      "name": "vp-cpo-readiness-advisor",
+      "type": "interactive",
+      "theme": "career-leadership",
+      "description": "Guide the transition to VP or CPO across preparing, interviewing, landing, and recalibrating. Use when executive product scope is changing fast.",
+      "files": 2,
+      "bytes": 28496,
+      "sha256": "96fd81022eec5680d9f007815ecbbd571523da3a4e86cdf197ee971f5584cf1f"
+    },
+    {
+      "name": "workshop-facilitation",
+      "type": "interactive",
+      "theme": "workshops-facilitation",
+      "description": "Facilitate workshop sessions in a one-step, multi-turn flow. Use when an interactive skill needs consistent pacing, options, and progress tracking.",
+      "files": 2,
+      "bytes": 10314,
+      "sha256": "deb942d64f6088cea772ff845f213ccf5f269a6d085018906d2211429ce53c00"
+    }
+  ]
+}

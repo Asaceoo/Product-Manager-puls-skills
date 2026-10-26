@@ -145,6 +145,8 @@ If targeting Claude custom skill upload:
 
 ## Examples
 
+Full worked example: `examples/sample.md`.
+
 ### Example: Turn Workshop Notes into a Skill
 
 Input: `research/pricing-workshop-notes.md`  

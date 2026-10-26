@@ -257,6 +257,8 @@ Watch out for: Building new before the core is strong. L5 requires more knowledg
 
 ## Examples
 
+Full worked example: `examples/sample.md`.
+
 ### Example 1: L2 Recommendation
 
 **Context:** B2B SaaS project management tool. Core ICP is engineering teams. Growth has slowed. They have tried paid ads and a PLG free tier. Both underperforming.

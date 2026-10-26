@@ -394,12 +394,145 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     make_architecture(version, skill_count, themes, types)
     make_workflow()
     make_themes(themes)
+    make_convergence()
+    make_decision_tree()
 
-    for name in ("hero.png", "architecture.png", "workflow.png", "themes.png"):
+    for name in ("hero.png", "architecture.png", "workflow.png", "themes.png",
+                 "convergence.png", "decision-tree.png"):
         path = OUT_DIR / name
         print(f"[OK] {path.relative_to(ROOT).as_posix()}  {path.stat().st_size / 1024:.0f} KB")
     return 0
 
+
+
+# --------------------------------------------------------------------------- #
+# convergence — 两代审查的真实收敛曲线
+# --------------------------------------------------------------------------- #
+CONVERGENCE = {
+    "labels": ["G1·R1", "G1·R2", "G1·R3", "G1·R4", "G1·R5", "G1·R6",
+               "G2·R1", "G2·R2", "G2·R3"],
+    "P0": [1, 1, 1, 1, 1, 0, 40, 0, 0],
+    "P1": [27, 13, 13, 0, 0, 0, 4, 4, 0],
+    "P2": [10, 8, 8, 8, 4, 4, 4, 4, 4],
+}
+
+
+def make_convergence() -> None:
+    """对数纵轴折线：P0 从 1 跳到 40 时线性刻度会压扁其余曲线。"""
+    import math
+
+    W, H = 1600, 760
+    img, draw = canvas(W, H, WHITE)
+    draw.text((80, 50), "两代审查的收敛过程", font=font(40), fill=INK)
+    draw.text((80, 106), "第一代收敛到 0 之后，第二代规则更严 —— P0 反而从 0 跳到 40",
+              font=font(21), fill=INK_SOFT)
+
+    left, right = 150, W - 120
+    top, bottom = 200, H - 130
+    labels = CONVERGENCE["labels"]
+    n = len(labels)
+    max_v = 40
+
+    def y_of(v: float) -> float:
+        ratio = math.log10(v + 1) / math.log10(max_v + 1)
+        return bottom - ratio * (bottom - top)
+
+    def x_of(i: int) -> float:
+        return left + i * (right - left) / (n - 1)
+
+    # 网格与刻度
+    for tick in (0, 1, 3, 10, 40):
+        y = y_of(tick)
+        draw.line([(left, y), (right, y)], fill=LINE, width=1)
+        draw.text((60, y - 11), str(tick), font=font(17), fill=INK_SOFT)
+
+    # 两代之间的分隔
+    split = 6
+    draw.line([(x_of(split) - (x_of(1) - x_of(0)) / 2, top - 16),
+               (x_of(split) - (x_of(1) - x_of(0)) / 2, bottom)],
+              fill="#D8DEE9", width=2)
+    draw.text((left, top - 44), "第一代 · 26 条规则", font=font(19), fill=BLUE_DARK)
+    draw.text((x_of(split) + 10, top - 44), "第二代 · +B17/B18/B19，A 视角扩到 scripts/",
+              font=font(19), fill="#B23B12")
+
+    series = [("P0", CONVERGENCE["P0"], "#D64545"), ("P1", CONVERGENCE["P1"], ORANGE),
+              ("P2", CONVERGENCE["P2"], "#8A96A8")]
+    for name, values, color in series:
+        pts = [(x_of(i), y_of(v)) for i, v in enumerate(values)]
+        draw.line(pts, fill=color, width=3, joint="curve")
+        for (x, y), v in zip(pts, values):
+            draw.ellipse([x - 5, y - 5, x + 5, y + 5], fill=WHITE, outline=color, width=3)
+        # 末端数值
+        draw.text((pts[-1][0] + 12, pts[-1][1] - 10), name, font=font(19), fill=color)
+
+    # X 轴标签
+    for i, lab in enumerate(labels):
+        draw.text((x_of(i) - 24, bottom + 18), lab, font=font(16), fill=INK_SOFT)
+
+    # 关键注释（避开图例与 X 轴标签）
+    draw.text((x_of(6) + 14, y_of(40) + 14), "40 处脚本引用失效", font=font(18), fill="#B23B12")
+    draw.text((x_of(5) - 30, bottom - 46), "P0 归零", font=font(18), fill=GREEN)
+
+    img.save(OUT_DIR / "convergence.png", optimize=True)
+
+
+# --------------------------------------------------------------------------- #
+# decision tree — 我该用哪个技能
+# --------------------------------------------------------------------------- #
+def make_decision_tree() -> None:
+    W, H = 1600, 960
+    img, draw = canvas(W, H, WHITE)
+    draw.text((80, 50), "我该用哪个技能", font=font(40), fill=INK)
+    draw.text((80, 106), "先按「我要产出什么」定位分支，再看分支下的首选技能",
+              font=font(21), fill=INK_SOFT)
+
+    branches = [
+        ("问题还没定清", ["discovery-process", "problem-framing-canvas"], "#00A3B5"),
+        ("要交一份文档", ["prd-development", "user-story", "press-release"], BLUE),
+        ("要判断做不做", ["feature-investment-advisor", "prioritization-advisor"], "#12A47A"),
+        ("要看清外面", ["swot-analysis", "competitive-research-snapshot", "tam-sam-som-calculator"], "#C9A227"),
+        ("要停掉一条线", ["eol-readiness-advisor", "eol-process"], ORANGE),
+        ("要长本事", ["product-sense-interview-answer", "director-readiness-advisor"], PURPLE),
+    ]
+
+    top = 180
+    row_h = 116
+    left_w = 270
+    mid_x = 370
+
+    for i, (question, skills, color) in enumerate(branches):
+        y = top + i * row_h
+        # 问题节点
+        rounded(draw, (80, y, 80 + left_w, y + 74), 14, CARD, LINE)
+        rounded(draw, (80, y, 92, y + 74), 6, color)
+        draw.text((108, y + 24), question, font=font(23), fill=INK)
+
+        # 连线
+        draw.line([(80 + left_w, y + 37), (mid_x - 16, y + 37)], fill=color, width=2)
+        draw.polygon([(mid_x - 16, y + 32), (mid_x - 6, y + 37), (mid_x - 16, y + 42)], fill=color)
+
+        # 技能胶囊
+        x = mid_x
+        for j, skill in enumerate(skills):
+            tw = text_width(draw, skill, font(19))
+            w = tw + 36
+            if x + w > W - 80:
+                break
+            fill_white = j == 0
+            rounded(draw, (x, y + 14, x + w, y + 58), 22,
+                    color if fill_white else WHITE, color)
+            draw.text((x + 18, y + 23), skill, font=font(19),
+                      fill=WHITE if fill_white else INK)
+            x += w + 12
+
+    # 底部提示
+    rounded(draw, (80, H - 96, W - 80, H - 30), 14, "#EDF2FF")
+    draw.text((108, H - 82), "实心 = 首选", font=font(20), fill=BLUE_DARK)
+    draw.text((260, H - 82),
+              "名字相近的几组（user-story / -mapping / -splitting）见用户手册 5.2 节对照表",
+              font=font(19), fill=INK_SOFT)
+
+    img.save(OUT_DIR / "decision-tree.png", optimize=True)
 
 if __name__ == "__main__":
     raise SystemExit(main())

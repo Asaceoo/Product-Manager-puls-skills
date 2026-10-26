@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import re
 import subprocess
 import sys
 import zipfile
@@ -55,6 +56,17 @@ INCLUDE = (
     "catalog",
     "docs",
     "tools",
+    "scripts",
+    ".github",
+    ".gitattributes",
+    ".gitignore",
+)
+
+#: 交付物必须包含的条目（打包后自检；白名单漏项一律在这里炸出来）
+MUST_INCLUDE = (
+    "README.md", "AGENTS.md", "CHANGELOG.md", "VERSION", "versions.json",
+    "LICENSE", "NOTICE", "MANIFEST.json",
+    "skills", "catalog", "docs", "tools", "scripts",
 )
 
 #: 打包时忽略的路径片段
@@ -105,6 +117,14 @@ def build_package(package_version: str) -> Tuple[Path, Path, int, int]:
             zf.write(path, arcname)
             total_bytes += path.stat().st_size
 
+    # 打包后自检：白名单漏项在这里就会失败，而不是等用户解压后发现
+    with zipfile.ZipFile(zip_path) as zf:
+        packed = {n[len(inner_root) + 1:].split("/")[0] for n in zf.namelist() if n.startswith(inner_root + "/")}
+    missing = [item for item in MUST_INCLUDE if item not in packed]
+    if missing:
+        zip_path.unlink(missing_ok=True)
+        raise RuntimeError(f"包内缺少必需条目：{', '.join(missing)}")
+
     digest = hashlib.sha256(zip_path.read_bytes()).hexdigest()
     sums = DIST / "SHA256SUMS.txt"
     line = f"{digest}  {zip_path.name}\n"
@@ -133,8 +153,13 @@ def append_changelog(package_version: str, docs: dict, stats: dict, skill_count:
     header = "# CHANGELOG\n\n本文件由 `tools/build.py` 自动追加，每条对应一次打包。\n\n"
     if path.exists():
         text = path.read_text(encoding="utf-8")
-        body = text.split("\n\n", 2)
         rest = text[len(header):] if text.startswith(header) else text
+        stale = re.compile(
+            rf"^## v{re.escape(package_version)} —.*?(?=\n## |\Z)", re.MULTILINE | re.DOTALL
+        )
+        if stale.search(rest):
+            # 同版本重打包：替换旧条目而不是再追加一条
+            rest = stale.sub("", rest).lstrip("\n")
         path.write_text(header + entry + rest, encoding="utf-8", newline="\n")
     else:
         path.write_text(header + entry, encoding="utf-8", newline="\n")

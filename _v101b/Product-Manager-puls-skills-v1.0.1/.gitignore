@@ -1,0 +1,26 @@
+# 构建产物
+dist/
+*.zip
+!docs/images/*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# 审查/校验报告（本地临时）
+reports/
+*.log
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+*.swp

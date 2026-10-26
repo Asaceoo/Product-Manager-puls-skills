@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  gate:
+    name: 三道门禁（清单 / 审查 / 校验）
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: 检查清单是否与磁盘一致
+        run: |
+          python tools/manifest.py generate
+          if ! git diff --quiet MANIFEST.json; then
+            echo "::error::MANIFEST.json 与磁盘不一致，请本地运行 tools/manifest.py generate 后提交"
+            git diff --stat MANIFEST.json
+            exit 1
+          fi
+
+      - name: 三视角对抗审查
+        run: python tools/audit.py --json reports/audit.json
+
+      - name: 清单约束校验
+        run: python tools/validate.py
+
+      - name: 版本一致性
+        run: python tools/version.py check
+
+      - name: 打包流水线演练（不产包）
+        run: python tools/build.py --no-bump --dry-run --allow-p2
+
+      - name: scripts 入口冒烟
+        run: |
+          set -e
+          ./scripts/find-a-skill.sh --keyword pricing > /dev/null
+          python scripts/check-skill-metadata.py skills/swot-analysis/SKILL.md
+          python scripts/check-skill-triggers.py skills/swot-analysis/SKILL.md > /dev/null
+          ./scripts/test-a-skill.sh --skill swot-analysis > /dev/null
+          ./scripts/validate-skills.sh > /dev/null
+          python scripts/check-dist-freshness.py || echo "dist 尚未生成，跳过"
+
+  cross-platform:
+    name: 换行与摘要一致性（Windows 检出模拟）
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 确认检出为 LF
+        shell: python
+        run: |
+          from pathlib import Path
+          bad = [p for p in Path(".").rglob("*")
+                 if p.is_file() and p.suffix in {".md", ".py", ".json"}
+                 and ".git" not in p.parts and b"\r\n" in p.read_bytes()]
+          print(f"CRLF 文件 {len(bad)} 个")
+          if bad:
+              print(bad[:5])
+              raise SystemExit("检出后出现 CRLF，.gitattributes 的 eol=lf 未生效")
+
+      - name: 摘要校验
+        run: python tools/validate.py

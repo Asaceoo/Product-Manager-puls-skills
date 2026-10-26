@@ -136,7 +136,7 @@ Before we begin, it's helpful to have product context. If available, please shar
 If you already have population and ARPU numbers (or a TAM estimate), you can run a deterministic helper to compute TAM/SAM/SOM and generate a Markdown table. This script does **not** fetch data or write files.
 
 ```bash
-python3 scripts/market-sizing.py --population 5400000 --arpu 1000 --sam-share 30% --som-share 10%
+python3 skills/tam-sam-som-calculator/scripts/market-sizing.py --population 5400000 --arpu 1000 --sam-share 30% --som-share 10%
 ```
 
 ---

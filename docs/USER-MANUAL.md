@@ -5,8 +5,8 @@
 
 | 文档 | 版本 |
 |---|---|
-| 用户手册 | <!--VER:user_manual-->1.0.0<!--/VER--> |
-| 技能包 | <!--VER:package-->1.0.0<!--/VER--> |
+| 用户手册 | <!--VER:user_manual-->1.0.1<!--/VER--> |
+| 技能包 | <!--VER:package-->1.0.1<!--/VER--> |
 
 ---
 
@@ -22,6 +22,7 @@
 8. [产出物怎么落地](#8-产出物怎么落地)
 9. [常见问题](#9-常见问题)
 10. [更新与版本](#10-更新与版本)
+11. [自己改技能](#11-自己改技能)
 
 ---
 
@@ -657,6 +658,84 @@ cat CHANGELOG.md
 
 ---
 
+## 11. 自己改技能
+
+77 个技能不可能刚好覆盖你的业务。改一个比造一个容易得多，造一个比想象中简单。
+
+### 11.1 先查有没有重叠
+
+```bash
+./scripts/find-a-skill.sh --keyword 门业
+```
+
+输出按正文命中次数排序。如果已有技能覆盖了七成，**扩展它比新建一个更好**——两个语义重叠的技能会让 Agent 路由出错。
+
+### 11.2 改现有技能
+
+```bash
+# 1. 直接编辑（改你安装的那份，或改仓库里的副本）
+#    ~/.workbuddy/skills/<name>/SKILL.md
+
+# 2. 改完必须校验，否则清单摘要会对不上
+python tools/manifest.py generate
+python tools/audit.py
+python tools/validate.py
+```
+
+`audit.py` 会告诉你哪条规则没过，附带文件与行号。常见三类：
+
+| 报错 | 原因 | 怎么修 |
+|---|---|---|
+| `C1 description 缺少触发语` | 你改了描述但没写 `Use when …` | 补一句"什么时候用" |
+| `B13 正文一级章节少于 2 个` | 删章节删过头了 | 至少保留 Input / Application |
+| `B19 引用的脚本不存在` | 写了个不存在的脚本路径 | 改路径或删掉那段 |
+
+### 11.3 造新技能
+
+```bash
+# 从一份文档生成骨架（最省事）
+./scripts/add-a-skill.sh 我的质检经验.md --name installation-qc --type workflow --theme eol-transition
+
+# 或者从零起
+./scripts/build-a-skill.sh --name installation-qc --type interactive --theme workshops-facilitation
+```
+
+生成的骨架里有括号占位，需要你填。填完：
+
+```bash
+# 检查单个技能
+./scripts/test-a-skill.sh --skill installation-qc
+
+# 检查元数据
+python scripts/check-skill-metadata.py skills/installation-qc/SKILL.md
+
+# 检查 Agent 能不能选对
+python scripts/check-skill-triggers.py skills/installation-qc/SKILL.md --show-cases
+```
+
+### 11.4 七个运维命令
+
+| 命令 | 用途 | 什么时候用 |
+|---|---|---|
+| `find-a-skill.sh --keyword X` | 搜技能 | 造新技能前查重叠 |
+| `check-skill-metadata.py <file>` | 校验 frontmatter | 改完 frontmatter 后 |
+| `check-skill-triggers.py <file>` | 检查触发语与场景 | 担心 Agent 选不中时 |
+| `test-a-skill.sh --skill X` | 单技能全检 | 改完一个技能后 |
+| `zip-a-skill.sh --skill X` | 打包单个技能 | 想单独分发某个技能 |
+| `generate-catalog.py` | 重建目录索引 | 增删技能后 |
+| `check-dist-freshness.py` | 检查包是否过期 | 发布前 |
+
+它们都是薄壳，实际实现在 `scripts/skillctl.py`，全部只用标准库。
+
+### 11.5 打包与发布
+
+```bash
+./scripts/build-dist.sh          # 等价于 python tools/build.py
+```
+
+会依次做：版本递增 → 重建清单 → 三视角审查 → 清单校验 → 写 CHANGELOG → 出 zip。
+任何一环失败都不会产出包。
+
 <div align="center">
-<sub>本手册随技能包发布，版本 <!--VER:user_manual-->1.0.0<!--/VER--> · 技能包 <!--VER:package-->1.0.0<!--/VER--></sub>
+<sub>本手册随技能包发布，版本 <!--VER:user_manual-->1.0.1<!--/VER--> · 技能包 <!--VER:package-->1.0.1<!--/VER--></sub>
 </div>

@@ -46,6 +46,10 @@ REQUIRED_PATHS: Sequence[str] = (
     "tools/build.py",
     "tools/validate.py",
     "tools/install.py",
+    "scripts/skillctl.py",
+    "scripts/find-a-skill.sh",
+    "scripts/check-skill-metadata.py",
+    ".github/workflows/ci.yml",
 )
 
 #: 技能内容总字节上限（超过说明混入了构建产物或大二进制）

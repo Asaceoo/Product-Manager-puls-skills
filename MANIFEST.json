@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-26T17:13:36+08:00",
-  "package_version": "1.0.3",
+  "generated_at": "2026-10-26T17:43:42+08:00",
+  "package_version": "1.0.4",
   "skill_count": 77,
   "total_files": 241,
-  "total_bytes": 2086717,
+  "total_bytes": 2085373,
   "themes": {
     "market-intelligence": 18,
     "pm-artifacts": 8,
@@ -59,8 +59,8 @@
       "theme": "career-leadership",
       "description": "Understand the PM-to-Director transition through altitude and horizon thinking. Use when diagnosing scope, time-horizon, or leadership-level gaps.",
       "files": 4,
-      "bytes": 27355,
-      "sha256": "bd8eb76b866dbf4afb1b4ea496eb6a0df357c4b85fc5617dee2127bb3e7f4507"
+      "bytes": 27351,
+      "sha256": "d151d86259b76b3b6eb9f4ee4f7876c30d28b6a4b1ec42d3fa0daf713943f510"
     },
     {
       "name": "ansoff-matrix",
@@ -113,8 +113,8 @@
       "theme": "market-intelligence",
       "description": "Create a company research brief with executive quotes, product strategy, and org context. Use when preparing for interviews, competitive analysis, partnerships, or market-entry work.",
       "files": 4,
-      "bytes": 30254,
-      "sha256": "b1371d2bbabc62c49e59df154c66c786d1dee775ff384f2356af3859c313610c"
+      "bytes": 30234,
+      "sha256": "11bc09f45c79dbc85f8e725de73cb1b0d3b70b03fd11f0fd6a1cd9736f3e52bd"
     },
     {
       "name": "competitive-analysis-process",
@@ -158,8 +158,8 @@
       "theme": "workshops-facilitation",
       "description": "Create a customer journey map across stages, touchpoints, actions, emotions, and metrics. Use when diagnosing a broken experience or aligning a team on the full customer flow.",
       "files": 4,
-      "bytes": 22468,
-      "sha256": "f79c838cbb2aa71aadc8fd962f64a392df6534ad91d72533c7c40fb3d5c21a11"
+      "bytes": 22436,
+      "sha256": "7ea697654812e367e3a63c1ea3aa14ce1d2f5a0baea431e99fc10777e7b6c539"
     },
     {
       "name": "customer-journey-mapping-workshop",
@@ -167,8 +167,8 @@
       "theme": "workshops-facilitation",
       "description": "Run a customer journey mapping workshop with adaptive questions and outputs. Use when you need to map stages, actions, emotions, pain points, and opportunities for a persona and scenario.",
       "files": 1,
-      "bytes": 18637,
-      "sha256": "fc33f95a96db3d9ee2ddce8386101889c87233d3ce0d24ac76f16174eb8eaaf6"
+      "bytes": 18633,
+      "sha256": "55b722538aa413cc7775d2e22cb36f11a339855e3035900b2e8014858342d88b"
     },
     {
       "name": "derisk-measurement-advisor",
@@ -185,8 +185,8 @@
       "theme": "career-leadership",
       "description": "Guide the PM-to-Director transition across preparing, interviewing, landing, and recalibrating. Use when leadership scope is changing and you need practical coaching.",
       "files": 2,
-      "bytes": 21985,
-      "sha256": "82284a5c00686e1dc2f947f2f0f7fe68aafe1acded529d1b77480fdd4f487b6d"
+      "bytes": 21973,
+      "sha256": "25b813c9254605924775903df010ba767f90e8af1230f87978c36590f74547ba"
     },
     {
       "name": "discovery-interview-prep",
@@ -203,8 +203,8 @@
       "theme": "discovery-research",
       "description": "Run a full discovery cycle from problem hypothesis to validated solution. Use when a team needs a structured path through framing, interviews, synthesis, and experiments.",
       "files": 4,
-      "bytes": 28773,
-      "sha256": "17a6ff0b240cf93705acd60096422574be8128ed6068f15687ade03498370925"
+      "bytes": 28645,
+      "sha256": "c6e9a1617c2a7c886fb2a69ed3a303f733ce369d0745864771467e7020722844"
     },
     {
       "name": "eol-checklist",
@@ -275,8 +275,8 @@
       "theme": "pm-artifacts",
       "description": "Frame an epic as a testable hypothesis with target user, expected outcome, and validation method. Use when defining a major initiative before roadmap, discovery, or delivery planning.",
       "files": 4,
-      "bytes": 22978,
-      "sha256": "4c257f62f5169e1cb0cf592cc5fe043435826f23837c8c55cec4fa6baa57a2bf"
+      "bytes": 22918,
+      "sha256": "99dc73ea9ce9e1b5727cbe30c23af322c80e49437df0ebff451dcaf49513fd6b"
     },
     {
       "name": "executive-onboarding-playbook",
@@ -284,8 +284,8 @@
       "theme": "career-leadership",
       "description": "Plan a VP or CPO 30-60-90 day diagnostic onboarding path. Use when entering a new executive product role and avoiding premature change.",
       "files": 4,
-      "bytes": 35335,
-      "sha256": "4b122d140f1d7a0d21db7362f38fcc7dcd144b45700ade1eda3889268549dbf6"
+      "bytes": 35315,
+      "sha256": "bb802a2e52ad201cbe04b73f6bb36a874038a7db633a7d812d06b9675233675f"
     },
     {
       "name": "feature-investment-advisor",
@@ -347,8 +347,8 @@
       "theme": "discovery-research",
       "description": "Uncover customer jobs, pains, and gains in a structured JTBD format. Use when clarifying unmet needs, repositioning a product, or improving discovery and messaging.",
       "files": 4,
-      "bytes": 21948,
-      "sha256": "ab81d39650a987e3b1f198c1766130c47b8912276cfd0a57cdc0eee3034454e5"
+      "bytes": 21912,
+      "sha256": "a63c26038c318f8c4daaa532ef543b8e8e12eb7556c52b59e10e705fdbc42e88"
     },
     {
       "name": "lean-ux-canvas",
@@ -356,8 +356,8 @@
       "theme": "validation-experiments",
       "description": "Guide teams through Lean UX Canvas v2. Use when framing a business problem, surfacing assumptions, and defining what to learn next.",
       "files": 3,
-      "bytes": 30771,
-      "sha256": "dde2d32fde0dad69688924759eac84d1477b6adba3afda61509611d3709efb6b"
+      "bytes": 30711,
+      "sha256": "c0dec630517a53ac640f1ed57c065fe573493ebdb63c5ebfd64000831815cace"
     },
     {
       "name": "lifecycle-play-advisor",
@@ -383,8 +383,8 @@
       "theme": "discovery-research",
       "description": "Build an Opportunity Solution Tree from outcomes to opportunities, solutions, and tests. Use when a stakeholder request needs problem framing before you decide what to build.",
       "files": 3,
-      "bytes": 22918,
-      "sha256": "7c2bc02635e8722ffd2a7455af652842020e829b19dda14edeff6c04cda63779"
+      "bytes": 22882,
+      "sha256": "4a36439212a342dbb2849b172a771bc7d91f4a8f4f7b72aa98c412c01b0c9d6c"
     },
     {
       "name": "organic-growth-advisor",
@@ -401,8 +401,8 @@
       "theme": "market-intelligence",
       "description": "Analyze political, economic, social, technological, environmental, and legal forces. Use when external market shifts could materially affect a product, roadmap, or strategy.",
       "files": 4,
-      "bytes": 26993,
-      "sha256": "f32bf19f57b918f676e07f64ae24c6e8be25458c98a12484f7b231c42c873a42"
+      "bytes": 26973,
+      "sha256": "1894abf794ad842ab6cb597cb6a2eb252a38578066c510462cdd78ee87a0ecc1"
     },
     {
       "name": "pestel-delta-monitor",
@@ -428,8 +428,8 @@
       "theme": "validation-experiments",
       "description": "Define a Proof of Life probe to test a risky hypothesis cheaply. Use when you need harsh truth before building real product.",
       "files": 4,
-      "bytes": 21685,
-      "sha256": "b0ea3c4b8391f71ef2b90c2bc39cf4213dc95e6ecd4494e6f001cbb65bfb17dc"
+      "bytes": 21669,
+      "sha256": "4cb35ad31e5ebcbb884e1e6b8eba496956b5bacff1ec63903085cc1f74a63e66"
     },
     {
       "name": "pol-probe-advisor",
@@ -455,8 +455,8 @@
       "theme": "strategy-positioning",
       "description": "Create a Geoffrey Moore-style positioning statement. Use when clarifying who you serve, what problem you solve, your category, and why you're different from alternatives.",
       "files": 4,
-      "bytes": 16890,
-      "sha256": "06b75b650bde5147127057f0594603c50949c2008ae60a5c35fe0cda9823b5c5"
+      "bytes": 16858,
+      "sha256": "0a91dc443691977e5c30489cc1aee9ce8181bd88fe8eaf168fc0bd924b3157c4"
     },
     {
       "name": "positioning-workshop",
@@ -464,8 +464,8 @@
       "theme": "workshops-facilitation",
       "description": "Run a positioning workshop that surfaces target customer, unmet need, category, benefits, and differentiation. Use when your product messaging feels fuzzy, generic, or misaligned.",
       "files": 1,
-      "bytes": 18289,
-      "sha256": "32e5093944ab5bbf10d14e2aa09cf39296eb3a3b6c3a05a074de0a69210e4de8"
+      "bytes": 18285,
+      "sha256": "79a0011d023d936a8f9e6089b391b094dd5bbe793f50a26839c237eef13275ec"
     },
     {
       "name": "prd-development",
@@ -473,8 +473,8 @@
       "theme": "pm-artifacts",
       "description": "Build a structured PRD that connects problem, users, solution, and success criteria. Use when turning discovery notes into an engineering-ready document for a major initiative.",
       "files": 4,
-      "bytes": 76481,
-      "sha256": "2f332d7c08da54b01584aa6dff7a632c2d30cd545b0e8de731f06ac1f525341f"
+      "bytes": 76365,
+      "sha256": "64e8a5b5a245438e9dd130a2147332c2091349cd6a176e1a9cde75db07d8f278"
     },
     {
       "name": "press-release",
@@ -482,8 +482,8 @@
       "theme": "pm-artifacts",
       "description": "Write an Amazon-style press release that defines customer value before building. Use when aligning stakeholders on a new product, feature, or strategic bet.",
       "files": 4,
-      "bytes": 23184,
-      "sha256": "426e55a14784fc17b3475c803129fb4015916d1ab1e483549fe416706ea7615f"
+      "bytes": 23140,
+      "sha256": "ef16e6c63459e7263cf21d3e7287e1130dbeb0423556d16a6dda5c2d01d2f03f"
     },
     {
       "name": "pricing-packaging-tracker",
@@ -509,8 +509,8 @@
       "theme": "discovery-research",
       "description": "Guide teams through MITRE's Problem Framing Canvas. Use when you need a clearer problem statement before jumping to solutions.",
       "files": 3,
-      "bytes": 22164,
-      "sha256": "d3eb93e8c026f07fb17e1e92f635a9833e2e140a38de3299bc6f525cf4df7a9b"
+      "bytes": 22136,
+      "sha256": "7e84bb5c1c29a0d475144ae8f5587d34b9af6aa7a5c1108389107737bb062fe4"
     },
     {
       "name": "problem-statement",
@@ -518,8 +518,8 @@
       "theme": "discovery-research",
       "description": "Write a user-centered problem statement with who is blocked, what they are trying to do, why it matters, and how it feels. Use when framing discovery, prioritization, or a PRD.",
       "files": 4,
-      "bytes": 19412,
-      "sha256": "5daa67a1ab5d381ca47d82504b53ab36bfe9453eec77797567c32782dbe6a402"
+      "bytes": 19380,
+      "sha256": "98f83da50bc3032fddafd9a96295f05991fe12394c5cb8128e3ddb6f0a4bada8"
     },
     {
       "name": "product-lifecycle-plays",
@@ -536,8 +536,8 @@
       "theme": "career-leadership",
       "description": "Structure a spoken PM product-sense answer with assumptions, segmentation, pain-point prioritization, and MVP tradeoffs. Use when practicing design, improve, or build-next interview questions.",
       "files": 4,
-      "bytes": 24474,
-      "sha256": "4636f168e47fff591f76723714930ae8bf1e0506eff6354fc352cfd5a24148df"
+      "bytes": 24458,
+      "sha256": "4bb123f078906055de2700c295627d7c7164af65eb905d7a074720caffa4e92e"
     },
     {
       "name": "product-strategy-session",
@@ -545,8 +545,8 @@
       "theme": "strategy-positioning",
       "description": "Run an end-to-end product strategy session across positioning, discovery, and roadmap planning. Use when a team needs validated direction before committing to execution.",
       "files": 4,
-      "bytes": 25931,
-      "sha256": "1398deea3e7def9371a64dbc798437bf84ef7f85eea1a95e97d505034a6a8f5c"
+      "bytes": 25739,
+      "sha256": "98fd9c066731f8d6a84957b9e59fdd381a91bc63e00ae6b1cd5bc09ad217ddaf"
     },
     {
       "name": "proto-persona",
@@ -554,8 +554,8 @@
       "theme": "discovery-research",
       "description": "Create a proto-persona from current research, market signals, and team knowledge. Use when you need a working customer profile before deeper validation.",
       "files": 4,
-      "bytes": 22526,
-      "sha256": "2b27b2160ff26c83baf3f847eae95e259507250a9790f4f5c65c52b7339d33c7"
+      "bytes": 22482,
+      "sha256": "e2e73ff219ac0953c98baac45459b6d9f8dfd57a3586e5ae703eec0cfe44a8c3"
     },
     {
       "name": "recommendation-canvas",
@@ -563,8 +563,8 @@
       "theme": "validation-experiments",
       "description": "Evaluate an AI product idea across outcomes, hypotheses, risks, and positioning. Use when deciding whether an AI solution deserves investment or recommendation.",
       "files": 4,
-      "bytes": 25878,
-      "sha256": "4e0b79b5ee73585ef6934089117a6939f04626ed9e8b428db6cddea5c936a894"
+      "bytes": 25818,
+      "sha256": "4d521c2fa0adcae7a915b7260427b1b2b8580515b10ffee2c70ac19d4e6a058f"
     },
     {
       "name": "roadmap-planning",
@@ -572,8 +572,8 @@
       "theme": "strategy-positioning",
       "description": "Plan a strategic roadmap across prioritization, epic definition, stakeholder alignment, and sequencing. Use when turning strategy into a release plan that teams can execute.",
       "files": 4,
-      "bytes": 27708,
-      "sha256": "e1ede410a51e3a6da7729c0674f85114903d34f0520afda650192f70cb574e05"
+      "bytes": 27660,
+      "sha256": "ceb57ba5b345433012326ae61c2912a4ecfbcaea73a14b60208e634c368244b2"
     },
     {
       "name": "saas-economics-efficiency-metrics",
@@ -635,8 +635,8 @@
       "theme": "pm-artifacts",
       "description": "Create a six-frame storyboard that shows a user's journey from problem to solution. Use when you need a fast narrative for alignment, concept reviews, or demos.",
       "files": 4,
-      "bytes": 21362,
-      "sha256": "0f13417d54010415c60473d360f2e421bd696be36e5de28add1ad4dc42249581"
+      "bytes": 21318,
+      "sha256": "6cfd28f1976f0597db3f1776ba676ab43fb3f0d7eed3a2a6eb06c427b5d85611"
     },
     {
       "name": "swot-analysis",
@@ -653,8 +653,8 @@
       "theme": "market-intelligence",
       "description": "Calculate TAM, SAM, and SOM with explicit assumptions, methods, and caveats. Use when sizing a market for a product idea, business case, or executive review.",
       "files": 4,
-      "bytes": 28005,
-      "sha256": "120b9c1eec70a65390c9e193b356f1796dda3930552e7958ce8db05408d47f24"
+      "bytes": 27977,
+      "sha256": "bc8845026047022a3ae705cbc2e680fbf305c2e909fa63546ef9a3218fd08095"
     },
     {
       "name": "user-story",
@@ -662,8 +662,8 @@
       "theme": "pm-artifacts",
       "description": "Create user stories with Mike Cohn format and Gherkin acceptance criteria. Use when turning user needs into development-ready work with clear outcomes and testable conditions.",
       "files": 5,
-      "bytes": 23311,
-      "sha256": "90eff169052090553be7a5b39681d1a02ef458fc4e3bf36bd58a564390fbbefe"
+      "bytes": 23247,
+      "sha256": "0d084690087ed2a64c9b5a2d1de831fb8ff90fd4db415965bbe281a5a7ca1a17"
     },
     {
       "name": "user-story-mapping",
@@ -671,8 +671,8 @@
       "theme": "pm-artifacts",
       "description": "Create a user story map that lays out activities, steps, tasks, and release slices. Use when planning a workflow, backlog, or MVP around the user journey.",
       "files": 4,
-      "bytes": 18024,
-      "sha256": "fea5a00e9d1e6e56306a8b23a689c5002fff2237304a9a7f24db04d40defcc52"
+      "bytes": 17984,
+      "sha256": "025bec36150040a134e3a549804bafa7bb0fe2c9d08067ed9ea2f2d1013e90a3"
     },
     {
       "name": "user-story-mapping-workshop",
@@ -680,8 +680,8 @@
       "theme": "workshops-facilitation",
       "description": "Run a user story mapping workshop with adaptive questions and a structured map output. Use when you need backbone activities, tasks, and release slices for a workflow.",
       "files": 2,
-      "bytes": 18374,
-      "sha256": "e38557487dbe7f84a3b10fd2ac5c4f14ab4e3c65c1d5bba15e2e1a9b9ec4c8fb"
+      "bytes": 18326,
+      "sha256": "c7910c8a91fa4b87e49a0fdea0325e52ba94ee619b85ae406d18c00e8c75c54d"
     },
     {
       "name": "user-story-splitting",
@@ -689,8 +689,8 @@
       "theme": "pm-artifacts",
       "description": "Break a large story or epic into smaller deliverable stories using proven split patterns. Use when backlog items are too big for estimation, sequencing, or independent release.",
       "files": 4,
-      "bytes": 21885,
-      "sha256": "c223289d11e29dac37bd972940a55a775fab15d092ff212fd2f63deee49fc28f"
+      "bytes": 21853,
+      "sha256": "0194ebb1b16d0b5ce4799b332a787e599731d1fccc4cf1581241e5d92a7473db"
     },
     {
       "name": "voice-of-customer-miner",
@@ -707,8 +707,8 @@
       "theme": "career-leadership",
       "description": "Guide the transition to VP or CPO across preparing, interviewing, landing, and recalibrating. Use when executive product scope is changing fast.",
       "files": 2,
-      "bytes": 28496,
-      "sha256": "96fd81022eec5680d9f007815ecbbd571523da3a4e86cdf197ee971f5584cf1f"
+      "bytes": 28472,
+      "sha256": "0748353ed248aab75d2d5735d3d5398d61d3859438409b3289515c72a45c4fcc"
     },
     {
       "name": "workshop-facilitation",

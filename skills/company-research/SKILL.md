@@ -384,9 +384,9 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/positioning-statement/SKILL.md` — Use company research to understand competitive positioning
-- `skills/pestel-analysis/SKILL.md` — Company research informs market context
-- `skills/proto-persona/SKILL.md` — Executive quotes may reveal target personas
+- `../positioning-statement/SKILL.md` — Use company research to understand competitive positioning
+- `../pestel-analysis/SKILL.md` — Company research informs market context
+- `../proto-persona/SKILL.md` — Executive quotes may reveal target personas
 
 ### External Frameworks
 - Competitive intelligence frameworks
@@ -401,4 +401,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/positioning-statement/SKILL.md`, `skills/pestel-analysis/SKILL.md`
+**Dependencies:** References `../positioning-statement/SKILL.md`, `../pestel-analysis/SKILL.md`

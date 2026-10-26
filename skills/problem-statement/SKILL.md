@@ -85,8 +85,8 @@ Use `template.md` for the full fill-in structure.
 ### Step 1: Gather User Context
 Before drafting, ensure you have:
 - **User interviews or research:** Direct quotes, observed behaviors, pain points
-- **Jobs-to-be-Done insights:** What users are "hiring" your product to do (reference `skills/jobs-to-be-done/SKILL.md`)
-- **Persona clarity:** Who specifically experiences this problem (reference `skills/proto-persona/SKILL.md`)
+- **Jobs-to-be-Done insights:** What users are "hiring" your product to do (reference `../jobs-to-be-done/SKILL.md`)
+- **Persona clarity:** Who specifically experiences this problem (reference `../proto-persona/SKILL.md`)
 - **Constraints data:** Geographic, tech, time, demographic limitations
 
 **If missing context:** Run discovery interviews, contextual inquiries, or user shadowing. Don't fabricate problems.
@@ -243,10 +243,10 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/jobs-to-be-done/SKILL.md` — Informs the "Trying to" and "But" sections
-- `skills/proto-persona/SKILL.md` — Defines the "I am" persona
-- `skills/positioning-statement/SKILL.md` — Problem statement informs positioning
-- `skills/user-story/SKILL.md` — Problem statement guides story prioritization
+- `../jobs-to-be-done/SKILL.md` — Informs the "Trying to" and "But" sections
+- `../proto-persona/SKILL.md` — Defines the "I am" persona
+- `../positioning-statement/SKILL.md` — Problem statement informs positioning
+- `../user-story/SKILL.md` — Problem statement guides story prioritization
 
 ### External Frameworks
 - Clayton Christensen, *Jobs to Be Done* — Origin of outcome-focused problem framing
@@ -259,4 +259,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/jobs-to-be-done/SKILL.md`, `skills/proto-persona/SKILL.md`
+**Dependencies:** References `../jobs-to-be-done/SKILL.md`, `../proto-persona/SKILL.md`

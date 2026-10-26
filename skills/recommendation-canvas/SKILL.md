@@ -82,8 +82,8 @@ Use `template.md` for the full fill-in structure.
 
 ### Step 1: Gather Context
 Before filling out the canvas, ensure you have:
-- **Problem understanding:** User research, pain points (reference `skills/problem-statement/SKILL.md`)
-- **Persona clarity:** Who experiences the problem? (reference `skills/proto-persona/SKILL.md`)
+- **Problem understanding:** User research, pain points (reference `../problem-statement/SKILL.md`)
+- **Persona clarity:** Who experiences the problem? (reference `../proto-persona/SKILL.md`)
 - **Market context:** Competitive landscape, category positioning
 - **Business constraints:** Budget, timelines, strategic priorities
 
@@ -131,7 +131,7 @@ What's in it for the customer? Use this format:
 ---
 
 ### Step 3: Frame the Problem
-Use the problem framing narrative from `skills/problem-statement/SKILL.md`:
+Use the problem framing narrative from `../problem-statement/SKILL.md`:
 
 ```markdown
 ## The Problem Statement
@@ -151,7 +151,7 @@ Use the problem framing narrative from `skills/problem-statement/SKILL.md`:
 ### Step 4: Define the Solution Hypothesis
 
 #### Hypothesis Statement
-Use the epic hypothesis format from `skills/epic-hypothesis/SKILL.md`:
+Use the epic hypothesis format from `../epic-hypothesis/SKILL.md`:
 
 ```markdown
 ## Solution Hypothesis
@@ -199,7 +199,7 @@ Define validation measures:
 ---
 
 ### Step 5: Define Positioning
-Use the positioning statement format from `skills/positioning-statement/SKILL.md`:
+Use the positioning statement format from `../positioning-statement/SKILL.md`:
 
 ```markdown
 ## Positioning Statement
@@ -371,11 +371,11 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/problem-statement/SKILL.md` — Informs the problem narrative
-- `skills/epic-hypothesis/SKILL.md` — Informs the solution hypothesis structure
-- `skills/positioning-statement/SKILL.md` — Informs positioning section
-- `skills/proto-persona/SKILL.md` — Defines target persona
-- `skills/jobs-to-be-done/SKILL.md` — Informs customer outcomes
+- `../problem-statement/SKILL.md` — Informs the problem narrative
+- `../epic-hypothesis/SKILL.md` — Informs the solution hypothesis structure
+- `../positioning-statement/SKILL.md` — Informs positioning section
+- `../proto-persona/SKILL.md` — Defines target persona
+- `../jobs-to-be-done/SKILL.md` — Informs customer outcomes
 
 ### External Frameworks
 - Osterwalder's Value Proposition Canvas — Influences problem/solution framing
@@ -391,4 +391,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/problem-statement/SKILL.md`, `skills/epic-hypothesis/SKILL.md`, `skills/positioning-statement/SKILL.md`, `skills/proto-persona/SKILL.md`, `skills/jobs-to-be-done/SKILL.md`
+**Dependencies:** References `../problem-statement/SKILL.md`, `../epic-hypothesis/SKILL.md`, `../positioning-statement/SKILL.md`, `../proto-persona/SKILL.md`, `../jobs-to-be-done/SKILL.md`

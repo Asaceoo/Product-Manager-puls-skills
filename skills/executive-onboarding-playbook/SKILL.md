@@ -176,7 +176,7 @@ Not a full transformation plan — three to five specific changes that would mos
 Don't keep it private. Bring your key findings to your boss and your direct reports: "Here's what I've learned about how this organization works, where it's strong, and where it needs to develop. Here's my initial plan for the next quarter." This builds trust through transparency and surfaces disagreements before you act on them.
 
 **Step 2: Run your first Cascading Context Map**
-Use the organizational and strategic clarity you've built to create direction for your team — even if company strategy above you is still ambiguous. (See `skills/altitude-horizon-framework/SKILL.md` for the full technique.) Your team has been waiting for context. Give them your best current translation and commit to refining it.
+Use the organizational and strategic clarity you've built to create direction for your team — even if company strategy above you is still ambiguous. (See `../altitude-horizon-framework/SKILL.md` for the full technique.) Your team has been waiting for context. Give them your best current translation and commit to refining it.
 
 **Step 3: Start the people conversations**
 Now that you have evidence, have the hard conversations:
@@ -185,7 +185,7 @@ Now that you have evidence, have the hard conversations:
 - Exits: begin with honesty and care, not avoidance
 
 **Step 4: Build your executive alliance deliberately**
-By Month 3 you know who the key players are and what they need from product. Start the weekly alignment practice: regular touchpoints with CRO, CFO, and CMO to ensure they understand product's priorities and the trade-offs being made. Don't wait for them to be surprised. (See `skills/vp-cpo-readiness-advisor/SKILL.md` for the Alliance Building branch.)
+By Month 3 you know who the key players are and what they need from product. Start the weekly alignment practice: regular touchpoints with CRO, CFO, and CMO to ensure they understand product's priorities and the trade-offs being made. Don't wait for them to be surprised. (See `../vp-cpo-readiness-advisor/SKILL.md` for the Alliance Building branch.)
 
 **Deliverable:** A shared organizational assessment, an initial strategic direction, and three to five active changes underway with clear rationale.
 
@@ -279,9 +279,9 @@ See `examples/sample.md` for a full 30-60-90 diagnostic walkthrough with concret
 ## References
 
 ### Related Skills
-- `skills/vp-cpo-readiness-advisor/SKILL.md` — Interactive advisor for all four VP/CPO transition situations; the Alliance Building branch covers ongoing executive relationship management
-- `skills/altitude-horizon-framework/SKILL.md` — The Cascading Context Map technique referenced in Phase 3
-- `skills/director-readiness-advisor/SKILL.md` — The Director-level transition equivalent; relevant if you're coaching a new Director through their own onboarding
+- `../vp-cpo-readiness-advisor/SKILL.md` — Interactive advisor for all four VP/CPO transition situations; the Alliance Building branch covers ongoing executive relationship management
+- `../altitude-horizon-framework/SKILL.md` — The Cascading Context Map technique referenced in Phase 3
+- `../director-readiness-advisor/SKILL.md` — The Director-level transition equivalent; relevant if you're coaching a new Director through their own onboarding
 
 ### Source Material
 - *The Product Porch*, Episode 43: [Becoming a VP & CPO: Leading Product at the Executive Level (Part 2)](https://the-product-porch-43ca35c0.simplecast.com/episodes/becoming-a-vp-cpo-leading-product-at-the-executive-level-part-2) — David Nash, Todd Blaquiere, Ryan Cantwell, Joe Ghali

@@ -86,7 +86,7 @@ Before creating a proto-persona, collect:
 - **Analytics:** Usage data, demographics, behavioral patterns
 - **Market data:** Industry reports, competitor user bases
 - **Stakeholder insights:** Sales/support/CS teams who interact with users
-- **Product context:** What problem are you solving? (reference `skills/problem-statement/SKILL.md`)
+- **Product context:** What problem are you solving? (reference `../problem-statement/SKILL.md`)
 
 **If missing context:** Don't fabricate—note gaps and plan research to fill them.
 
@@ -160,7 +160,7 @@ Use real or representative quotes that reveal how they think and speak.
 ### Step 4: Document Their Context
 
 #### Pains
-What problems or frustrations does this persona experience? (Reference `skills/jobs-to-be-done/SKILL.md` for structure.)
+What problems or frustrations does this persona experience? (Reference `../jobs-to-be-done/SKILL.md` for structure.)
 
 ```markdown
 ### Pains
@@ -322,10 +322,10 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/problem-statement/SKILL.md` — Persona informs the "I am" section
-- `skills/jobs-to-be-done/SKILL.md` — JTBD informs persona pains/goals
-- `skills/positioning-statement/SKILL.md` — Persona is the "For [target]"
-- `skills/user-story/SKILL.md` — Stories use "As a [persona]"
+- `../problem-statement/SKILL.md` — Persona informs the "I am" section
+- `../jobs-to-be-done/SKILL.md` — JTBD informs persona pains/goals
+- `../positioning-statement/SKILL.md` — Persona is the "For [target]"
+- `../user-story/SKILL.md` — Stories use "As a [persona]"
 
 ### External Frameworks
 - Alan Cooper, *The Inmates Are Running the Asylum* (1998) — Origin of persona concept
@@ -341,5 +341,5 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/jobs-to-be-done/SKILL.md`, `skills/problem-statement/SKILL.md`
-**Used by:** `skills/positioning-statement/SKILL.md`, `skills/user-story/SKILL.md`, `skills/problem-statement/SKILL.md`
+**Dependencies:** References `../jobs-to-be-done/SKILL.md`, `../problem-statement/SKILL.md`
+**Used by:** `../positioning-statement/SKILL.md`, `../user-story/SKILL.md`, `../problem-statement/SKILL.md`

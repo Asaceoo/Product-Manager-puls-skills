@@ -71,7 +71,7 @@ A user story combines:
 
 ### When NOT to Use This
 - For pure technical debt or refactoring (use engineering tasks instead)
-- When stories are too large (split first—see `skills/user-story-splitting/SKILL.md`)
+- When stories are too large (split first—see `../user-story-splitting/SKILL.md`)
 - Before understanding the user problem (write a problem statement first)
 
 ---
@@ -80,8 +80,8 @@ A user story combines:
 
 ### Step 1: Gather Context
 Before writing a story, ensure you have:
-- **User persona:** Who is this for? (reference `skills/proto-persona/SKILL.md`)
-- **Problem understanding:** What need does this address? (reference `skills/problem-statement/SKILL.md`)
+- **User persona:** Who is this for? (reference `../proto-persona/SKILL.md`)
+- **Problem understanding:** What need does this address? (reference `../problem-statement/SKILL.md`)
 - **Desired outcome:** What does success look like?
 - **Constraints:** Technical, time, or scope limitations
 
@@ -151,7 +151,7 @@ Fill in the template:
 - **Alignment:** Does "When" match "I want to"? Does "Then" match "so that"?
 
 **Red flags:**
-- **Multiple Whens/Thens:** Sign of scope creep—split the story (reference `skills/user-story-splitting/SKILL.md`)
+- **Multiple Whens/Thens:** Sign of scope creep—split the story (reference `../user-story-splitting/SKILL.md`)
 - **Vague Thens:** "Then I see improved performance" (unmeasurable—make it specific)
 
 ---
@@ -175,7 +175,7 @@ Write a short, memorable summary that captures the story's value:
 
 - **Read aloud to the team:** Does everyone understand who, what, why?
 - **Test acceptance criteria:** Can QA write test cases from this?
-- **Check for splitting:** If the story feels too big, use `skills/user-story-splitting/SKILL.md`
+- **Check for splitting:** If the story feels too big, use `../user-story-splitting/SKILL.md`
 - **Ensure testability:** Can you prove "Then" happened?
 
 ---
@@ -222,7 +222,7 @@ Mini example excerpt:
 
 **Consequence:** No persona clarity. Different users have different needs.
 
-**Fix:** Use specific personas: "As a trial user," "As a paid subscriber," "As an admin," etc. (reference `skills/proto-persona/SKILL.md`)
+**Fix:** Use specific personas: "As a trial user," "As a paid subscriber," "As an admin," etc. (reference `../proto-persona/SKILL.md`)
 
 ---
 
@@ -240,7 +240,7 @@ Mini example excerpt:
 
 **Consequence:** Story is too big. Likely multiple features bundled together.
 
-**Fix:** Split the story using `skills/user-story-splitting/SKILL.md`. Each When/Then pair should be its own story (or at least evaluated for splitting).
+**Fix:** Split the story using `../user-story-splitting/SKILL.md`. Each When/Then pair should be its own story (or at least evaluated for splitting).
 
 ---
 
@@ -256,13 +256,13 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/user-story-splitting/SKILL.md` — How to break large stories into smaller ones
-- `skills/proto-persona/SKILL.md` — Defines the "As a [persona]" section
-- `skills/problem-statement/SKILL.md` — Stories should address validated problems
-- `skills/epic-hypothesis/SKILL.md` — Epics decompose into user stories
+- `../user-story-splitting/SKILL.md` — How to break large stories into smaller ones
+- `../proto-persona/SKILL.md` — Defines the "As a [persona]" section
+- `../problem-statement/SKILL.md` — Stories should address validated problems
+- `../epic-hypothesis/SKILL.md` — Epics decompose into user stories
 
 ### Optional Helpers
-- `skills/user-story/scripts/user-story-template.py` — Deterministic Markdown stub generator (no network access)
+- `../user-story/scripts/user-story-template.py` — Deterministic Markdown stub generator (no network access)
 
 ### External Frameworks
 - Mike Cohn, *User Stories Applied* (2004) — Origin of the "As a / I want / so that" format
@@ -275,5 +275,5 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/proto-persona/SKILL.md`, `skills/problem-statement/SKILL.md`
-**Used by:** `skills/user-story-splitting/SKILL.md`, `skills/epic-hypothesis/SKILL.md`
+**Dependencies:** References `../proto-persona/SKILL.md`, `../problem-statement/SKILL.md`
+**Used by:** `../user-story-splitting/SKILL.md`, `../epic-hypothesis/SKILL.md`

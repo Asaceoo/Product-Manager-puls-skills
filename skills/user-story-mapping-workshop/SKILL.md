@@ -106,7 +106,7 @@ This interactive skill asks **up to 5 adaptive questions**, offering **3-4 enume
 
 Use `template.md` for the facilitation agenda and outputs checklist.
 
-Interaction pattern: Pair with `skills/workshop-facilitation/SKILL.md` when you want a one-step-at-a-time flow with numbered recommendations at decision points and quick-select options for regular questions. If the user asks for a single-shot output, skip the multi-turn facilitation.
+Interaction pattern: Pair with `../workshop-facilitation/SKILL.md` when you want a one-step-at-a-time flow with numbered recommendations at decision points and quick-select options for regular questions. If the user asks for a single-shot output, skip the multi-turn facilitation.
 
 ---
 
@@ -349,7 +349,7 @@ After completing the flow, the agent outputs:
 
 ## Next Steps
 
-1. **Refine stories:** Use `skills/user-story/SKILL.md` to write detailed stories with acceptance criteria
+1. **Refine stories:** Use `../user-story/SKILL.md` to write detailed stories with acceptance criteria
 2. **Estimate effort:** Score stories (story points, t-shirt sizes)
 3. **Validate with stakeholders:** Walk through map left-to-right, confirm priorities
 4. **Display map:** Print/post as information radiator for ongoing reference
@@ -475,19 +475,19 @@ UI Layer → API Layer → Database Layer → Deployment
 ## References
 
 ### Related Skills
-- `skills/user-story-mapping/SKILL.md` — Component skill with story mapping template
-- `skills/user-story/SKILL.md` — Converts map tasks into detailed user stories
-- `skills/proto-persona/SKILL.md` — Defines users for mapping
-- `skills/jobs-to-be-done/SKILL.md` — Informs backbone activities
+- `../user-story-mapping/SKILL.md` — Component skill with story mapping template
+- `../user-story/SKILL.md` — Converts map tasks into detailed user stories
+- `../proto-persona/SKILL.md` — Defines users for mapping
+- `../jobs-to-be-done/SKILL.md` — Informs backbone activities
 
 ### External Frameworks
 - Jeff Patton, *User Story Mapping* (2014) — Origin of story mapping framework
 - Jeff Patton, "The New User Story Backlog is a Map" (blog) — Explains backbone concept
 
 ### Provenance
-- Derived from `skills/user-story/SKILL.md`, `skills/user-story-splitting/SKILL.md`, and `skills/user-story-mapping/SKILL.md`.
+- Derived from `../user-story/SKILL.md`, `../user-story-splitting/SKILL.md`, and `../user-story-mapping/SKILL.md`.
 
 ---
 
 **Skill type:** Interactive
-**Dependencies:** Uses `skills/user-story-mapping/SKILL.md`, `skills/user-story/SKILL.md`, `skills/proto-persona/SKILL.md`
+**Dependencies:** Uses `../user-story-mapping/SKILL.md`, `../user-story/SKILL.md`, `../proto-persona/SKILL.md`

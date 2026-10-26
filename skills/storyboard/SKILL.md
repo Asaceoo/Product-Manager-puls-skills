@@ -77,9 +77,9 @@ Use `template.md` for the full fill-in structure.
 
 ### Step 1: Gather Context
 Before creating the storyboard, ensure you have:
-- **Persona clarity:** Who is the main character? (reference `skills/proto-persona/SKILL.md`)
-- **Problem understanding:** What challenge do they face? (reference `skills/problem-statement/SKILL.md`)
-- **Solution definition:** What product/feature will help? (reference `skills/positioning-statement/SKILL.md`)
+- **Persona clarity:** Who is the main character? (reference `../proto-persona/SKILL.md`)
+- **Problem understanding:** What challenge do they face? (reference `../problem-statement/SKILL.md`)
+- **Solution definition:** What product/feature will help? (reference `../positioning-statement/SKILL.md`)
 - **Desired outcome:** What does success look like for the user?
 
 **If missing context:** Run discovery work first. Don't fabricate personas or problems.
@@ -249,10 +249,10 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/proto-persona/SKILL.md` — Defines the main character
-- `skills/problem-statement/SKILL.md` — Frames the problem for Frame 2-3
-- `skills/positioning-statement/SKILL.md` — Informs the solution introduction in Frame 4
-- `skills/jobs-to-be-done/SKILL.md` — Informs the desired outcome in Frame 6
+- `../proto-persona/SKILL.md` — Defines the main character
+- `../problem-statement/SKILL.md` — Frames the problem for Frame 2-3
+- `../positioning-statement/SKILL.md` — Informs the solution introduction in Frame 4
+- `../jobs-to-be-done/SKILL.md` — Informs the desired outcome in Frame 6
 
 ### External Frameworks
 - Joseph Campbell, *The Hero's Journey* (1949) — Classic narrative structure
@@ -268,4 +268,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/proto-persona/SKILL.md`, `skills/problem-statement/SKILL.md`, `skills/positioning-statement/SKILL.md`, `skills/jobs-to-be-done/SKILL.md`
+**Dependencies:** References `../proto-persona/SKILL.md`, `../problem-statement/SKILL.md`, `../positioning-statement/SKILL.md`, `../jobs-to-be-done/SKILL.md`

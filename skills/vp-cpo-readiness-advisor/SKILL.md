@@ -230,7 +230,7 @@ Choose a number to go deeper, or describe what you want to work on."
 
 "At VP/CPO level, you are interviewing the organization as much as it's interviewing you. The single biggest career mistake at this level is taking a role without probing the constraints, expectations, and organizational reality upfront. Here's the framework:
 
-1. **Run the five CEO interview questions before accepting** — These questions are in `skills/executive-onboarding-playbook/SKILL.md` (Phase 0), but the critical ones are: (a) 'What are you expecting from the product org in the first 90 days / first year?' — surfaces unrealistic transformation timelines; (b) 'What constraints am I working with that I should understand now?' — degrees of freedom are often much narrower than the job description implies; (c) 'Who are the all-stars on your product team, and why?' — reveals the CEO's talent lens and biases. They're often wrong, but it tells you what you're walking into.
+1. **Run the five CEO interview questions before accepting** — These questions are in `../executive-onboarding-playbook/SKILL.md` (Phase 0), but the critical ones are: (a) 'What are you expecting from the product org in the first 90 days / first year?' — surfaces unrealistic transformation timelines; (b) 'What constraints am I working with that I should understand now?' — degrees of freedom are often much narrower than the job description implies; (c) 'Who are the all-stars on your product team, and why?' — reveals the CEO's talent lens and biases. They're often wrong, but it tells you what you're walking into.
 
 2. **Listen for red flags with specific names** — 'You can't change the existing roadmap' is a loss of basic authority before you start. 'We need you to transform the culture in two quarters' sets you up to fail. 'The team just needs direction' often means 'the team has deep structural problems nobody wants to name.' If you hear these, probe further or walk away.
 
@@ -279,7 +279,7 @@ Choose a number to go deeper, or ask about something specific in your evaluation
 
 2. **Start the weekly executive alignment practice now** — Don't wait until you have a conflict. Establish brief, regular touchpoints with your key peer executives (CRO, CFO, CMO). The agenda: 'Here's what product is focused on this month. Here's the trade-off I'm navigating. Here's what I need from you.' Weekly builds understanding; quarterly leads to surprises.
 
-3. **Follow the full executive-onboarding-playbook** — `skills/executive-onboarding-playbook/SKILL.md` has the complete diagnostic process for Months 1–3. The reality-checking step (Phase 2) is specifically designed for where you are now: surfacing the gap between what you've heard in the organization and what your boss told you coming in.
+3. **Follow the full executive-onboarding-playbook** — `../executive-onboarding-playbook/SKILL.md` has the complete diagnostic process for Months 1–3. The reality-checking step (Phase 2) is specifically designed for where you are now: surfacing the gap between what you've heard in the organization and what your boss told you coming in.
 
 4. **Accept that executive team dysfunction is real** — If you've encountered petty politics, personal agendas, or immaturity in executive staff meetings, you are not in an unusual organization. This is how almost every executive team operates. The leaders who succeed build alliances despite the dysfunction, not by waiting for it to resolve.
 
@@ -407,10 +407,10 @@ See `examples/conversation-flow.md` for a full interaction covering the evaluati
 ## References
 
 ### Related Skills
-- `skills/executive-onboarding-playbook/SKILL.md` — The 30-60-90 diagnostic playbook; essential reading for Branch 3 (Newly Landed) and Branch 2 (Evaluating)
-- `skills/altitude-horizon-framework/SKILL.md` — The Director-level mental model; foundational context for understanding where the VP/CPO transition begins
-- `skills/director-readiness-advisor/SKILL.md` — The Director-level transition equivalent; useful if you're coaching a Director report through their own transition
-- `skills/workshop-facilitation/SKILL.md` — Facilitation protocol for this interactive skill
+- `../executive-onboarding-playbook/SKILL.md` — The 30-60-90 diagnostic playbook; essential reading for Branch 3 (Newly Landed) and Branch 2 (Evaluating)
+- `../altitude-horizon-framework/SKILL.md` — The Director-level mental model; foundational context for understanding where the VP/CPO transition begins
+- `../director-readiness-advisor/SKILL.md` — The Director-level transition equivalent; useful if you're coaching a Director report through their own transition
+- `../workshop-facilitation/SKILL.md` — Facilitation protocol for this interactive skill
 
 ### Source Material
 - *The Product Porch*, Episode 43: [Becoming a VP & CPO: Leading Product at the Executive Level (Part 2)](https://the-product-porch-43ca35c0.simplecast.com/episodes/becoming-a-vp-cpo-leading-product-at-the-executive-level-part-2) — David Nash, Todd Blaquiere, Ryan Cantwell, Joe Ghali

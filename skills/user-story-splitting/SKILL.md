@@ -76,7 +76,7 @@ Based on Richard Lawrence and Peter Green's "Humanizing Work Guide to Splitting 
 ## Application
 
 ### Step 1: Identify the Original Story
-Start with the story/epic/feature that needs splitting. Ensure it's written using the user story format (reference `skills/user-story/SKILL.md` or `skills/epic-hypothesis/SKILL.md`).
+Start with the story/epic/feature that needs splitting. Ensure it's written using the user story format (reference `../user-story/SKILL.md` or `../epic-hypothesis/SKILL.md`).
 
 ```markdown
 ### Original Story:
@@ -197,7 +197,7 @@ Work through the 8 splitting patterns in order. Stop when you find one that appl
 
 ### Step 3: Write the Split Stories
 
-For each split, write a complete user story using the format from `skills/user-story/SKILL.md`:
+For each split, write a complete user story using the format from `../user-story/SKILL.md`:
 
 ```markdown
 ### Split 1 using [Pattern Name]:
@@ -300,9 +300,9 @@ As a team admin, I want to manage team members so that I can control access.
 ## References
 
 ### Related Skills
-- `skills/user-story/SKILL.md` — Format for writing the split stories
-- `skills/epic-hypothesis/SKILL.md` — Epics often need splitting before becoming stories
-- `skills/jobs-to-be-done/SKILL.md` — Helps identify meaningful splits along user jobs
+- `../user-story/SKILL.md` — Format for writing the split stories
+- `../epic-hypothesis/SKILL.md` — Epics often need splitting before becoming stories
+- `../jobs-to-be-done/SKILL.md` — Helps identify meaningful splits along user jobs
 
 ### External Frameworks
 - Richard Lawrence & Peter Green, *The Humanizing Work Guide to Splitting User Stories* — Origin of the 8 splitting patterns
@@ -318,5 +318,5 @@ As a team admin, I want to manage team members so that I can control access.
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/user-story/SKILL.md`, `skills/epic-hypothesis/SKILL.md`
+**Dependencies:** References `../user-story/SKILL.md`, `../epic-hypothesis/SKILL.md`
 **Applies to:** User stories, epics, and any work that's too large to complete in a single sprint

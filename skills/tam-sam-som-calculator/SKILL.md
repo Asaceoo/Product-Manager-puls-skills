@@ -427,15 +427,15 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/positioning-statement/SKILL.md` — TAM/SAM/SOM informs "For [target]" segment size
-- `skills/problem-statement/SKILL.md` — Problem space defines the market
-- `skills/recommendation-canvas/SKILL.md` — Market sizing informs business outcome projections
-- `skills/autonomous-investigation/SKILL.md` — The protocol governing Mode 3 (research mode)
-- `skills/intelligence-collection-disciplines/SKILL.md` — GEOINT/DEMOINT sources for the bottom-up recipe; FININT for capture rates
-- `skills/market-landscape-scan/SKILL.md` — Maps the segments worth sizing (structure before magnitude)
+- `../positioning-statement/SKILL.md` — TAM/SAM/SOM informs "For [target]" segment size
+- `../problem-statement/SKILL.md` — Problem space defines the market
+- `../recommendation-canvas/SKILL.md` — Market sizing informs business outcome projections
+- `../autonomous-investigation/SKILL.md` — The protocol governing Mode 3 (research mode)
+- `../intelligence-collection-disciplines/SKILL.md` — GEOINT/DEMOINT sources for the bottom-up recipe; FININT for capture rates
+- `../market-landscape-scan/SKILL.md` — Maps the segments worth sizing (structure before magnitude)
 
 ### Optional Helpers
-- `skills/tam-sam-som-calculator/scripts/market-sizing.py` — Deterministic TAM/SAM/SOM calculator (no network access)
+- `../tam-sam-som-calculator/scripts/market-sizing.py` — Deterministic TAM/SAM/SOM calculator (no network access)
 
 ### External Frameworks
 - Steve Blank, *The Four Steps to the Epiphany* (2005) — Market sizing for startups

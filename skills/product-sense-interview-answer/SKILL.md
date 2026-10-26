@@ -254,9 +254,9 @@ This kind of answer can sound energetic in the moment, but it signals weak PM ju
 
 - [`template.md`](template.md)
 - [`examples/improve-youtube.md`](examples/improve-youtube.md)
-- [`skills/problem-statement/SKILL.md`](../problem-statement/SKILL.md)
-- [`skills/proto-persona/SKILL.md`](../proto-persona/SKILL.md)
-- [`skills/customer-journey-map/SKILL.md`](../customer-journey-map/SKILL.md)
-- [`skills/opportunity-solution-tree/SKILL.md`](../opportunity-solution-tree/SKILL.md)
+- [`../problem-statement/SKILL.md`](../problem-statement/SKILL.md)
+- [`../proto-persona/SKILL.md`](../proto-persona/SKILL.md)
+- [`../customer-journey-map/SKILL.md`](../customer-journey-map/SKILL.md)
+- [`../opportunity-solution-tree/SKILL.md`](../opportunity-solution-tree/SKILL.md)
 - Lewis C. Lin, *Decode and Conquer*
 - Gayle Laakmann McDowell and Jackie Bavaro, *Cracking the PM Interview*

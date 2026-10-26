@@ -251,7 +251,7 @@ See `examples/sample.md` for a full worked scenario with a completed Cascading C
 ## References
 
 ### Related Skills
-- `skills/director-readiness-advisor/SKILL.md` — Interactive advisor that uses this framework to diagnose and coach your specific transition situation
+- `../director-readiness-advisor/SKILL.md` — Interactive advisor that uses this framework to diagnose and coach your specific transition situation
 
 ### Source Material
 - *The Product Porch*, Episode 42: [From Product Manager to Director: How to Make the Shift (Part 1)](https://the-product-porch-43ca35c0.simplecast.com/episodes/from-product-manager-to-director-how-to-make-the-shift-part-1) — Todd Blaquiere, Ryan Cantwell, Joe Ghali (January 2026)

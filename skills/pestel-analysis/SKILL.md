@@ -374,9 +374,9 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/recommendation-canvas/SKILL.md` — PESTEL factors inform risk assessment in canvas
-- `skills/positioning-statement/SKILL.md` — PESTEL insights shape competitive positioning
-- `skills/problem-statement/SKILL.md` — Social/economic factors influence customer problems
+- `../recommendation-canvas/SKILL.md` — PESTEL factors inform risk assessment in canvas
+- `../positioning-statement/SKILL.md` — PESTEL insights shape competitive positioning
+- `../problem-statement/SKILL.md` — Social/economic factors influence customer problems
 
 ### External Frameworks
 - Francis Joseph Aguilar, *Scanning the Business Environment* (1967) — Origin of PEST analysis
@@ -392,4 +392,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/recommendation-canvas/SKILL.md`, `skills/positioning-statement/SKILL.md`
+**Dependencies:** References `../recommendation-canvas/SKILL.md`, `../positioning-statement/SKILL.md`

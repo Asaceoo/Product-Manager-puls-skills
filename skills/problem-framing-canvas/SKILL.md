@@ -387,9 +387,9 @@ After completing the flow, the agent outputs:
 
 ## Next Steps
 
-1. **Validate with users:** Use `skills/discovery-interview-prep/SKILL.md` to test reframed problem with customers
-2. **Generate solutions:** Use `skills/opportunity-solution-tree/SKILL.md` to explore solution space
-3. **Create problem statement:** Use `skills/problem-statement/SKILL.md` to formalize for PRD/roadmap
+1. **Validate with users:** Use `../discovery-interview-prep/SKILL.md` to test reframed problem with customers
+2. **Generate solutions:** Use `../opportunity-solution-tree/SKILL.md` to explore solution space
+3. **Create problem statement:** Use `../problem-statement/SKILL.md` to formalize for PRD/roadmap
 4. **Identify opportunities:** Use HMW statement to brainstorm solution ideas
 
 ---
@@ -461,9 +461,9 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/problem-statement/SKILL.md` — Converts reframed problem into formal problem statement
-- `skills/opportunity-solution-tree/SKILL.md` — Uses HMW statement to generate solution options
-- `skills/discovery-interview-prep/SKILL.md` — Validates reframed problem with customers
+- `../problem-statement/SKILL.md` — Converts reframed problem into formal problem statement
+- `../opportunity-solution-tree/SKILL.md` — Uses HMW statement to generate solution options
+- `../discovery-interview-prep/SKILL.md` — Validates reframed problem with customers
 
 ### External Frameworks
 - MITRE Innovation Toolkit, "Problem Framing Canvas v3" (2021) — Origin of canvas, equity-driven design thinking
@@ -472,4 +472,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Interactive
-**Dependencies:** Uses `skills/problem-statement/SKILL.md`
+**Dependencies:** Uses `../problem-statement/SKILL.md`

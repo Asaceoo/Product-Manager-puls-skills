@@ -126,7 +126,7 @@ This workflow orchestrates **5 phases** over **1-2 weeks**, using multiple compo
 
 **2. Review Customer Problems (Discovery Insights)**
 - **Source:** Discovery interviews, support tickets, NPS feedback, churn surveys
-- **Use:** Insights from `skills/discovery-process/SKILL.md` (if recently completed)
+- **Use:** Insights from `../discovery-process/SKILL.md` (if recently completed)
 - **Questions:**
   - What are the top 3-5 customer pain points?
   - Which problems affect the most customers?
@@ -165,7 +165,7 @@ This workflow orchestrates **5 phases** over **1-2 weeks**, using multiple compo
 ### Activities
 
 **1. Define Epic Hypotheses**
-- **Use:** `skills/epic-hypothesis/SKILL.md` (component)
+- **Use:** `../epic-hypothesis/SKILL.md` (component)
 - **For each initiative:** Write hypothesis statement
 - **Format:** "We believe that [building X] for [persona] will achieve [outcome] because [assumption]."
 - **Participants:** PM
@@ -225,7 +225,7 @@ Target: 5% → 20%
 ### Activities
 
 **1. Choose Prioritization Framework**
-- **Use:** `skills/prioritization-advisor/SKILL.md` (interactive)
+- **Use:** `../prioritization-advisor/SKILL.md` (interactive)
 - **Participants:** PM
 - **Duration:** 30 minutes
 - **Output:** Recommended framework (RICE, ICE, Value/Effort, etc.)
@@ -392,12 +392,12 @@ Week 1:
 │  └─ Review stakeholder requests
 │
 ├─ Day 3-4: Define Initiatives (Epics)
-│  ├─ skills/epic-hypothesis/SKILL.md (60 min per epic)
+│  ├─ ../epic-hypothesis/SKILL.md (60 min per epic)
 │  ├─ Estimate effort (90 min)
 │  └─ Map to business outcomes
 │
 ├─ Day 5: Prioritize Initiatives
-│  ├─ skills/prioritization-advisor/SKILL.md (30 min)
+│  ├─ ../prioritization-advisor/SKILL.md (30 min)
 │  ├─ Score epics (120 min)
 │  └─ Adjust for strategic fit
 │
@@ -485,10 +485,10 @@ Later: Mobile workflows (DAU lift)
 ### Related Skills (Orchestrated by This Workflow)
 
 **Phase 2:**
-- `skills/epic-hypothesis/SKILL.md` (component)
+- `../epic-hypothesis/SKILL.md` (component)
 
 **Phase 3:**
-- `skills/prioritization-advisor/SKILL.md` (interactive)
+- `../prioritization-advisor/SKILL.md` (interactive)
 
 **Phase 4:**
 - (Dependencies mapped manually, no specific skill)
@@ -497,9 +497,9 @@ Later: Mobile workflows (DAU lift)
 - (Presentation created manually, no specific skill)
 
 **Optional/Related:**
-- `skills/product-strategy-session/SKILL.md` (workflow) — Run before roadmap planning to establish strategy
-- `skills/discovery-process/SKILL.md` (workflow) — Provides customer problem inputs for Phase 1
-- `skills/user-story-mapping-workshop/SKILL.md` (interactive) — For complex epics requiring release planning
+- `../product-strategy-session/SKILL.md` (workflow) — Run before roadmap planning to establish strategy
+- `../discovery-process/SKILL.md` (workflow) — Provides customer problem inputs for Phase 1
+- `../user-story-mapping-workshop/SKILL.md` (interactive) — For complex epics requiring release planning
 
 ### External Frameworks
 - Bruce McCarthy, *Product Roadmaps Relaunched* (2017) — Outcome-driven roadmaps
@@ -509,4 +509,4 @@ Later: Mobile workflows (DAU lift)
 ---
 
 **Skill type:** Workflow
-**Dependencies:** Orchestrates `skills/epic-hypothesis/SKILL.md`, `skills/prioritization-advisor/SKILL.md`, plus manual activities
+**Dependencies:** Orchestrates `../epic-hypothesis/SKILL.md`, `../prioritization-advisor/SKILL.md`, plus manual activities

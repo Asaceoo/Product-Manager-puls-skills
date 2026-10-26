@@ -82,7 +82,7 @@ Use `template.md` for the full fill-in structure.
 ### Step 1: Gather Context
 Before drafting, ensure you have:
 - **Target customer segment:** Demographics, behaviors, role (not just "SMBs" or "developers")
-- **Underserved need:** Pains, gains, jobs-to-be-done (reference `skills/jobs-to-be-done/SKILL.md` if needed)
+- **Underserved need:** Pains, gains, jobs-to-be-done (reference `../jobs-to-be-done/SKILL.md` if needed)
 - **Product category:** How buyers mentally file your solution (CRM, analytics platform, etc.)
 - **Competitive landscape:** Direct competitors AND substitute behaviors (e.g., "Excel" is often the real competitor)
 
@@ -218,10 +218,10 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/problem-statement/SKILL.md` — Defines the problem positioning addresses
-- `skills/jobs-to-be-done/SKILL.md` — Informs the "that need" statement
-- `skills/proto-persona/SKILL.md` — Defines the "For [target]" segment
-- `skills/press-release/SKILL.md` — Positioning informs press release messaging
+- `../problem-statement/SKILL.md` — Defines the problem positioning addresses
+- `../jobs-to-be-done/SKILL.md` — Informs the "that need" statement
+- `../proto-persona/SKILL.md` — Defines the "For [target]" segment
+- `../press-release/SKILL.md` — Positioning informs press release messaging
 
 ### External Frameworks
 - Geoffrey Moore, *Crossing the Chasm* (1991) — Origin of this framework
@@ -234,4 +234,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/problem-statement/SKILL.md`, `skills/jobs-to-be-done/SKILL.md`, `skills/proto-persona/SKILL.md`
+**Dependencies:** References `../problem-statement/SKILL.md`, `../jobs-to-be-done/SKILL.md`, `../proto-persona/SKILL.md`

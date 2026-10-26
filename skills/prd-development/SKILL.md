@@ -177,8 +177,8 @@ This workflow orchestrates **8 phases** over **2-4 days**, using multiple compon
 ### Activities
 
 **1. Write Problem Statement**
-- **Use:** `skills/problem-statement/SKILL.md` (component)
-- **Input:** Discovery insights from `skills/discovery-process/SKILL.md` or `skills/problem-framing-canvas/SKILL.md`
+- **Use:** `../problem-statement/SKILL.md` (component)
+- **Input:** Discovery insights from `../discovery-process/SKILL.md` or `../problem-framing-canvas/SKILL.md`
 - **Participants:** PM
 - **Duration:** 30 minutes
 - **Output:** Structured problem statement
@@ -207,9 +207,9 @@ Non-technical small business owners (solopreneurs, 1-10 employees) who sign up f
 
 **2. Add Supporting Context (Optional)**
 - **Customer journey map:** If problem spans multiple touchpoints
-- **Use:** `skills/customer-journey-mapping-workshop/SKILL.md` output
+- **Use:** `../customer-journey-mapping-workshop/SKILL.md` output
 - **Jobs-to-be-done:** If motivations are key
-- **Use:** `skills/jobs-to-be-done/SKILL.md` output
+- **Use:** `../jobs-to-be-done/SKILL.md` output
 
 ### Outputs from Phase 2
 
@@ -225,7 +225,7 @@ Non-technical small business owners (solopreneurs, 1-10 employees) who sign up f
 ### Activities
 
 **1. Document Personas**
-- **Use:** `skills/proto-persona/SKILL.md` (component) output
+- **Use:** `../proto-persona/SKILL.md` (component) output
 - **Participants:** PM
 - **Duration:** 30 minutes
 - **Format:** Include persona name, role, goals, pain points, behaviors
@@ -269,7 +269,7 @@ Non-technical small business owners (solopreneurs, 1-10 employees) who sign up f
   > "This initiative supports our Q1 OKR: Reduce churn from 15% to 8%. Improving onboarding activation directly impacts retention."
 
 **2. Size Market Opportunity (Optional)**
-- **Use:** `skills/tam-sam-som-calculator/SKILL.md` (interactive) output
+- **Use:** `../tam-sam-som-calculator/SKILL.md` (interactive) output
 - **When:** For major initiatives, new products, exec presentations
 - **Example:**
   > "TAM: 50M small businesses globally. SAM: 5M using SaaS tools. SOM: 500K solopreneurs in our target segments. Improving onboarding could unlock 30% of SAM (1.5M potential customers)."
@@ -331,7 +331,7 @@ We're building a **guided onboarding checklist** that walks new users through co
 - **Output:** Embedded in PRD or linked
 
 **3. Reference Story Map (Optional)**
-- **Use:** `skills/user-story-mapping-workshop/SKILL.md` output
+- **Use:** `../user-story-mapping-workshop/SKILL.md` output
 - **When:** For complex features with multiple release slices
 - **Output:** Link to story map
 
@@ -400,7 +400,7 @@ We're building a **guided onboarding checklist** that walks new users through co
 ### Activities
 
 **1. Write Epic Hypothesis**
-- **Use:** `skills/epic-hypothesis/SKILL.md` (component)
+- **Use:** `../epic-hypothesis/SKILL.md` (component)
 - **Participants:** PM
 - **Duration:** 30 minutes
 - **Output:** Epic hypothesis statement
@@ -409,13 +409,13 @@ We're building a **guided onboarding checklist** that walks new users through co
 > "We believe that adding a guided onboarding checklist for non-technical users will increase activation rate from 40% to 60% because users currently drop off due to lack of guidance. We'll measure success by activation rate 30 days post-launch."
 
 **2. Break Down Epic into User Stories**
-- **Use:** `skills/epic-breakdown-advisor/SKILL.md` (interactive - with Richard Lawrence's 9 patterns)
+- **Use:** `../epic-breakdown-advisor/SKILL.md` (interactive - with Richard Lawrence's 9 patterns)
 - **Participants:** PM, design, engineering
 - **Duration:** 90 minutes
 - **Output:** User stories split by patterns (workflow, CRUD, business rules, etc.)
 
 **3. Write User Stories**
-- **Use:** `skills/user-story/SKILL.md` (component)
+- **Use:** `../user-story/SKILL.md` (component)
 - **Participants:** PM
 - **Duration:** 30 minutes per story
 - **Format:** User story + acceptance criteria
@@ -541,20 +541,20 @@ As a new user, I want to receive positive feedback when I complete the checklist
 Day 1:
 ├─ Phase 1: Executive Summary (30 min)
 ├─ Phase 2: Problem Statement (60 min)
-│  └─ Use: skills/problem-statement/SKILL.md
+│  └─ Use: ../problem-statement/SKILL.md
 ├─ Phase 3: Target Users & Personas (30 min)
-│  └─ Use: skills/proto-persona/SKILL.md
+│  └─ Use: ../proto-persona/SKILL.md
 └─ Phase 4: Strategic Context (45 min)
-   └─ Use: skills/tam-sam-som-calculator/SKILL.md (optional)
+   └─ Use: ../tam-sam-som-calculator/SKILL.md (optional)
 
 Day 2:
 ├─ Phase 5: Solution Overview (60 min)
-│  └─ Use: skills/user-story-mapping-workshop/SKILL.md (optional)
+│  └─ Use: ../user-story-mapping-workshop/SKILL.md (optional)
 ├─ Phase 6: Success Metrics (30 min)
 └─ Phase 7: User Stories & Requirements (90-120 min)
-   ├─ Use: skills/epic-hypothesis/SKILL.md
-   ├─ Use: skills/epic-breakdown-advisor/SKILL.md
-   └─ Use: skills/user-story/SKILL.md
+   ├─ Use: ../epic-hypothesis/SKILL.md
+   ├─ Use: ../epic-breakdown-advisor/SKILL.md
+   └─ Use: ../user-story/SKILL.md
 
 Day 3:
 ├─ Phase 8: Out of Scope & Dependencies (30 min)
@@ -602,7 +602,7 @@ Mini example excerpt:
 
 **Consequence:** Team questions whether problem is real
 
-**Fix:** Use discovery insights from `skills/discovery-process/SKILL.md`; include customer quotes, analytics, support tickets
+**Fix:** Use discovery insights from `../discovery-process/SKILL.md`; include customer quotes, analytics, support tickets
 
 ---
 
@@ -638,24 +638,24 @@ Mini example excerpt:
 ### Related Skills (Orchestrated by This Workflow)
 
 **Phase 2:**
-- `skills/problem-statement/SKILL.md` (component)
-- `skills/problem-framing-canvas/SKILL.md` (interactive, for context)
-- `skills/customer-journey-mapping-workshop/SKILL.md` (interactive, optional)
+- `../problem-statement/SKILL.md` (component)
+- `../problem-framing-canvas/SKILL.md` (interactive, for context)
+- `../customer-journey-mapping-workshop/SKILL.md` (interactive, optional)
 
 **Phase 3:**
-- `skills/proto-persona/SKILL.md` (component)
-- `skills/jobs-to-be-done/SKILL.md` (component, optional)
+- `../proto-persona/SKILL.md` (component)
+- `../jobs-to-be-done/SKILL.md` (component, optional)
 
 **Phase 4:**
-- `skills/tam-sam-som-calculator/SKILL.md` (interactive, optional)
+- `../tam-sam-som-calculator/SKILL.md` (interactive, optional)
 
 **Phase 5:**
-- `skills/user-story-mapping-workshop/SKILL.md` (interactive, optional)
+- `../user-story-mapping-workshop/SKILL.md` (interactive, optional)
 
 **Phase 7:**
-- `skills/epic-hypothesis/SKILL.md` (component)
-- `skills/epic-breakdown-advisor/SKILL.md` (interactive)
-- `skills/user-story/SKILL.md` (component)
+- `../epic-hypothesis/SKILL.md` (component)
+- `../epic-breakdown-advisor/SKILL.md` (interactive)
+- `../user-story/SKILL.md` (component)
 
 ### External Frameworks
 - Martin Eriksson, "How to Write a Good PRD" (2012) — PRD structure

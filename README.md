@@ -427,10 +427,10 @@ Product-Manager-puls-skills/
 
 | 文档 | 版本 |
 |---|---|
-| 包版本 | <!--VER:package-->1.0.3<!--/VER--> |
-| README | <!--VER:readme-->1.0.3<!--/VER--> |
-| [用户手册](docs/USER-MANUAL.md) | <!--VER:user_manual-->1.0.3<!--/VER--> |
-| [技术手册](docs/TECH-MANUAL.md) | <!--VER:tech_manual-->1.0.3<!--/VER--> |
+| 包版本 | <!--VER:package-->1.0.4<!--/VER--> |
+| README | <!--VER:readme-->1.0.4<!--/VER--> |
+| [用户手册](docs/USER-MANUAL.md) | <!--VER:user_manual-->1.0.4<!--/VER--> |
+| [技术手册](docs/TECH-MANUAL.md) | <!--VER:tech_manual-->1.0.4<!--/VER--> |
 
 <sub>内容改编自 <a href="https://github.com/deanpeters/Product-Manager-Skills">Dean Peters / Product-Manager-Skills</a>，以 CC BY-NC-SA 4.0 分发。</sub>
 

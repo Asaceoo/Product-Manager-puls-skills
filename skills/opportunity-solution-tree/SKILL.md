@@ -418,11 +418,11 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/problem-statement/SKILL.md` — Frames opportunities as customer problems
-- `skills/jobs-to-be-done/SKILL.md` — Helps identify opportunities from JTBD research
-- `skills/epic-hypothesis/SKILL.md` — Turns validated solutions into testable epics
-- `skills/user-story/SKILL.md` — Breaks experiments into deliverable stories
-- `skills/discovery-interview-prep/SKILL.md` — Validates opportunities through customer interviews
+- `../problem-statement/SKILL.md` — Frames opportunities as customer problems
+- `../jobs-to-be-done/SKILL.md` — Helps identify opportunities from JTBD research
+- `../epic-hypothesis/SKILL.md` — Turns validated solutions into testable epics
+- `../user-story/SKILL.md` — Breaks experiments into deliverable stories
+- `../discovery-interview-prep/SKILL.md` — Validates opportunities through customer interviews
 
 ### External Frameworks
 - Teresa Torres, *Continuous Discovery Habits* (2021) — Origin of Opportunity Solution Tree
@@ -435,4 +435,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Interactive
-**Dependencies:** Uses `skills/problem-statement/SKILL.md`, `skills/jobs-to-be-done/SKILL.md`, `skills/epic-hypothesis/SKILL.md`, `skills/user-story/SKILL.md`
+**Dependencies:** Uses `../problem-statement/SKILL.md`, `../jobs-to-be-done/SKILL.md`, `../epic-hypothesis/SKILL.md`, `../user-story/SKILL.md`

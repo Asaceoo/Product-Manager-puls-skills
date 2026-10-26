@@ -87,7 +87,7 @@ Use `template.md` for the full fill-in structure.
 
 Before mapping, ensure you have:
 1. **Key stakeholders:** Marketing, sales, product, customer service representatives
-2. **Buyer personas:** Detailed personas with demographics, psychographics, goals, challenges (reference `skills/proto-persona/SKILL.md`)
+2. **Buyer personas:** Detailed personas with demographics, psychographics, goals, challenges (reference `../proto-persona/SKILL.md`)
 3. **Defined stages:** Main stages of your buying process (typically: Awareness, Consideration, Decision, Service, Loyalty)
 4. **Touchpoint inventory:** All places customers interact with your brand (website, social, email, store, support, etc.)
 
@@ -334,10 +334,10 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/proto-persona/SKILL.md` — Defines the persona for the journey map
-- `skills/jobs-to-be-done/SKILL.md` — Informs customer actions and goals
-- `skills/problem-statement/SKILL.md` — Identifies pain points at each stage
-- `skills/user-story-mapping/SKILL.md` — Complementary (story mapping focuses on product usage, journey mapping covers all touchpoints)
+- `../proto-persona/SKILL.md` — Defines the persona for the journey map
+- `../jobs-to-be-done/SKILL.md` — Informs customer actions and goals
+- `../problem-statement/SKILL.md` — Identifies pain points at each stage
+- `../user-story-mapping/SKILL.md` — Complementary (story mapping focuses on product usage, journey mapping covers all touchpoints)
 
 ### External Frameworks
 - NNGroup, *Customer Journey Mapping* (2016) — Foundational framework
@@ -353,4 +353,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/proto-persona/SKILL.md`, `skills/jobs-to-be-done/SKILL.md`, `skills/problem-statement/SKILL.md`
+**Dependencies:** References `../proto-persona/SKILL.md`, `../jobs-to-be-done/SKILL.md`, `../problem-statement/SKILL.md`

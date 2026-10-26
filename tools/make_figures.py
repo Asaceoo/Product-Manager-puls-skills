@@ -555,10 +555,10 @@ def make_decision_tree() -> None:
 # --------------------------------------------------------------------------- #
 def make_perspectives() -> None:
     """四象限：每个视角看什么、几条规则、抓过什么真问题。"""
-    W, H = 1600, 860
+    W, H = 1600, 1150
     img, draw = canvas(W, H, WHITE)
-    draw.text((80, 50), "四个视角各看什么", font=font(40), fill=INK)
-    draw.text((80, 106), "同一个仓库，四种问法。规则会持续加严——每换一个视角，都能挖出前三个视角看不到的问题",
+    draw.text((80, 50), "五个视角各看什么", font=font(40), fill=INK)
+    draw.text((80, 106), "同一个仓库，五种问法。规则持续加严——每换一个视角，都能挖出之前所有视角看不到的问题",
               font=font(21), fill=INK_SOFT)
 
     quads = [
@@ -586,6 +586,12 @@ def make_perspectives() -> None:
             "caught": "抓过：README 声称的数量与 MANIFEST 脱节",
             "color": ORANGE, "x": 820, "y": 500,
         },
+        {
+            "tag": "E", "title": "安装布局", "count": "2 条",
+            "ask": "装到 Agent 目录之后，这些路径还有效吗？",
+            "caught": "抓过：334 处根相对引用，安装后全部失效",
+            "color": "#0E9488", "x": 80, "y": 820,
+        },
     ]
 
     for q in quads:
@@ -601,11 +607,13 @@ def make_perspectives() -> None:
         draw.multiline_text((x + 36, y + 160), q["caught"], font=font(19), fill=INK_SOFT, spacing=10)
         draw.text((x + 36, y + 236), "规则明细见技术手册", font=font(17), fill="#9AA4B2")
 
-    rounded(draw, (80, H - 118, W - 80, H - 40), 14, "#FFF7ED")
-    draw.text((108, H - 100), "39 条审查规则 + 9 条清单约束",
-              font=font(22), fill="#9A3412")
-    draw.text((430, H - 96), "审查看内容质量（写得对不对），校验看交付一致性（清单和磁盘是不是同一份东西）",
-              font=font(19), fill=INK_SOFT)
+    x, y = 820, 820
+    rounded(draw, (x, y, x + 700, y + 280), 18, "#FFF7ED", "#F0C9A8")
+    draw.text((x + 36, y + 30), "41 条审查 + 9 条校验", font=font(28), fill="#9A3412")
+    draw.multiline_text((x + 36, y + 92),
+                        "审查看内容质量（写得对不对）；\n校验看交付一致性（清单和磁盘\n是不是同一份东西）。两者都过才出包。",
+                        font=font(20), fill=INK, spacing=12)
+    draw.text((x + 36, y + 226), "四代收敛轨迹见 convergence.png", font=font(17), fill="#B08050")
 
     img.save(OUT_DIR / "perspectives.png", optimize=True)
 

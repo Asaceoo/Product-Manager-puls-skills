@@ -49,7 +49,7 @@ Each situation has distinct coaching priorities. The biggest mistake is applying
 
 ### The Underlying Model
 
-This skill draws directly on the Altitude & Horizon Framework — see `skills/altitude-horizon-framework/SKILL.md` for the full mental model. Core concepts used here:
+This skill draws directly on the Altitude & Horizon Framework — see `../altitude-horizon-framework/SKILL.md` for the full mental model. Core concepts used here:
 - Altitude (scope) and Horizon (time) as the two axes that shift
 - The Waiter vs. Restaurant Operator distinction
 - Four transition zones: Thinking Altitude, Persona Shift, Hero Syndrome Recovery, Direction Creation
@@ -348,8 +348,8 @@ See `examples/conversation-flow.md` for a full end-to-end interaction, including
 ## References
 
 ### Related Skills
-- `skills/altitude-horizon-framework/SKILL.md` — The mental model this skill coaches on; includes the Cascading Context Map template
-- `skills/workshop-facilitation/SKILL.md` — Facilitation protocol for this interactive skill
+- `../altitude-horizon-framework/SKILL.md` — The mental model this skill coaches on; includes the Cascading Context Map template
+- `../workshop-facilitation/SKILL.md` — Facilitation protocol for this interactive skill
 
 ### Future Skills
 - `director-to-vp-cpo-advisor` (planned) — Coaches the next transition: Director to VP or CPO of Product

@@ -88,10 +88,10 @@ Use `template.md` for the full fill-in structure.
 ### Step 1: Gather Context
 Before drafting, ensure you have:
 - **Product/feature description:** What are you building?
-- **Target customer/persona:** Who is this for? (reference `skills/proto-persona/SKILL.md`)
-- **Problem statement:** What customer problem does this solve? (reference `skills/problem-statement/SKILL.md`)
+- **Target customer/persona:** Who is this for? (reference `../proto-persona/SKILL.md`)
+- **Problem statement:** What customer problem does this solve? (reference `../problem-statement/SKILL.md`)
 - **Key benefits:** What outcomes does it deliver?
-- **Competitive context:** How is this different from alternatives? (reference `skills/positioning-statement/SKILL.md`)
+- **Competitive context:** How is this different from alternatives? (reference `../positioning-statement/SKILL.md`)
 - **Company mission/values:** How does this fit the company's vision?
 
 **If missing context:** Run discovery, define the problem statement, or clarify positioning first.
@@ -266,10 +266,10 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/problem-statement/SKILL.md` — Defines the customer problem the press release highlights
-- `skills/positioning-statement/SKILL.md` — Informs the differentiation and value proposition
-- `skills/proto-persona/SKILL.md` — Defines the target customer mentioned in the press release
-- `skills/jobs-to-be-done/SKILL.md` — Informs the customer benefits and outcomes
+- `../problem-statement/SKILL.md` — Defines the customer problem the press release highlights
+- `../positioning-statement/SKILL.md` — Informs the differentiation and value proposition
+- `../proto-persona/SKILL.md` — Defines the target customer mentioned in the press release
+- `../jobs-to-be-done/SKILL.md` — Informs the customer benefits and outcomes
 
 ### External Frameworks
 - Amazon's Working Backwards process — Origin of the press release-first methodology
@@ -285,4 +285,4 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/problem-statement/SKILL.md`, `skills/positioning-statement/SKILL.md`, `skills/proto-persona/SKILL.md`, `skills/jobs-to-be-done/SKILL.md`
+**Dependencies:** References `../problem-statement/SKILL.md`, `../positioning-statement/SKILL.md`, `../proto-persona/SKILL.md`, `../jobs-to-be-done/SKILL.md`

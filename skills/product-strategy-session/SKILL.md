@@ -97,19 +97,19 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 ### Activities
 
 **1. Run Positioning Workshop**
-- **Use:** `skills/positioning-workshop/SKILL.md` (interactive)
+- **Use:** `../positioning-workshop/SKILL.md` (interactive)
 - **Participants:** PM, product leadership, marketing, sales
 - **Duration:** 90 minutes
 - **Output:** Draft positioning statement
 
 **2. Define Proto-Personas**
-- **Use:** `skills/proto-persona/SKILL.md` (component)
+- **Use:** `../proto-persona/SKILL.md` (component)
 - **Participants:** PM, design, customer-facing teams
 - **Duration:** 60 minutes
 - **Output:** 1-3 proto-personas (hypothesis-driven)
 
 **3. Map Jobs-to-be-Done**
-- **Use:** `skills/jobs-to-be-done/SKILL.md` (component)
+- **Use:** `../jobs-to-be-done/SKILL.md` (component)
 - **Participants:** PM, design
 - **Duration:** 60 minutes
 - **Output:** JTBD statements for each persona
@@ -119,7 +119,7 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 **If YES:** Proceed to Phase 2 (Problem Framing)
 
 **If NO:** Run additional discovery:
-- **Use:** `skills/discovery-interview-prep/SKILL.md` (interactive)
+- **Use:** `../discovery-interview-prep/SKILL.md` (interactive)
 - Schedule 5-10 customer interviews
 - Validate positioning assumptions before proceeding
 - **Time impact:** +1 week
@@ -133,19 +133,19 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 ### Activities
 
 **1. Run Problem Framing Canvas**
-- **Use:** `skills/problem-framing-canvas/SKILL.md` (interactive - MITRE)
+- **Use:** `../problem-framing-canvas/SKILL.md` (interactive - MITRE)
 - **Participants:** PM, design, engineering lead, customer success
 - **Duration:** 120 minutes
 - **Output:** Refined problem statement + "How Might We" question
 
 **2. Create Formal Problem Statement**
-- **Use:** `skills/problem-statement/SKILL.md` (component)
+- **Use:** `../problem-statement/SKILL.md` (component)
 - **Participants:** PM
 - **Duration:** 30 minutes
 - **Output:** Structured problem statement for PRD/roadmap
 
 **3. Map Customer Journey (Optional)**
-- **Use:** `skills/customer-journey-mapping-workshop/SKILL.md` (interactive)
+- **Use:** `../customer-journey-mapping-workshop/SKILL.md` (interactive)
 - **When to use:** If problem spans multiple touchpoints or phases
 - **Participants:** PM, design, customer success
 - **Duration:** 90 minutes
@@ -156,7 +156,7 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 **If YES:** Proceed to Phase 3 (Solution Exploration)
 
 **If NO:** Run customer discovery interviews:
-- **Use:** `skills/discovery-interview-prep/SKILL.md` (interactive)
+- **Use:** `../discovery-interview-prep/SKILL.md` (interactive)
 - Validate problem hypothesis with 5-10 customers
 - Iterate problem statement based on findings
 - **Time impact:** +1 week
@@ -170,24 +170,24 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 ### Activities
 
 **1. Generate Opportunity Solution Tree**
-- **Use:** `skills/opportunity-solution-tree/SKILL.md` (interactive)
+- **Use:** `../opportunity-solution-tree/SKILL.md` (interactive)
 - **Participants:** PM, design, engineering lead
 - **Duration:** 90 minutes
 - **Output:** 3 opportunities, 3 solutions per opportunity, POC recommendation
 
 **Alternative: Use Lean UX Canvas**
-- **Use:** `skills/lean-ux-canvas/SKILL.md` (interactive)
+- **Use:** `../lean-ux-canvas/SKILL.md` (interactive)
 - **When to use:** If you prefer hypothesis-driven approach over OST
 - **Output:** Business problem, hypotheses, experiments
 
 **2. Define Epic Hypotheses**
-- **Use:** `skills/epic-hypothesis/SKILL.md` (component)
+- **Use:** `../epic-hypothesis/SKILL.md` (component)
 - **Participants:** PM
 - **Duration:** 60 minutes per epic
 - **Output:** Epic hypothesis statements for top 3-5 initiatives
 
 **3. Create User Story Map (Optional)**
-- **Use:** `skills/user-story-mapping-workshop/SKILL.md` (interactive)
+- **Use:** `../user-story-mapping-workshop/SKILL.md` (interactive)
 - **When to use:** For complex features requiring release planning
 - **Participants:** PM, design, engineering
 - **Duration:** 120 minutes
@@ -196,7 +196,7 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 ### Decision Point 3: Do we need to test solutions before committing?
 
 **If YES (high uncertainty):** Run experiments:
-- Design POC experiments per `skills/opportunity-solution-tree/SKILL.md` output
+- Design POC experiments per `../opportunity-solution-tree/SKILL.md` output
 - Test with 10-20 customers (prototype, concierge, landing page test)
 - **Time impact:** +1-2 weeks
 
@@ -211,7 +211,7 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 ### Activities
 
 **1. Choose Prioritization Framework**
-- **Use:** `skills/prioritization-advisor/SKILL.md` (interactive)
+- **Use:** `../prioritization-advisor/SKILL.md` (interactive)
 - **Participants:** PM
 - **Duration:** 30 minutes
 - **Output:** Recommended prioritization framework (RICE, ICE, Value/Effort, etc.)
@@ -228,7 +228,7 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 - **Output:** Quarterly or release-based roadmap (Q1: Epics A, B; Q2: Epics C, D, E)
 
 **4. Map TAM/SAM/SOM (Optional)**
-- **Use:** `skills/tam-sam-som-calculator/SKILL.md` (interactive)
+- **Use:** `../tam-sam-som-calculator/SKILL.md` (interactive)
 - **When to use:** For exec presentations, fundraising, or market sizing
 - **Participants:** PM, business ops
 - **Duration:** 60 minutes
@@ -243,7 +243,7 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 ### Activities
 
 **1. Create Visionary Press Release (Optional)**
-- **Use:** `skills/press-release/SKILL.md` (component)
+- **Use:** `../press-release/SKILL.md` (component)
 - **When to use:** For major product launches or exec buy-in
 - **Participants:** PM, marketing
 - **Duration:** 60 minutes
@@ -271,13 +271,13 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 ### Activities
 
 **1. Break Down Top Epic**
-- **Use:** `skills/epic-breakdown-advisor/SKILL.md` (interactive - with Richard Lawrence's 9 patterns)
+- **Use:** `../epic-breakdown-advisor/SKILL.md` (interactive - with Richard Lawrence's 9 patterns)
 - **Participants:** PM, design, engineering
 - **Duration:** 90 minutes
 - **Output:** User stories split by patterns (workflow, CRUD, business rules, etc.)
 
 **2. Write User Stories**
-- **Use:** `skills/user-story/SKILL.md` (component)
+- **Use:** `../user-story/SKILL.md` (component)
 - **Participants:** PM
 - **Duration:** 30 minutes per story
 - **Output:** User stories with acceptance criteria
@@ -294,41 +294,41 @@ This workflow orchestrates **6 phases** over **2-4 weeks**, using multiple compo
 ```
 Week 1:
 ├─ Day 1-2: Positioning & Market Context
-│  ├─ skills/positioning-workshop/SKILL.md (90 min)
-│  ├─ skills/proto-persona/SKILL.md (60 min)
-│  └─ skills/jobs-to-be-done/SKILL.md (60 min)
+│  ├─ ../positioning-workshop/SKILL.md (90 min)
+│  ├─ ../proto-persona/SKILL.md (60 min)
+│  └─ ../jobs-to-be-done/SKILL.md (60 min)
 │
 ├─ Day 3-5: Problem Framing & Validation
-│  ├─ skills/problem-framing-canvas/SKILL.md (120 min)
-│  ├─ skills/problem-statement/SKILL.md (30 min)
-│  └─ [Optional] skills/customer-journey-mapping-workshop/SKILL.md (90 min)
+│  ├─ ../problem-framing-canvas/SKILL.md (120 min)
+│  ├─ ../problem-statement/SKILL.md (30 min)
+│  └─ [Optional] ../customer-journey-mapping-workshop/SKILL.md (90 min)
 │
 └─ Decision: Validate problem? (if NO, +1 week discovery)
 
 Week 2:
 ├─ Day 1-3: Solution Exploration
-│  ├─ skills/opportunity-solution-tree/SKILL.md (90 min)
-│  ├─ skills/epic-hypothesis/SKILL.md (60 min per epic)
-│  └─ [Optional] skills/user-story-mapping-workshop/SKILL.md (120 min)
+│  ├─ ../opportunity-solution-tree/SKILL.md (90 min)
+│  ├─ ../epic-hypothesis/SKILL.md (60 min per epic)
+│  └─ [Optional] ../user-story-mapping-workshop/SKILL.md (120 min)
 │
 ├─ Decision: Test solutions? (if YES, +1-2 weeks experiments)
 │
 └─ Day 4-5: Prioritization & Roadmap
-   ├─ skills/prioritization-advisor/SKILL.md (30 min)
+   ├─ ../prioritization-advisor/SKILL.md (30 min)
    ├─ Score & prioritize epics (90 min)
    ├─ Sequence roadmap (60 min)
-   └─ [Optional] skills/tam-sam-som-calculator/SKILL.md (60 min)
+   └─ [Optional] ../tam-sam-som-calculator/SKILL.md (60 min)
 
 Week 3:
 └─ Stakeholder Alignment
-   ├─ [Optional] skills/press-release/SKILL.md (60 min)
+   ├─ [Optional] ../press-release/SKILL.md (60 min)
    ├─ Present strategy (60 min)
    └─ Refine based on feedback (1-2 days)
 
 Week 4:
 └─ Execution Planning
-   ├─ skills/epic-breakdown-advisor/SKILL.md (90 min)
-   ├─ skills/user-story/SKILL.md (30 min per story)
+   ├─ ../epic-breakdown-advisor/SKILL.md (90 min)
+   ├─ ../user-story/SKILL.md (30 min per story)
    └─ Plan first sprint (60 min)
 ```
 
@@ -403,32 +403,32 @@ Mini example excerpt:
 ### Related Skills (Orchestrated by This Workflow)
 
 **Phase 1:**
-- `skills/positioning-workshop/SKILL.md` (interactive)
-- `skills/proto-persona/SKILL.md` (component)
-- `skills/jobs-to-be-done/SKILL.md` (component)
+- `../positioning-workshop/SKILL.md` (interactive)
+- `../proto-persona/SKILL.md` (component)
+- `../jobs-to-be-done/SKILL.md` (component)
 
 **Phase 2:**
-- `skills/problem-framing-canvas/SKILL.md` (interactive)
-- `skills/problem-statement/SKILL.md` (component)
-- `skills/customer-journey-mapping-workshop/SKILL.md` (interactive, optional)
-- `skills/discovery-interview-prep/SKILL.md` (interactive, if validation needed)
+- `../problem-framing-canvas/SKILL.md` (interactive)
+- `../problem-statement/SKILL.md` (component)
+- `../customer-journey-mapping-workshop/SKILL.md` (interactive, optional)
+- `../discovery-interview-prep/SKILL.md` (interactive, if validation needed)
 
 **Phase 3:**
-- `skills/opportunity-solution-tree/SKILL.md` (interactive)
-- `skills/lean-ux-canvas/SKILL.md` (interactive, alternative)
-- `skills/epic-hypothesis/SKILL.md` (component)
-- `skills/user-story-mapping-workshop/SKILL.md` (interactive, optional)
+- `../opportunity-solution-tree/SKILL.md` (interactive)
+- `../lean-ux-canvas/SKILL.md` (interactive, alternative)
+- `../epic-hypothesis/SKILL.md` (component)
+- `../user-story-mapping-workshop/SKILL.md` (interactive, optional)
 
 **Phase 4:**
-- `skills/prioritization-advisor/SKILL.md` (interactive)
-- `skills/tam-sam-som-calculator/SKILL.md` (interactive, optional)
+- `../prioritization-advisor/SKILL.md` (interactive)
+- `../tam-sam-som-calculator/SKILL.md` (interactive, optional)
 
 **Phase 5:**
-- `skills/press-release/SKILL.md` (component, optional)
+- `../press-release/SKILL.md` (component, optional)
 
 **Phase 6:**
-- `skills/epic-breakdown-advisor/SKILL.md` (interactive)
-- `skills/user-story/SKILL.md` (component)
+- `../epic-breakdown-advisor/SKILL.md` (interactive)
+- `../user-story/SKILL.md` (component)
 
 ### External Frameworks
 - Teresa Torres, *Continuous Discovery Habits* (2021) — Opportunity solution tree framework

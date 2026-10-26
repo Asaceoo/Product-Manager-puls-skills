@@ -110,7 +110,7 @@ Who are you building for?
 ---
 
 #### Persona
-Provide details about the persona within this segment (reference `skills/proto-persona/SKILL.md`).
+Provide details about the persona within this segment (reference `../proto-persona/SKILL.md`).
 
 ```markdown
 ### Persona:
@@ -123,7 +123,7 @@ Provide details about the persona within this segment (reference `skills/proto-p
 ---
 
 ### Step 2: Define the Narrative
-What is the user trying to accomplish? Frame this as a Jobs-to-be-Done statement (reference `skills/jobs-to-be-done/SKILL.md`).
+What is the user trying to accomplish? Frame this as a Jobs-to-be-Done statement (reference `../jobs-to-be-done/SKILL.md`).
 
 ```markdown
 ### Narrative:
@@ -283,10 +283,10 @@ See `examples/sample.md` for a full story map example.
 ## References
 
 ### Related Skills
-- `skills/proto-persona/SKILL.md` — Defines the persona for the story map
-- `skills/jobs-to-be-done/SKILL.md` — Informs the narrative and activities
-- `skills/user-story/SKILL.md` — Tasks from the map become user stories
-- `skills/problem-statement/SKILL.md` — Problem statement frames the narrative
+- `../proto-persona/SKILL.md` — Defines the persona for the story map
+- `../jobs-to-be-done/SKILL.md` — Informs the narrative and activities
+- `../user-story/SKILL.md` — Tasks from the map become user stories
+- `../problem-statement/SKILL.md` — Problem statement frames the narrative
 
 ### External Frameworks
 - Jeff Patton, *User Story Mapping* (2014) — Origin of the story mapping technique
@@ -301,4 +301,4 @@ See `examples/sample.md` for a full story map example.
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/proto-persona/SKILL.md`, `skills/jobs-to-be-done/SKILL.md`, `skills/user-story/SKILL.md`, `skills/problem-statement/SKILL.md`
+**Dependencies:** References `../proto-persona/SKILL.md`, `../jobs-to-be-done/SKILL.md`, `../user-story/SKILL.md`, `../problem-statement/SKILL.md`

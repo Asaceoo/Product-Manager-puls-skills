@@ -88,9 +88,9 @@ Use `template.md` for the full fill-in structure.
 
 ### Step 1: Gather Context
 Before drafting an epic hypothesis, ensure you have:
-- **Problem understanding:** What user problem does this address? (reference `skills/problem-statement/SKILL.md`)
-- **Target persona:** Who benefits? (reference `skills/proto-persona/SKILL.md`)
-- **Jobs-to-be-Done:** What outcome are they trying to achieve? (reference `skills/jobs-to-be-done/SKILL.md`)
+- **Problem understanding:** What user problem does this address? (reference `../problem-statement/SKILL.md`)
+- **Target persona:** Who benefits? (reference `../proto-persona/SKILL.md`)
+- **Jobs-to-be-Done:** What outcome are they trying to achieve? (reference `../jobs-to-be-done/SKILL.md`)
 - **Current alternatives:** What do users do today? (competitors, workarounds, doing nothing)
 
 **If missing context:** Run discovery interviews or problem validation work first.
@@ -111,7 +111,7 @@ Fill in the template:
 
 **Quality checks:**
 - **"If we" is specific:** Not "improve the product" but "add one-click Slack notifications when tasks are assigned"
-- **"For" is a clear persona:** Not "users" but "remote project managers juggling 3+ distributed teams" (reference `skills/proto-persona/SKILL.md`)
+- **"For" is a clear persona:** Not "users" but "remote project managers juggling 3+ distributed teams" (reference `../proto-persona/SKILL.md`)
 - **"Then we will" is an outcome:** Not "users will have notifications" but "users will respond to task assignments 50% faster"
 
 **Examples:**
@@ -200,7 +200,7 @@ Once the hypothesis is validated, break the epic into user stories:
 ### Epic: [Epic Name]
 
 **Stories:**
-1. [User Story 1 - reference `skills/user-story/SKILL.md`]
+1. [User Story 1 - reference `../user-story/SKILL.md`]
 2. [User Story 2]
 3. [User Story 3]
 ```
@@ -271,11 +271,11 @@ Mini example excerpt:
 ## References
 
 ### Related Skills
-- `skills/problem-statement/SKILL.md` — Hypothesis should address a validated problem
-- `skills/proto-persona/SKILL.md` — Defines the "for [persona]" section
-- `skills/jobs-to-be-done/SKILL.md` — Informs the "then we will" outcome
-- `skills/user-story/SKILL.md` — Validated epics decompose into user stories
-- `skills/user-story-splitting/SKILL.md` — How to break validated epics into stories
+- `../problem-statement/SKILL.md` — Hypothesis should address a validated problem
+- `../proto-persona/SKILL.md` — Defines the "for [persona]" section
+- `../jobs-to-be-done/SKILL.md` — Informs the "then we will" outcome
+- `../user-story/SKILL.md` — Validated epics decompose into user stories
+- `../user-story-splitting/SKILL.md` — How to break validated epics into stories
 
 ### External Frameworks
 - Tim Herbig, *Lean UX Hypothesis Statement* — Origin of if/then hypothesis format
@@ -292,5 +292,5 @@ Mini example excerpt:
 ---
 
 **Skill type:** Component
-**Dependencies:** References `skills/problem-statement/SKILL.md`, `skills/proto-persona/SKILL.md`, `skills/jobs-to-be-done/SKILL.md`
-**Used by:** `skills/user-story/SKILL.md`, `skills/user-story-splitting/SKILL.md`
+**Dependencies:** References `../problem-statement/SKILL.md`, `../proto-persona/SKILL.md`, `../jobs-to-be-done/SKILL.md`
+**Used by:** `../user-story/SKILL.md`, `../user-story-splitting/SKILL.md`

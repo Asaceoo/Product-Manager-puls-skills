@@ -72,7 +72,8 @@ RELATIVE_REF_RE = re.compile(r"\]\(\.\./([a-z0-9][a-z0-9-]*)/([^)]+)\)")
 #: ``scripts/x.py``（仓库根）、``./scripts/x.sh``、``skills/<name>/scripts/y.py``（技能自带）。
 #: 必须从匹配起点就吃掉可选前缀，否则 ``skills/a/scripts/b.py`` 会被截成 ``scripts/b.py`` 而误报。
 SCRIPT_REF_RE = re.compile(
-    r"(?:(?:python3?|bash)\s+|\./)?((?:skills/[a-z0-9][a-z0-9-]*/)?scripts/[A-Za-z0-9._-]+\.(?:py|sh))"
+    r"(?:(?:python3?|bash)\s+|\./)?((?:\.\./[a-z0-9][a-z0-9-]*/)?(?:skills/[a-z0-9][a-z0-9-]*/)?"
+    r"scripts/[A-Za-z0-9._-]+\.(?:py|sh))"
 )
 #: 正文里被点名的技能目录内文件（``template.md`` / ``examples/x.md``）
 LOCAL_FILE_REF_RE = re.compile(r"`(template\.md|examples/[A-Za-z0-9._-]+\.md)`")
@@ -124,6 +125,8 @@ class Finding:
     message: str
     line: Optional[int] = None
     fixable: bool = False
+    #: (旧子串, 新子串) —— 与 fixable 互斥使用：fixable=删行，fix_replace=行内替换
+    fix_replace: Optional[Tuple[str, str]] = None
 
     @property
     def location(self) -> str:
@@ -380,7 +383,11 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
         # B19 要求执行 scripts/ 下的脚本，但该路径解析不到真实文件
         for m in SCRIPT_REF_RE.finditer(body):
             script = m.group(1)
-            if not (ctx.root / script).exists():
+            if script.startswith("../"):
+                resolved = (path / script).resolve()
+            else:
+                resolved = ctx.root / script
+            if not resolved.exists():
                 line = text[: m.start()].count("\n") + 1
                 findings.append(
                     Finding("B19", "P0", "B", rel, f"引用的脚本不存在：{script}", line)
@@ -495,29 +502,96 @@ def check_consumer(ctx: AuditContext) -> List[Finding]:
     return findings
 
 
+
+
+# --------------------------------------------------------------------------- #
+# E. 安装布局视角（路径在"装好后"还有效吗）
+# --------------------------------------------------------------------------- #
+#: SKILL.md 正文里的根相对引用。安装器把技能复制成扁平目录后，
+#: ``skills/<name>/...`` 会解析到 ``<安装根>/skills/<name>/...``——不存在。
+#: 唯一在两种布局下都成立的形式是 ``../<name>/...``。
+#: 命令行调用（``python3 skills/...``）以用户当前目录为基准，不在本规则范围。
+ROOT_REL_REF_RE = re.compile(
+    r"(?<!python3 )(?<!python )(?<![\w./-])skills/([a-z0-9][a-z0-9-]*/(?:SKILL\.md|template\.md|"
+    r"examples/[A-Za-z0-9._-]+\.md|scripts/[A-Za-z0-9._-]+))"
+)
+
+#: 行内代码形式的相对引用（B9 只查 Markdown 链接形态，这里补行内代码）
+INLINE_REL_REF_RE = re.compile(
+    r"`(\.\./[a-z0-9][a-z0-9-]*/[A-Za-z0-9._/-]+)`"
+)
+
+
+def check_install_layout(ctx: AuditContext) -> List[Finding]:
+    findings: List[Finding] = []
+    for name, path in sorted(ctx.skill_dirs.items()):
+        skill_md = path / "SKILL.md"
+        rel = skill_md.relative_to(ctx.root).as_posix()
+        text = read_text(skill_md)
+
+        # E1 根相对引用 → 应为 ../<name>/...
+        for m in ROOT_REL_REF_RE.finditer(text):
+            old = m.group(0)
+            new = "../" + m.group(1)
+            line = text[: m.start()].count("\n") + 1
+            findings.append(
+                Finding("E1", "P1", "E", rel,
+                        f"根相对引用安装后失效：{old}（应为 {new}）",
+                        line, fixable=True, fix_replace=(old, new))
+            )
+
+        # E2 行内代码形式的 ../ 引用必须能从技能目录解析
+        for m in INLINE_REL_REF_RE.finditer(text):
+            target = (path / m.group(1)).resolve()
+            if not target.exists():
+                line = text[: m.start()].count("\n") + 1
+                findings.append(
+                    Finding("E2", "P1", "E", rel,
+                            f"相对引用解析不到文件：{m.group(1)}", line)
+                )
+    return findings
+
+
 # --------------------------------------------------------------------------- #
 # 修复
 # --------------------------------------------------------------------------- #
 def apply_fixes(ctx: AuditContext, findings: Sequence[Finding]) -> Tuple[int, int]:
-    """处理可自动修复项：删除未填充占位条目与随之变空的 Dean's Work 章节。
+    """处理可自动修复项。
 
-    返回 (处理文件数, 删除行数)。
+    两类修复：
+    - ``fixable``（行删除）：未填充占位条目，删除后若章节变空一并清理
+    - ``fix_replace``（行内替换）：根相对引用改为相对引用，语义不变、布局通吃
+
+    返回 (处理文件数, 变更次数)。
     """
-    targets: Dict[Path, set] = {}
+    line_targets: Dict[Path, set] = {}
+    replace_targets: Dict[Path, set] = {}
     for f in findings:
-        if not f.fixable or not f.line:
-            continue
-        targets.setdefault(ctx.root / f.path, set()).add(f.line)
+        if f.fix_replace and f.line:
+            replace_targets.setdefault(ctx.root / f.path, set()).add(f.fix_replace)
+        elif f.fixable and f.line:
+            line_targets.setdefault(ctx.root / f.path, set()).add(f.line)
 
     files_changed = 0
-    lines_removed = 0
-    for path, lines in targets.items():
+    changes = 0
+
+    for path, pairs in replace_targets.items():
+        original = read_text(path)
+        updated = original
+        for old, new in pairs:
+            updated = updated.replace(old, new)
+        if updated != original:
+            path.write_text(updated, encoding="utf-8", newline="\n")
+            files_changed += 1
+            changes += len(pairs)
+
+    for path, lines in line_targets.items():
         original = read_text(path)
         rows = original.split("\n")
         kept: List[str] = []
         for idx, row in enumerate(rows, 1):
             if idx in lines:
-                lines_removed += 1
+                changes += 1
                 continue
             kept.append(row)
         updated = "\n".join(kept)
@@ -525,7 +599,7 @@ def apply_fixes(ctx: AuditContext, findings: Sequence[Finding]) -> Tuple[int, in
         if updated != original:
             path.write_text(updated, encoding="utf-8", newline="\n")
             files_changed += 1
-    return files_changed, lines_removed
+    return files_changed, changes
 
 
 def _drop_empty_dean_sections(text: str) -> str:
@@ -672,6 +746,8 @@ def run_audit(ctx: AuditContext, perspectives: Sequence[str]) -> List[Finding]:
         findings.extend(check_consumer(ctx))
     if "D" in perspectives:
         findings.extend(check_docs(ctx))
+    if "E" in perspectives:
+        findings.extend(check_install_layout(ctx))
     findings.sort(key=lambda f: (SEVERITY_ORDER[f.severity], f.perspective, f.path, f.line or 0))
     return findings
 
@@ -695,16 +771,16 @@ def main(argv: Optional[List[str]] = None) -> int:
         sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[attr-defined]
 
     parser = argparse.ArgumentParser(description="三视角对抗性审查")
-    parser.add_argument("--perspective", default="ABCD", help="组合：A/B/C/D 任意拼接")
+    parser.add_argument("--perspective", default="ABCDE", help="组合：A/B/C/D/E 任意拼接")
     parser.add_argument("--json", dest="json_out", default=None, help="JSON 报告输出路径")
     parser.add_argument("--fix", action="store_true", help="自动修复可修项")
     parser.add_argument("--strict", action="store_true", help="P2 也计入失败")
     parser.add_argument("--max-print", type=int, default=25, help="每个视角最多打印条数")
     args = parser.parse_args(argv)
 
-    perspectives = [p for p in "ABCD" if p in args.perspective.upper()]
+    perspectives = [p for p in "ABCDE" if p in args.perspective.upper()]
     if not perspectives:
-        print("[ERROR] --perspective 需包含 A/B/C/D", file=sys.stderr)
+        print("[ERROR] --perspective 需包含 A/B/C/D/E", file=sys.stderr)
         return 2
 
     ctx = AuditContext(ROOT)
@@ -727,7 +803,8 @@ def main(argv: Optional[List[str]] = None) -> int:
             findings = run_audit(ctx, perspectives)
 
     stats = summarize(findings)
-    names = {"A": "工具实现者", "B": "审查者", "C": "AI 使用方", "D": "文档一致性"}
+    names = {"A": "工具实现者", "B": "审查者", "C": "AI 使用方", "D": "文档一致性",
+             "E": "安装布局"}
     print()
     print(f"技能数：{len(ctx.skill_names)}    视角：{'/'.join(names[p] for p in perspectives)}")
     print(f"结果：P0={stats['P0']}  P1={stats['P1']}  P2={stats['P2']}")

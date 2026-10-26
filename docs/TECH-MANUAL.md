@@ -625,7 +625,7 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 
 | 检查 | 结果 |
 |---|---|
-| zip 条目数 | 266 |
+| zip 条目数 | 267（含 `AGENTS.md`、`CHANGELOG.md`） |
 | 顶层目录 | 单一 `Product-Manager-puls-skills-v1.0.0/`，解压不散落 |
 | 解压后 `validate.py` | 退出码 0，7 通过 / 0 失败 |
 | 解压后 `version.py check` | `[OK] 版本号一致` |
@@ -633,6 +633,30 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 | SHA256 核对 | 与 `SHA256SUMS.txt` 完全一致 |
 
 **这一组的意义**：证明发布包是自包含的——解压后不依赖仓库、不依赖网络，工具链在包内可独立跑通校验与安装。
+
+> 首轮打包时 `AGENTS.md` 未进包（`INCLUDE` 列表遗漏），是靠"源文件数从 266 变成 266"这个异常发现的：删掉 4 KB 的 `START_HERE.md`、重写 9 KB 的 `AGENTS.md` 后总数没变，说明这两个文件都不在打包范围内。
+
+### 12.7 跨机一致性验证
+
+`MANIFEST.json` 的摘要基于文件字节，一旦换行被转换（LF→CRLF），所有技能摘要都会失配。因此在真机上做了一次完整克隆验证：
+
+| 检查 | 结果 |
+|---|---|
+| `git clone` 后文本文件换行 | 262 个文件，**CRLF 0 个 / LF 262 个** |
+| 克隆后 `validate.py` | 7 通过 / 0 失败，含 `L4 内容摘要全部匹配（77 个技能）` |
+| 克隆后 `audit.py` | P0=0 / P1=0 / P2=4 |
+
+前提是本机 `core.autocrlf=true`（Windows 默认常见配置）。为此在仓库根加了 `.gitattributes`：
+
+```gitattributes
+* text=auto eol=lf
+*.png binary
+*.zip binary
+```
+
+`.gitattributes` 的 `eol=lf` 优先级高于 `core.autocrlf`，保证任何平台检出后都是 LF，摘要稳定。
+
+**若不做这一步**：Linux/macOS 用户克隆后 `validate.py` 会报 77 个技能全部失配，看起来像"清单被篡改"，实际只是换行差异。
 
 ---
 

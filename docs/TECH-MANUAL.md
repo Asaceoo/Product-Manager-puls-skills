@@ -586,6 +586,7 @@ def check_reviewer(ctx: AuditContext) -> List[Finding]:
 | 1 | 全量安装 | `install --target <tmp>` | 新装 77 / 覆盖 0 / 跳过 0；磁盘 77 个目录 |
 | 2 | 查记录 | `list` | 包版本 v1.0.0，记录 77，缺失 0 |
 | 3 | 重复安装 | `install --target <tmp>` | 新装 0 / 覆盖 0 / **跳过 77**（冲突保护生效） |
+| 3b | 强制覆盖 | `install --target <tmp> --force` | 新装 0 / **覆盖 77** / 跳过 0 |
 | 4 | 空跑卸载 | `uninstall --dry-run` | 打印"将移除 77 个"，磁盘无变化 |
 | 5 | 执行卸载 | `uninstall` | 已移除 77，剩余目录 `[]` |
 | 6 | 卸载后查记录 | `list` | 退出码 1，"无安装记录" |

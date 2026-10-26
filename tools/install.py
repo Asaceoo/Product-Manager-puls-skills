@@ -85,7 +85,6 @@ def cmd_install(target: Path, only: Optional[str], force: bool, dry_run: bool) -
             if not force:
                 skipped.append(src.name)
                 continue
-            overwritten.append(src.name)
             action = "overwrite"
 
         if not dry_run:
@@ -94,6 +93,7 @@ def cmd_install(target: Path, only: Optional[str], force: bool, dry_run: bool) -
             shutil.copytree(src, dst)
         if src.name not in installed:
             installed.append(src.name)
+        # 只在循环末尾登记一次，避免覆盖项被重复计数
         (added if action == "install" else overwritten).append(src.name)
 
     if dry_run:

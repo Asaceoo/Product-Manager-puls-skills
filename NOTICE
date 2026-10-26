@@ -1,0 +1,42 @@
+# NOTICE — 来源、许可与修改声明
+
+本仓库是一个**再分发与工程化封装版**，不是原创作品。分发前请完整阅读本节。
+
+## 1. 上游作品
+
+| 项 | 内容 |
+|---|---|
+| 名称 | Product-Manager-Skills |
+| 作者 | Dean Peters（Productside） |
+| 上游地址 | https://github.com/deanpeters/product-manager-prompts 与 https://github.com/deanpeters/Product-Manager-Skills |
+| 取得方式 | `main` 分支源码归档 |
+| 取得日期 | 2026-10-26 |
+| 技能数量 | 77 个（`skills/*/SKILL.md`） |
+
+## 2. 许可证
+
+上游与本仓库同为 **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International**（CC BY-NC-SA 4.0），全文见 [`LICENSE`](LICENSE)。
+
+该许可证对本仓库施加三项不可豁免的义务：
+
+1. **署名（BY）** — 必须保留原作者署名、来源链接与许可证声明。本仓库在各技能文件的 `Provenance` 段落与本节中保留。
+2. **非商业（NC）** — **不得将本仓库内容或其衍生作品用于商业目的**。企业内部培训、个人学习、非营利用途通常可用；对外售卖、作为付费产品的一部分、商业咨询交付物需另行取得原作者授权。
+3. **相同方式共享（SA）** — 若你修改并公开分发，衍生作品必须采用同一许可证。
+
+## 3. 本分发版相对上游的修改
+
+修改原则：**只修工程性缺陷，不改方法论内容**。以下修改均可通过 `git diff` 与上游对照。
+
+| # | 修改内容 | 数量 | 原因 |
+|---|---|---|---|
+| 1 | 修复失效交叉引用：`../stakeholder-map/SKILL.md` → `../stakeholder-mapping/SKILL.md` | 3 处（`eol-process`、`eol-readiness-advisor`、`eol-stakeholder-sequence`） | 上游引用了不存在的目录名，点击即 404 |
+| 2 | 移除未填充的占位条目 `- [If Dean has … link here]`、`- [Link to relevant … if applicable]`，以及因此变空的 `### Dean's Work` 章节 | 13 处条目 / 13 个文件 | 作者创作期占位符，发布态保留会误导 Agent 认为存在未公开资源 |
+| 3 | 移除创作期残留元信息 `**Suggested filename:**`、`**Suggested placement:**` | 27 个文件 | 声明的落位（`/skills/workflows/`）与本仓库扁平布局（`skills/<name>/`）冲突，会误导安装路径 |
+| 4 | 为 4 个技能补充 `argument-hint` 字段 | 4 处 | 缺失该字段时斜杠调用无参数提示，Agent 需额外推断入参 |
+| 5 | 新增 `tools/`（版本、校验、审查、打包、安装）、`MANIFEST.json`、`docs/`、`README.md` | — | 上游无工程化交付链路 |
+
+**未修改**：全部技能的方法论正文、模板（`template.md`）、示例（`examples/`）、框架引用与文献出处。原作者署名与其 `Provenance` 段落全部保留（45 个技能文件含 `Provenance` / `Adapted from`）。
+
+## 4. 免责
+
+技能内容为通用产品管理方法，不构成法律、财务或合规建议。使用者在把任何框架结论用于决策前，应结合自身业务数据独立验证。

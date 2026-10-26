@@ -32,6 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 REQUIRED_PATHS: Sequence[str] = (
     "README.md",
+    "AGENTS.md",
     "VERSION",
     "versions.json",
     "LICENSE",

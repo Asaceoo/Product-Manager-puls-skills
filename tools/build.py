@@ -44,6 +44,7 @@ CST = timezone(timedelta(hours=8))
 #: 打进 zip 的顶层条目
 INCLUDE = (
     "README.md",
+    "AGENTS.md",
     "CHANGELOG.md",
     "VERSION",
     "versions.json",

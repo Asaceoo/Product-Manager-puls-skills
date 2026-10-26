@@ -1,134 +1,93 @@
-# Repository Guidelines
+# AGENTS.md — 给 AI Agent 的仓库说明
 
-## Operating Philosophy — Pedagogic and Practical in Equal Measure
+本文件写给**要在这个仓库里工作的 Agent**，不是写给使用技能的人。使用者看 [README.md](README.md)，维护者看 [docs/TECH-MANUAL.md](docs/TECH-MANUAL.md)。
 
-As much as this repo is for adding skills to your agent, it's equally tasked to **help product managers become more awesome at their craft — and to help them send the ladder down to others.**
+## 仓库是什么
 
-Skills here serve both goals simultaneously. The PM using a skill should finish knowing more than when they started — not just have a completed artifact. The reasoning embedded in a skill is what makes the output trustworthy, explainable, and transferable to the next person.
+77 个产品经理技能（`skills/<name>/SKILL.md`），加一套工程化交付链路（`tools/`）。技能内容改编自 Dean Peters 的 Product-Manager-Skills，本仓库只做工程性修复与封装，署名与修改清单见 [NOTICE](NOTICE)。
 
-**ABC — Always Be Coaching** is a key governing principle.
+## 你要遵守的一条原则
 
-This has direct implications for how you work in this repo as an agent:
+上游作者的治理原则叫 **ABC — Always Be Coaching**：技能既服务"完成任务"，也服务"让使用者学会判断"。对你的直接约束：
 
-- **Do not optimize for brevity at the cost of explanation.** Stripping learning scaffolding to tighten a skill is a defect, not an improvement.
-- **Anti-patterns are load-bearing.** They teach the human what to watch for in the wild. Do not remove them.
-- **Examples show reasoning, not just outputs.** A shorter example that hides the thinking is worse than a longer one that shows it.
-- **The dual audience is always both:** the human PM building judgment and the AI agent executing the work. Never optimize for one at the expense of the other.
+- **不要为简洁牺牲解释。** 删掉技能里的推理脚手架是缺陷，不是优化。
+- **反模式是承重结构。** `Common Pitfalls` 之类的章节教人在真实场景里识别陷阱，不要删。
+- **示例要展示思考过程，不只是结果。** 短而藏起推理的示例比长而透明的示例更差。
+- **双读者始终同时存在：** 建判断力的人，和执行任务的 Agent。不要为了一方牺牲另一方。
 
-If you are making efficiency improvements, tighten fluff — not lessons. If you are unsure which is which, leave it in.
+要压缩就压废话，别压教学。分不清时，留着。
 
----
+## 目录职责
 
-## Project Structure & Module Organization
-- `skills/<skill-name>/SKILL.md` holds each skill. Skill folders use lowercase kebab-case names (e.g., `skills/user-story/SKILL.md`).
-- `commands/<command-name>.md` holds reusable orchestration commands that chain local skills.
-- `catalog/` holds generated indexes for fast browsing (`skills-by-type.md`, `commands.md`, and YAML indexes).
-- `research/` contains reference essays that inform skills.
-- `docs/` contains usage guides, including `docs/Using PM Skills with Codex.md`.
-- `app/` contains the Streamlit (beta) playground (`app/main.py`) and setup docs (`app/STREAMLIT_INTERFACE.md`).
-- `dist/` contains generated release artifacts. Do not edit generated files there directly.
-- Root docs like `README.md`, `CONTRIBUTING.md`, `PLANS.md`, and `CLAUDE.md` explain catalog, contribution flow, and skill distillation.
+| 路径 | 内容 | 谁来改 |
+|---|---|---|
+| `skills/<name>/SKILL.md` | 单个技能的定义 | 人工编辑，需过审查 |
+| `skills/<name>/template.md` | 填充模板 | 人工编辑 |
+| `skills/<name>/examples/` | 示例产出 | 人工编辑 |
+| `catalog/skills-index.yaml` | 上游索引 | 一般不动 |
+| `tools/*.py` | 工程链路 | 人工编辑，仅标准库 |
+| `MANIFEST.json` | 自动生成 | **禁止手改**，跑 `manifest.py generate` |
+| `versions.json` | 版本单一事实源 | **禁止手改**，跑 `version.py bump` |
+| `VERSION` | 自动同步 | **禁止手改** |
+| `CHANGELOG.md` | 自动追加 | **禁止手改**，由 `build.py` 写 |
+| `docs/images/` | 自动生成 | **禁止手改**，跑 `make_figures.py` |
 
-## Build, Test, and Development Commands
-This is a Markdown-first repository with lightweight validation and packaging scripts.
-- `rg --files` lists all files quickly.
-- `rg "SKILL.md"` finds skill definitions.
-- `rg "skill-name"` verifies references before submitting.
-- `./scripts/find-a-command.sh --list-all` lists available workflow commands.
-- `./scripts/validate-skills.sh` validates canonical skill folders before packaging.
-- `./scripts/build-release.sh` builds all downloadable release artifacts.
-- `./scripts/test-library.sh` validates skills + commands and regenerates catalogs.
-- `streamlit run app/main.py` launches the Streamlit (beta) skill playground.
+## 改动技能时的硬约束
 
-## Coding Style & Naming Conventions
-- Write in Markdown with clear headings and short paragraphs.
-- Skills must follow the standard sections: Purpose, Input, Key Concepts, Application, Examples, Common Pitfalls, References.
-- The Input section states what the user can bring (subject, optional context) in plain language, shows an example invocation, and instructs the agent to treat input supplied inline with the request as answers already given. It must read as an invitation, not a gate: partial or zero input is fine, and the section says how the guided flow covers what's missing. No runtime-specific template syntax such as `$ARGUMENTS` — it doesn't expand outside Claude Code and confuses human readers (full rationale: CONTRIBUTING.md, "Why We Don't Use `$ARGUMENTS`").
-- Include frontmatter fields (`name`, `description`, `type`) at the top of each skill file.
-- Keep `name` <= 64 characters and `description` <= 200 characters for Claude web upload compatibility.
-- Ensure the skill folder name matches the frontmatter `name` exactly (lowercase kebab-case).
-- Use fenced code blocks with language tags for commands or templates.
-- Keep language concise and opinionated; avoid filler.
+改任何 `SKILL.md` 后必须：
 
-### Interactive Skills
-**What:** Multi-turn conversational flows that gather context through sequential questioning and offer intelligent next-step recommendations.
+```bash
+python tools/manifest.py generate   # 重建清单（否则 L4 会失败）
+python tools/audit.py               # 三视角审查，P0/P1 必须为 0
+python tools/validate.py            # 清单约束，必须全 PASS
+```
 
-**Characteristics:**
-- Asks questions one at a time (or in small batches)
-- Uses answers to inform subsequent questions
-- Offers **enumerated, context-aware recommendations** for next steps
-- Allows user to select by number ("1", "2 & 4") or provide custom input
-- Adapts based on user choices
+frontmatter 的五个必填/推荐字段不得缺失：
 
-## Testing Guidelines
-No automated tests exist. Validate changes by:
-- Ensuring linked skill paths resolve (e.g., `skills/prd-development/SKILL.md`).
-- Confirming examples and references are accurate and consistent.
-- Skimming for structure compliance and readability.
-- For Claude web upload, ensure frontmatter is valid YAML and use the packaging helper to generate `Skill.md` copies.
+```yaml
+name: <必须与目录名完全一致>
+argument-hint: "[用户该提供什么]"
+description: <40-400 字符，必须含 "Use when/for/to" 一句>
+type: workflow | component | interactive
+theme: <13 个已知主题之一>
+```
 
-## Operating Principle (Dogfood First)
-- Use this repo's own definitions, scripts, and standards before making structural decisions.
-- If deciding skill type/category, anchor to local criteria in `README.md`, `CLAUDE.md`, and relevant `SKILL.md` files.
-- Prefer proving decisions with repo tools (`scripts/find-a-skill.sh`, `scripts/test-a-skill.sh`, `scripts/check-skill-metadata.py`) over opinion.
-- Treat `skills/` as the canonical source of truth for all packaging.
-- Preserve compatibility with Claude Desktop/Web, Claude Code, and Codex.
-- Prefer small, maintainable Bash scripts over complex build systems.
-- Do not rename skills unless necessary.
+`description` 是 Agent 唯一的路由依据。写它的时候想一件事：**用户在什么场景下会说这句话**。
 
-## Commercial Neutrality and Provider Boundaries
-- Canonical skills teach durable product-management practice. They must not become vendor-specific integration guides or a channel for commercial promotion.
-- A skill must complete its promised job without a named vendor, account, API key, or paid service. Do not add provider-specific setup, API calls, model identifiers, paid-request workflows, tracking or referral links, or promotional calls to action.
-- A named tool is acceptable only as a non-preferred example or comparison that materially helps a decision. State relevant cost, data-sharing, account, and lock-in implications.
-- Provider-specific integrations require an explicit maintainer request and belong in a separately approved integrations area or companion repository, never in a canonical skill by speculative contribution.
+## 不要做的事
 
-## Cross-Repo Boundary
-- This repository is the shared PM skills library, not the Productside playbook distribution repo.
-- Productside playbook skill content must be created/edited in `/Users/deanpeters/Code/productside_playbook_skills`.
-- When supporting Productside work, treat this repo as read-only reference/tooling unless explicitly asked to change this repo.
+| 禁止 | 原因 |
+|---|---|
+| 手改 `MANIFEST.json` / `VERSION` / `CHANGELOG.md` | 会被下一次 `build.py` 覆盖，且会触发 L4/L5 失败 |
+| 改 `<!--VER:xxx-->` 标记内的数字 | L5 会拦，且造成版本错乱 |
+| 删除 `Provenance` / `Adapted from` 段落 | 违反 CC BY-NC-SA 4.0 的署名义务 |
+| 删除 `Common Pitfalls` / `Anti-Patterns` 章节 | 违反 ABC 原则 |
+| 在 `tools/` 里引入第三方依赖 | 构建期必须能离线运行，且只用标准库 |
+| 在配图里用 emoji | 中文字体不含 emoji 字形，会渲染成方块 |
+| 把版本号硬编码进配图 | 配图必须与版本解耦，否则每次发版都要重画 |
 
-## Claude Custom Skills Compatibility
-- Claude web uploads require `Skill.md` (case-sensitive). Use `scripts/package-claude-skills.sh`.
-- Any scripts under a skill should be deterministic, avoid network calls, and be documented in the skill.
-- Review skills and scripts for safety before sharing or running.
-- Do not delete existing Claude Code marketplace files such as `.claude-plugin/marketplace.json`.
+## 发布流程
 
-## Codex Skill Guidance
-When users ask for product management help, inspect available skills before improvising. Prefer the most specific skill.
+```bash
+python tools/build.py              # 完整流程：递增版本 → 清单 → 审查 → 校验 → CHANGELOG → 打包
+python tools/build.py --dry-run    # 只跑门禁，不产包
+python tools/build.py --part minor # 新增技能时用
+```
 
-Relevant topics include:
-- discovery
-- Jobs to be Done
-- personas
-- product strategy
-- prioritization
-- roadmaps
-- PRDs
-- user stories
-- acceptance criteria
-- AI product management
-- agent workflows
-- stakeholder alignment
+产出在 `dist/`，附 `SHA256SUMS.txt`。tag 名必须与 `VERSION` 一致（`v1.0.0` 形式），release 附件名必须与 zip 文件名一致。
 
-These are product management coaching and artifact-generation workflows, not software engineering workflows.
+## 需要人判断的三件事
 
-## Commit & Pull Request Guidelines
-- Commit messages in history use the imperative voice with a clear subject (e.g., `Add agent-orchestration-advisor skill`), sometimes followed by an issue tag and an em dash for context.
-- PRs should include a short summary, link relevant issues, and note skill type (component/interactive/workflow).
-- If adding a new skill, update the catalog in `README.md` to keep counts and tables accurate.
+工具查不出来，只能人看：
 
-## Release Checklist
-- Update skill counts and tables in `README.md`.
-- Ensure new skills are linked in the correct section (Component/Interactive/Workflow).
-- Spot-check cross-links from `README.md` and `CONTRIBUTING.md`.
-- Confirm any renamed skills update paths and references.
-- If Streamlit beta changed, update `app/STREAMLIT_INTERFACE.md`, `app/.env.example`, and release notes in `README.md`/`docs/announcements/`.
+1. **技能之间是否语义重叠** —— `swot-analysis` 与 `competitive-analysis-process` 是否该合并，审查器不知道
+2. **`description` 的触发语写得对不对** —— 审查器只查"有没有 `Use when`"，不查说得准不准
+3. **方法论主张是否失真** —— 任何改动上游观点的编辑都必须写进 NOTICE
 
-## Skill Quality Expectations
-- **Pedagogic first:** The PM using this skill should know more when they finish than when they started.
-- Agent-ready, self-contained, and practical.
-- Include at least one concrete example that shows reasoning, not just output.
-- Optimally ship the full adornment: a `template.md` plus worked examples from two business domains (one SaaS, one industrial/non-SaaS) — see the "Fully adorned" checklist item in CONTRIBUTING.md. All example companies fictional; reuse the repo's two established universes.
-- Include at least one explicit anti-pattern — this is not optional decoration.
-- Define jargon on first use and keep tradeoffs explicit.
-- Do not remove explanation, anti-patterns, or examples in the name of brevity. That is the mission, not the padding.
+## 相关文档
+
+- [README.md](README.md) — 项目定位与技能速查
+- [docs/USER-MANUAL.md](docs/USER-MANUAL.md) — 面向使用者
+- [docs/TECH-MANUAL.md](docs/TECH-MANUAL.md) — 规则全表、工具细节、真机验证记录
+- [NOTICE](NOTICE) — 上游署名与本仓库的每一处修改
+- [LICENSE](LICENSE) — CC BY-NC-SA 4.0
